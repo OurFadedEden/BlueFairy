@@ -660,6 +660,12 @@ body,.controls,.stage,.tabs{background:#1b1915!important}
 /* Preserve all editable labels; do not clip to zero-height percentage rails. */
 #canvas .hud-text-layer,#canvas #pairDecorations{overflow:hidden!important}
 
+
+/* v40 — keep preview panel anchored to the canvas on long excerpts. */
+#canvas{position:relative!important;overflow:hidden!important;min-height:0!important;flex-shrink:0!important}
+#canvas #frame{position:absolute!important;inset:var(--safe-frame-inset,4%)!important;height:auto!important;max-height:none!important;min-height:0!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+#canvas #frame .content{flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
+#canvas #frame .bodytext{max-width:100%!important;min-height:0!important}
 </style><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&amp;family=Gowun+Dodum&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Nanum+Gothic:wght@400;700&amp;family=Nanum+Myeongjo:wght@400;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/></head><body><main class="app"><aside class="controls"><div class="brand">BLUE PAIRY / HUD EDITOR</div><h1>INSTANCE · 게임</h1><div class="sub">서로의 빛을 기록하는 MMORPG 아카이브</div><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="group" data-section="text"><h2>01 / 기록 정보</h2><label class="field">판형</label><select id="mode"><option value="quest">QUEST LOG · 퀘스트 진행 기록 · 목표와 달성 게이지</option><option value="bond">BOND ARCHIVE · 인연 기록 · 중앙 정렬과 공명 장식</option><option value="item">ITEM LORE · 아이템 도감 · 획득 정보와 설명 카드</option><option value="system">SYSTEM MESSAGE · 시스템 알림 · 업적/해금 팝업</option></select><p class="note" id="modeHelp">퀘스트 기록: 진행 상태, 퀘스트 목표, 게이지를 중심으로 표시해요.</p><label class="field">제목</label><input id="titleInput" value="서로의 빛이 되는 방법"/><label class="field">부제</label><input id="subtitleInput" value="빛이 닿은 곳에서, 우리는 다시 만났다."/><div class="row2"><div><label class="field">등급 / 유형</label><input id="rank" value="HIDDEN QUEST"/></div><div><label class="field">진행 상태</label><input id="status" value="COMPLETED"/></div></div><div class="row2"><label class="field">하단 왼쪽 문구 · 자유 입력</label><input id="footerText" placeholder="원하는 문구를 자유롭게 입력하세요" value="석영 × 함초롱바탕"/></div><label class="field">하단 정보</label><input id="meta" value="ARCHIVE NO. 001 · 2026.10.31"/><div class="fine-controls"><h3>판형별 안내 문구</h3><p class="note">판형을 바꾸면 해당 판형에 저장된 안내 문구가 표시돼요. 각각 자유롭게 수정할 수 있어요.</p>
 <div class="row2"><div><label class="field">퀘스트 안내</label><input id="labelQuest" value="QUEST UPDATED"/></div><div><label class="field">인연 기록 안내</label><input id="labelBond" value="SOUL LINK"/></div><div><label class="field">아이템 안내</label><input id="labelItem" value="ITEM ACQUIRED"/></div><div><label class="field">시스템 안내</label><input id="labelSystem" value="SYSTEM NOTIFICATION"/></div></div>
 <label class="field">상단 아카이브 문구</label><input id="topText" value="BLUE PAIRY / LASPERA"/>
@@ -767,7 +773,7 @@ function fitText(){
  if(!body||!area)return;
  const scale=canvas.clientWidth/900;
  const target=Math.max(3,(+$('size').value)*scale);
- const minimum=Math.max(3,4*scale);
+ const minimum=Math.max(1.5,2.5*scale);
  const measure=(px)=>{
 
    body.style.setProperty('--body-size-final',px+'px');
@@ -783,7 +789,8 @@ function fitText(){
  if(measure(target)){$('fitInfo').textContent='본문 '+$('size').value+'px · 정상';return}
  let low=minimum,high=target;
  if(!measure(low)){
-   $('fitInfo').textContent='최소 크기에서도 넘침 · 문단 분할 권장';
+   measure(minimum);
+   $('fitInfo').textContent='긴 본문 · 최소 글씨 크기 적용 (문단 분할 권장)';
    return;
  }
  for(let i=0;i<18;i++){
