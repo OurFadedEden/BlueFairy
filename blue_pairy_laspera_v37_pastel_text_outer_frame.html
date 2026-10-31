@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>BLUE PAIRY | LASPERA HUD</title><style>
+:root{font-family:Pretendard,'Apple SD Gothic Neo',system-ui,sans-serif;color:#e9f4ff;background:#080f1c}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}.controls{padding:22px;background:#101b2c;border-right:1px solid #2c455e;max-height:100vh;overflow:auto}.brand{font-size:10px;letter-spacing:3px;color:#82d9ee}.controls h1{font-size:23px;margin:8px 0 5px}.sub{color:#9cb4c8;font-size:12px;margin-bottom:20px}.group{border:1px solid #2d465e;border-radius:12px;padding:14px;margin-bottom:13px;background:#142237}.group h2{font-size:12px;letter-spacing:1px;color:#9de9f3;margin:0 0 12px}.field{display:block;font-size:11px;color:#a9bfd2;margin:10px 0 4px}.controls input:not([type=checkbox]):not([type=color]):not([type=range]),.controls select,.controls textarea{width:100%;background:#091524;color:#effaff;border:1px solid #35516a;border-radius:6px;padding:9px;outline:none}.controls textarea{min-height:230px;resize:vertical;line-height:1.6}.controls input[type=color]{width:100%;height:35px;background:transparent;border:0}.controls input[type=range]{width:100%}.checks{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:#b9d4e3}.checks label{display:flex;gap:5px;align-items:center}.buttons{display:flex;gap:8px;flex-wrap:wrap}.btn{background:#20475c;color:#e8fbff;border:1px solid #46829c;padding:10px 12px;border-radius:7px;font-size:12px}.btn.primary{background:#a3ecf2;color:#09202d;font-weight:800}.stage{padding:28px;display:flex;align-items:center;flex-direction:column;gap:15px;background:radial-gradient(circle at 60% 10%,#1b3046,#080f1c 70%);overflow:auto}.stagebar{width:min(100%,880px);display:flex;justify-content:space-between;align-items:center;gap:10px;color:#9eb8c9;font-size:11px}.stagebar strong{color:#e2f6fa}.canvas{width:min(100%,800px);aspect-ratio:4/3;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 15%,#1a5062 0%,transparent 43%),linear-gradient(145deg,#12273c,#081422 80%);border:1px solid #7bc5d180;box-shadow:0 25px 75px #0008;isolation:isolate}.canvas:before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.9%,#b1edfa08 50%,transparent 50.1%),repeating-linear-gradient(0deg,transparent 0 28px,#b1edfa08 29px);z-index:0}.ambient{position:absolute;inset:0;background-position:center;background-size:cover;opacity:.32;z-index:-1}.frame{position:absolute;inset:4%;border:1px solid #8bdce17a;display:flex;flex-direction:column;min-height:0;background:#08152566;backdrop-filter:blur(2px)}.frame:before,.frame:after{content:'';position:absolute;width:18px;height:18px;border-color:#b5f4ed;pointer-events:none}.frame:before{left:-1px;top:-1px;border-left:2px solid;border-top:2px solid}.frame:after{right:-1px;bottom:-1px;border-right:2px solid;border-bottom:2px solid}.topline{padding:13px 17px 10px;border-bottom:1px solid #87e1e348;display:flex;justify-content:space-between;gap:8px;align-items:center}.micro{font-size:9px;letter-spacing:2px;color:#8ddae6}.signal{font-size:10px;color:#b7f7d9}.header{padding:13px 7% 9px}.kicker{font-size:10px;letter-spacing:2px;color:#a3d5e7}.title{font-size:clamp(18px,3vw,32px);font-weight:750;letter-spacing:.02em;margin:5px 0}.subtitle{font-size:11px;color:#a3bdcb}.barrow{display:flex;align-items:center;gap:9px;margin:10px 0 0;font-size:9px;color:#a4cad7}.bar{height:4px;background:#2e5061;flex:1;max-width:180px}.fill{height:100%;width:100%;background:linear-gradient(90deg,#66b8e9,#c7f9d8);box-shadow:0 0 10px #7bd9e8}.content{flex:1;min-height:0;overflow:hidden;padding:8px 7% 8px;display:flex;flex-direction:column;justify-content:center}.bodytext{font-size:15px;line-height:1.85;white-space:normal;overflow-wrap:anywhere;color:#e5f0f4}.bodytext p{margin:0 0 .8em}.bodytext p:last-child{margin-bottom:0}.bodytext strong{color:#fff}.bodytext em{color:#c4e5ee}.bodytext mark{background:#9de7e54a;color:inherit;padding:0 .12em}.dialogue{border-left:2px solid var(--accent,#9ce4ec);padding:2px 0 2px 12px;margin:10px 0;color:#d4f7fb}.systemline{color:#a7f4d4;font-size:.9em;border:1px solid #a7f4d43b;background:#1c514532;padding:7px 10px;margin:8px 0}.footer{padding:10px 17px;border-top:1px solid #87e1e348;display:flex;justify-content:space-between;gap:10px;color:#8db7c5;font-size:9px;letter-spacing:1px}.hide{display:none!important}.frame.bond .kicker:before{content:'◈  ';color:#9cf6e1}.frame.item .kicker:before{content:'◇  ';color:#9cf6e1}.frame.system .kicker:before{content:'▣  ';color:#9cf6e1}.note{color:#91acbe;font-size:11px;line-height:1.6}.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:850px){.app{grid-template-columns:1fr}.controls{max-height:none;border-right:0;border-bottom:1px solid #2c455e}.stage{padding:16px 10px}.canvas{width:100%}}@media(max-width:500px){.canvas{aspect-ratio:3/4}.frame{inset:4%}.bodytext{font-size:12px}.header{padding-top:8px}.topline,.footer{padding:9px}.content{padding:6px 7%}.title{font-size:20px}}
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Serif+KR&display=swap');
+.app{display:flex!important;flex-direction:column!important}
+.stage{order:0;position:sticky;top:0;z-index:20;padding:10px 12px!important;gap:7px;background:#091524f7;backdrop-filter:blur(14px);border-bottom:1px solid #35556b;overflow:visible;max-height:55vh}
+.stagebar{max-width:740px}
+.canvas{width:min(100%,740px,calc(46vh * var(--ratio-number,1.3333)))!important;max-height:46vh;aspect-ratio:var(--ratio,4 / 3)!important;flex:none}
+.controls{order:1;max-height:none!important;overflow:visible!important;border:0!important;max-width:900px;width:100%;margin:auto;padding:20px!important}
+.tabs{position:sticky;top:calc(min(55vh,520px) - 2px);z-index:10;display:flex;gap:5px;padding:10px 0;background:#101b2cf2;backdrop-filter:blur(10px);margin-bottom:12px}
+.tabs button{flex:1;background:#172a40;border:1px solid #34546b;color:#b2cddd;padding:12px 4px;border-radius:7px;font-size:12px}
+.tabs button.active{background:#a5e8ef;color:#092331;font-weight:800}
+.group[data-section]{display:none}.group[data-section].active{display:block}
+.mdtools{margin:8px 0}
+.frame{--body-padding:7%;--body-align:left;--body-position:center}
+.content{justify-content:var(--body-position);padding-left:var(--body-padding);padding-right:var(--body-padding)}
+.bodytext{text-align:var(--body-align);letter-spacing:var(--body-spacing,0px);overflow-wrap:anywhere;min-width:0}
+.title{font-family:var(--title-font,inherit);font-size:var(--title-size,30px)}
+.dialogue{color:var(--dialogue-color,#d4f7fb)}
+.ambient{background-size:var(--bg-zoom,cover);background-position:var(--bg-x,50%) var(--bg-y,50%)}
+.canvas .shade{position:absolute;inset:0;z-index:0;background:#000;opacity:var(--shade,0);pointer-events:none}
+.ornament{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.6}
+.canvas[data-deco="grid"] .ornament{background-image:linear-gradient(#a7e8fa14 1px,transparent 1px),linear-gradient(90deg,#a7e8fa14 1px,transparent 1px);background-size:27px 27px}
+.canvas[data-deco="stars"] .ornament{background:radial-gradient(circle at 18% 23%,#c9f7ff 1px,transparent 2px),radial-gradient(circle at 77% 35%,#c9f7ff 1px,transparent 2px),radial-gradient(circle at 65% 79%,#c9f7ff 1px,transparent 2px),radial-gradient(circle at 30% 76%,#c9f7ff 1px,transparent 2px)}
+.canvas[data-deco="rings"] .ornament{background:repeating-radial-gradient(circle at 75% 50%,transparent 0 36px,#b8f2ff1c 37px 38px)}
+.frame[data-border="double"]{border-style:double;border-width:3px}
+.frame[data-border="dashed"]{border-style:dashed}.frame[data-border="none"]{border-color:transparent!important}
+#stickerLayer{position:absolute;inset:0;z-index:5;pointer-events:none}
+.sticker{position:absolute;z-index:5;cursor:grab;touch-action:none;user-select:none;pointer-events:auto;white-space:nowrap;line-height:1}
+.sticker.selected{outline:1px dashed #c6f5ff;outline-offset:5px}
+#stampView{position:absolute;right:7%;bottom:9%;z-index:4;color:#a7eff8;opacity:.55;font:700 16px monospace;letter-spacing:.1em;transform:rotate(-9deg);pointer-events:none}
+@media(max-width:700px){.stage{max-height:43vh}.canvas{width:min(100%,calc(36vh * var(--ratio-number,1.3333)))!important;max-height:36vh}.stagebar{font-size:9px}.stage .note{font-size:9px}.controls{padding:12px!important}.tabs{top:0}.frame .topline{padding:7px 10px}.frame .header{padding-top:6px;padding-bottom:4px}.frame .footer{padding:6px 10px}.frame .content{padding-top:3px;padding-bottom:3px}}
+
+/* v3: image canvas gets its own generous workspace, not a thumbnail */
+.stage{position:relative!important;max-height:none!important;overflow:visible!important;padding:22px 16px 28px!important}
+.canvas{width:min(100%,900px)!important;max-height:none!important;aspect-ratio:var(--ratio,4 / 3)!important;container-type:inline-size}
+.controls{max-width:980px!important}
+.tabs{top:0!important}
+.frame{inset:4%;overflow:hidden}
+.topline{padding:2.3cqw 3cqw 1.6cqw}
+.micro{font-size:clamp(7px,1.5cqw,13px);letter-spacing:.16em}
+.signal{font-size:clamp(8px,1.65cqw,14px)}
+.header{padding:2.6cqw 6% 1.5cqw}
+.kicker{font-size:clamp(8px,1.7cqw,14px)}
+.title{font-size:clamp(14px,var(--title-size-fluid,4cqw),42px)!important;line-height:1.24}
+.subtitle{font-size:clamp(8px,1.7cqw,14px)}
+.barrow{font-size:clamp(8px,1.4cqw,12px);margin-top:1.7cqw}
+.content{padding-top:1.5cqw;padding-bottom:1.5cqw}
+.bodytext{font-size:var(--body-size-fluid,2cqw);line-height:1.75}
+.bodytext p{margin:0 0 .7em}
+.footer{font-size:clamp(8px,1.5cqw,12px);padding:1.8cqw 3cqw;letter-spacing:.05em}
+.bodytext mark{border:0!important;outline:0!important;text-decoration:none!important;box-shadow:none!important;background-clip:padding-box;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.canvas[data-deco="rings"] .ornament{opacity:.3}
+.mode-emblem{display:none}
+.frame.quest .header{border-left:3px solid var(--accent);margin:2% 4% 0;padding-left:4%}
+.frame.quest .kicker:before{content:"▣ QUEST UPDATED  /  ";color:#b5f4ed}
+.frame.quest .barrow{border-top:1px solid #a2e6f026;padding-top:1.6cqw}
+.frame.bond{border-radius:20px 20px 6px 6px;background:radial-gradient(ellipse at 50% 38%,#19465780,transparent 65%),#071c2a9c}
+.frame.bond .topline{border-bottom:0}
+.frame.bond .header{text-align:center;padding-top:4cqw}
+.frame.bond .kicker:before{content:"✧  SOUL LINK  /  "}
+.frame.bond .barrow{justify-content:center}
+.frame.bond .bar{max-width:260px}
+.frame.bond .header:after{content:"◇  ─────────  ✧  ─────────  ◇";display:block;color:var(--accent);opacity:.65;margin-top:2cqw;letter-spacing:.3em;font-size:1.5cqw}
+.frame.item{background:linear-gradient(130deg,#122d38bb,#071522ed)}
+.frame.item .header{margin:3% 5% 1%;padding:3% 4%;border:1px solid #d4e9c456;background:#d4e9c409;position:relative}
+.frame.item .header:before{content:"◈";float:right;font-size:clamp(26px,8cqw,72px);line-height:1;color:#e3d8a16b}
+.frame.item .kicker:before{content:"◆ ITEM ACQUIRED  /  "}
+.frame.item .barrow{display:none!important}
+.frame.item .subtitle:before{content:"LORE  /  ";color:#d4c99b}
+.frame.item .topline{background:#c8e9d908}
+.frame.system{border:1px dashed #7bd8e4aa;background:linear-gradient(180deg,#092433dd,#061321f5)}
+.frame.system .topline{background:#67d9ee16;border-bottom:1px dashed #7bd8e47a}
+.frame.system .header{text-align:center;margin:4% 6% 2%;padding:4% 2%;border-top:1px solid #82e9ee6e;border-bottom:1px solid #82e9ee6e}
+.frame.system .kicker:before{content:"[ SYSTEM NOTIFICATION ]  "}
+.frame.system .title{letter-spacing:.08em}
+.frame.system .barrow{display:none!important}
+.frame.system .content{text-align:center;align-items:center}
+.frame.system .footer{border-top:1px dashed #7bd8e47a}
+@media(max-width:700px){
+.stage{max-height:none!important;padding:12px 8px 18px!important}
+.canvas{width:100%!important;max-height:none!important}
+.frame .topline{padding:2cqw 3cqw}
+.frame .header{padding:2.6cqw 6% 1.5cqw}
+.frame .footer{padding:1.8cqw 3cqw}
+.frame .content{padding:1.5cqw 6%}
+.stagebar{font-size:10px}
+}
+
+/* Compact editorial scale: same canvas, significantly more text capacity */
+.frame .topline{padding:1.15cqw 2.1cqw .95cqw}
+.frame .micro{font-size:clamp(6px,.95cqw,9px);letter-spacing:.1em}
+.frame .signal{font-size:clamp(6px,1.05cqw,10px)}
+.frame .header{padding:1.25cqw 6% .75cqw}
+.frame .kicker{font-size:clamp(6px,1.1cqw,10px);letter-spacing:.12em}
+.frame .title{font-size:clamp(13px,var(--title-size-compact,2.5cqw),25px)!important;line-height:1.27;margin:.45cqw 0 .6cqw}
+.frame .subtitle{font-size:clamp(7px,1.12cqw,11px)}
+.frame .barrow{font-size:clamp(7px,1.05cqw,10px);margin-top:1.05cqw}
+.frame .bar{height:3px}
+.frame .content{padding:1.15cqw 6%;min-height:0;overflow:hidden;justify-content:flex-start!important}
+.frame .bodytext{font-size:var(--body-size,12px);line-height:1.62;flex:0 0 auto;min-height:0;overflow:visible!important;word-break:keep-all;overflow-wrap:break-word}
+.frame .bodytext p{margin:0 0 .55em}
+.frame .bodytext .dialogue{margin:.3em 0;padding:.1em 0 .1em .75em}
+.frame .bodytext .systemline{margin:.35em 0;padding:.45em .6em}
+.frame .footer{font-size:clamp(7px,1.05cqw,10px);padding:1.1cqw 2.1cqw;letter-spacing:.03em}
+.frame.bond .header{padding-top:2cqw}
+.frame.bond .header:after{margin-top:1cqw}
+.frame.item .header{margin:1.5% 5% .5%;padding:1.7% 3%}
+.frame.system .header{margin:1.7% 6% 1%;padding:1.8% 2%}
+.frame.system .content{align-items:stretch!important;text-align:left!important}
+.frame.system .bodytext{text-align:var(--body-align,left)!important}
+.frame.system .title{letter-spacing:.02em}
+.frame .bodytext mark{padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone;background-clip:padding-box}
+@media(max-width:700px){
+.frame .header{padding:1.4cqw 6% .8cqw}
+.frame .content{padding:1cqw 6%}
+.frame .footer{padding:1.1cqw 2.1cqw}
+}
+
+/* Typography reset: one source of truth, no competing responsive font rules */
+.frame .title{font-size:var(--title-size-final,20px)!important;line-height:1.32!important}
+.frame .bodytext{font-size:var(--body-size-final,10px)!important;line-height:var(--body-line-final,1.65)!important;flex:0 0 auto!important;overflow:visible!important;min-height:0!important}
+.frame .bodytext p{margin:0 0 .62em!important}
+.frame .micro{font-size:clamp(6px,.8cqw,9px)!important}
+.frame .signal{font-size:clamp(6px,.85cqw,9px)!important}
+.frame .kicker{font-size:clamp(6px,.9cqw,9px)!important}
+.frame .subtitle{font-size:clamp(6px,.9cqw,9px)!important}
+.frame .footer{font-size:clamp(6px,.85cqw,9px)!important}
+.frame .content{align-items:stretch!important;overflow:hidden!important;min-height:0!important}
+.frame .systemline{font-size:.9em}
+.frame .topline{padding:.85cqw 1.5cqw!important}
+.frame .header{padding:1cqw 5% .65cqw!important}
+.frame .content{padding:.7cqw 5%!important}
+.frame .footer{padding:.8cqw 1.5cqw!important}
+.frame .barrow{margin-top:.6cqw!important}
+.frame.system .header{margin:1% 5% .5%!important;padding:1.2% 1%!important}
+.frame.bond .header{padding-top:1.2cqw!important}
+.frame.item .header{margin:1% 4% .5%!important;padding:1% 2%!important}
+
+/* YEONGRONG · warm ivory / deep charcoal, fine-line modern MMORPG */
+:root{color-scheme:dark}
+body{background:#171713;color:#FFFAED}
+.controls{background:#23221e!important;color:#FFFAED}
+.group{background:#2E2B25!important;border-color:#69604e!important;border-radius:8px!important;box-shadow:none!important}
+.group h2,.brand{color:#e4d0a3!important;font-weight:500!important}
+.controls h1{font-weight:500!important}
+.sub,.note,.field{color:#c9c0ad!important}
+.controls input:not([type=checkbox]):not([type=color]):not([type=range]),.controls select,.controls textarea{background:#211f1a!important;border-color:#655c4b!important;color:#FFFAED!important;border-radius:4px!important}
+.btn,.tabs button{background:#373329!important;border-color:#766b56!important;color:#f4ead7!important;font-weight:400!important}
+.btn.primary,.tabs button.active{background:#f1e4c8!important;border-color:#f1e4c8!important;color:#2E2B25!important;font-weight:600!important}
+.stage{background:#1b1a17!important;border-color:#635a4a!important}
+.stagebar,.stage .note{color:#d6c9ad!important}
+.stagebar strong{color:#fff9e9!important;font-weight:500!important}
+.canvas{background:radial-gradient(ellipse at 80% 0%,#655a3e50,transparent 52%),linear-gradient(140deg,#39352b,#211f1a 78%)!important;border-color:#b5a07b88!important;box-shadow:0 16px 55px #0005!important}
+.canvas:before{background:linear-gradient(90deg,transparent 49.9%,#fff6e708 50%,transparent 50.1%),repeating-linear-gradient(0deg,transparent 0 35px,#fff6e706 36px)!important}
+.frame{background:#2E2B25c7!important;border-color:#c3ae8490!important;backdrop-filter:blur(1px)}
+.frame:before,.frame:after{border-color:#dfcba0!important;border-width:1px!important;width:12px!important;height:12px!important}
+.frame .topline,.frame .footer{border-color:#e7d9b12e!important}
+.frame .micro,.frame .kicker{color:#e0cda4!important;font-weight:400!important;letter-spacing:.12em!important}
+.frame .signal{color:#d9cfac!important;font-weight:400!important}
+.frame .title{color:#FFFAED!important;font-weight:500!important;letter-spacing:-.025em!important}
+.frame .subtitle,.frame .footer,.frame .barrow{color:#d5cbb8!important;font-weight:400!important}
+.frame .bodytext{color:#f2ecdf!important;font-weight:400!important}
+.frame .bodytext strong{font-weight:600!important;color:#fffaf0!important}
+.frame .bar{background:#665f4d!important}
+.frame .fill{background:linear-gradient(90deg,#ab9467,#f1e2bd)!important;box-shadow:none!important}
+.frame .dialogue{border-left:1px solid #d8c99e!important}
+.frame .systemline{color:#eee1be!important;background:#bba87c14!important;border-color:#bba87c4b!important;font-weight:400!important}
+.frame.quest .header{border-left-width:1px!important}
+.frame.bond{background:radial-gradient(ellipse at 50% 38%,#8e7e5840,transparent 65%),#2e2b25de!important;border-radius:8px!important}
+.frame.bond .header:after{content:none!important;display:none!important}
+.frame.bond .barrow{border:0!important;padding-top:0!important}
+.frame.bond .header{border-bottom:0!important}
+.frame.item{background:linear-gradient(130deg,#403a30dc,#27241edc)!important}
+.frame.item .header{border-color:#cdb68d6b!important;background:#e4d2a008!important}
+.frame.item .header:before{color:#d8c69b80!important}
+.frame.system{background:linear-gradient(180deg,#383329dc,#211f1aef)!important;border-color:#b8a37b9c!important}
+.frame.system .topline{background:#d6bf8711!important;border-color:#b8a37b55!important}
+.frame.system .header,.frame.system .footer{border-color:#b8a37b55!important}
+.canvas[data-deco="grid"] .ornament{background-image:linear-gradient(#f2e3c310 1px,transparent 1px),linear-gradient(90deg,#f2e3c310 1px,transparent 1px)}
+.canvas[data-deco="stars"] .ornament{background:radial-gradient(circle at 18% 23%,#f9ebc8 1px,transparent 2px),radial-gradient(circle at 77% 35%,#f9ebc8 1px,transparent 2px),radial-gradient(circle at 65% 79%,#f9ebc8 1px,transparent 2px)}
+.canvas[data-deco="rings"] .ornament{background:repeating-radial-gradient(circle at 75% 50%,transparent 0 36px,#e4cda71a 37px 38px)}
+.chat-entry{display:flex;align-items:flex-start;gap:.65em;margin:.38em 0 .65em;padding:.52em .72em;background:#fff8e60b;border:1px solid #e7d6b52c;border-radius:3px;max-width:100%;font-weight:400}
+.chat-entry .chat-name{color:var(--chat-name,#dcc28f);flex:0 0 auto;max-width:34%;overflow-wrap:anywhere;font-weight:500}
+.chat-entry .chat-message{min-width:0;flex:1;overflow-wrap:anywhere}
+.chat-entry:before{content:"▸";color:#c9b58e;font-size:.8em;margin-top:.15em;flex:none}
+.frame[data-chat="line"] .chat-entry{background:transparent;border:0;border-left:1px solid #d5c19a;padding:.12em .65em;border-radius:0}
+.frame[data-chat="line"] .chat-entry:before{content:none}
+.frame[data-chat="minimal"] .chat-entry{background:transparent;border:0;padding:.1em 0}
+.frame[data-chat="minimal"] .chat-entry:before{content:none}
+.frame[data-chat="minimal"] .chat-name:after{content:"  ｜";color:#b4a58a}
+
+/* Theme: deep ink #26231C and warm paper #FFFAED */
+body,.controls{background:#26231C!important}
+.stage{background:#26231C!important}
+.group{background:#26231C!important}
+.canvas{background:linear-gradient(145deg,#343027,#26231C 75%)!important}
+.frame{background:#26231Cdb!important}
+.frame.bond{background:radial-gradient(ellipse at 50% 38%,#8e7e5822,transparent 65%),#26231Ce8!important}
+.frame.item{background:linear-gradient(130deg,#322d25dd,#26231Ce8)!important}
+.frame.system{background:linear-gradient(180deg,#302b23e9,#26231Cf0)!important}
+.tabs{background:#26231Cf2!important}
+.frame .kicker:before,.frame.quest .kicker:before,.frame.bond .kicker:before,.frame.item .kicker:before,.frame.system .kicker:before{content:none!important;display:none!important}
+.frame.bond .header:after{content:none!important;display:none!important}
+.frame.bond .barrow{border:0!important;padding-top:0!important}
+.frame .mode-label{display:block;color:#d7c7a7;font-size:var(--mode-size,9px)!important;line-height:1.5;font-weight:400;letter-spacing:.09em;margin-bottom:.3em}
+.frame .micro{font-size:var(--top-size,9px)!important}
+.frame .signal{font-size:var(--status-size,9px)!important}
+.frame .kicker{font-size:var(--rank-size,10px)!important}
+.frame .subtitle{font-size:var(--subtitle-size,10px)!important}
+.frame .barrow{font-size:var(--gauge-size,9px)!important}
+.frame #peopleView{font-size:var(--footer-size,9px)!important}
+.frame #metaView{font-size:var(--meta-size,9px)!important}
+.frame .chat-entry .chat-name{font-size:var(--chat-speaker-size,1em)!important}
+.frame .chat-entry .chat-message{font-size:var(--chat-message-size,1em)!important}
+.frame .systemline{font-size:var(--system-size,1em)!important}
+.frame .topline{padding:calc(0.85cqw * var(--ui-scale,1)) calc(1.5cqw * var(--ui-scale,1))!important}
+.frame .header{padding:calc(1cqw * var(--ui-scale,1)) 5% calc(.65cqw * var(--ui-scale,1))!important}
+.frame .footer{padding:calc(.8cqw * var(--ui-scale,1)) calc(1.5cqw * var(--ui-scale,1))!important}
+.frame .content{padding:calc(.7cqw * var(--ui-scale,1)) 5%!important;justify-content:var(--body-position,center)!important;align-items:stretch!important}
+.frame .bar{height:calc(3px * var(--ui-scale,1))!important}
+.frame .barrow{gap:calc(9px * var(--ui-scale,1))!important}
+.frame .chat-entry{gap:calc(.65em * var(--ui-scale,1));padding:calc(.52em * var(--chat-pad,.55) * var(--ui-scale,1)) calc(.72em * var(--chat-pad,.55) * var(--ui-scale,1));border-color:rgba(231,214,181,var(--chat-border,.25))}
+.frame .chat-entry .chat-name{max-width:40%}
+.frame .footer{border-color:rgba(231,217,177,var(--divider-alpha,.25))!important}
+.frame .topline{border-color:rgba(231,217,177,var(--divider-alpha,.25))!important}
+.ornament{opacity:var(--deco-opacity,.35)!important}
+.frame{inset:var(--frame-inset,4%)!important;border-width:var(--frame-width,1px)!important}
+.frame:before,.frame:after{width:calc(12px * var(--ui-scale,1))!important;height:calc(12px * var(--ui-scale,1))!important}
+.fine-controls{margin-top:18px;padding:14px;border:1px solid #72654f66;border-radius:7px}
+.fine-controls h3{font-size:12px;letter-spacing:.12em;font-weight:500;color:#e6d5b1;margin:0 0 8px}
+.fine-controls output{font-family:monospace;color:#ead6a8}
+.frame mark{background:none!important;border:0!important;outline:0!important;text-decoration:none!important;background-image:none!important;box-shadow:none!important;box-decoration-break:clone!important;-webkit-box-decoration-break:clone!important;padding:0 .04em!important}
+.frame mark.marker-active{box-shadow:inset 0 calc(var(--marker-offset,0px) - var(--marker-depth,.45em)) 0 var(--marker-color,#D8C99E66)!important;position:relative}
+.frame mark.marker-full{background-color:var(--marker-color,#D8C99E66)!important}
+.frame mark.marker-under{box-shadow:inset 0 -.12em 0 var(--marker-color,#D8C99E66)!important}
+.frame mark.marker-outline{box-shadow:inset 0 0 0 1px var(--marker-color,#D8C99E66)!important}
+
+
+/* Refined deep charcoal palette */
+body,.controls,.stage,.tabs{background:#1b1915!important}
+.group{background:#24211b!important}
+.canvas{background:var(--canvas-bg,#1B1915)!important;border-color:#766b58!important}
+.frame,.frame.quest,.frame.bond,.frame.item,.frame.system{background:var(--panel-bg,rgba(32,30,25,.94))!important}
+.canvas .shade{background:#000!important;opacity:var(--shade,0)!important}
+.canvas .vignette{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 28%,rgba(0,0,0,var(--vignette,.5)) 100%)}
+.quest-label-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:.6em;min-width:0;margin-bottom:.45em}
+.frame .quest-label-row .mode-label{display:inline!important;margin:0!important;line-height:1.45!important;letter-spacing:.08em}
+.frame .quest-label-row .kicker{display:inline!important;margin:0!important;line-height:1.45!important}
+.frame .quest-label-row .mode-label:not(:empty):after{content:' / ';opacity:.45}
+.frame.quest .kicker:before,.frame.bond .kicker:before,.frame.item .kicker:before,.frame.system .kicker:before{content:none!important;display:none!important}
+.frame .header .quest-label-row{border:0!important}
+.frame.bond .header:after{display:none!important;content:none!important}
+.frame .chat-entry .chat-name,.frame .chat-entry .chat-message,.frame .systemline{font-size:inherit!important}
+.frame .bodytext{font-weight:400!important}
+.ornament{opacity:var(--deco-opacity,.35)!important}
+.canvas[data-deco="corners"] .ornament{background:linear-gradient(#d8c69b 0 0) 5% 5% / 4% var(--orn-line,1px) no-repeat,linear-gradient(#d8c69b 0 0) 5% 5% / var(--orn-line,1px) 6% no-repeat,linear-gradient(#d8c69b 0 0) 95% 5% / 4% var(--orn-line,1px) no-repeat,linear-gradient(#d8c69b 0 0) 95% 5% / var(--orn-line,1px) 6% no-repeat,linear-gradient(#d8c69b 0 0) 5% 95% / 4% var(--orn-line,1px) no-repeat,linear-gradient(#d8c69b 0 0) 95% 95% / 4% var(--orn-line,1px) no-repeat}
+.canvas[data-deco="constellation"] .ornament{background:linear-gradient(34deg,transparent 47%,#d8c69b36 47.2%,#d8c69b36 47.35%,transparent 47.55%) 15% 10% / 50% 45% no-repeat,radial-gradient(circle at 22% 28%,#dfceab 1px,transparent 2px),radial-gradient(circle at 58% 50%,#dfceab 1px,transparent 2px),radial-gradient(circle at 72% 32%,#dfceab 1px,transparent 2px)}
+.canvas[data-deco="scanlines"] .ornament{background:repeating-linear-gradient(180deg,transparent 0 7px,#f3e5c811 8px 8.5px)}
+.canvas[data-deco="coordinates"] .ornament{background:repeating-linear-gradient(90deg,#d8c69b44 0 1px,transparent 1px 16px) center 4% / 88% 5px no-repeat,repeating-linear-gradient(90deg,#d8c69b44 0 1px,transparent 1px 16px) center 96% / 88% 5px no-repeat,repeating-linear-gradient(0deg,#d8c69b44 0 1px,transparent 1px 16px) 4% center / 5px 88% no-repeat,repeating-linear-gradient(0deg,#d8c69b44 0 1px,transparent 1px 16px) 96% center / 5px 88% no-repeat}
+.corner-glyph{position:absolute;inset:3.5% 4%;pointer-events:none;z-index:4;color:#e6d2a5;font-size:clamp(8px,1.1cqw,13px);opacity:.6}
+.corner-glyph[data-type="diamonds"]:before{content:'◇';position:absolute;top:0;left:0}.corner-glyph[data-type="diamonds"]:after{content:'◇';position:absolute;bottom:0;right:0}
+.corner-glyph[data-type="stars"]:before{content:'✧';position:absolute;top:0;left:0}.corner-glyph[data-type="stars"]:after{content:'✧';position:absolute;bottom:0;right:0}
+.corner-glyph[data-type="cross"]:before{content:'+';position:absolute;top:0;left:0}.corner-glyph[data-type="cross"]:after{content:'+';position:absolute;bottom:0;right:0}
+.decor-caption{position:absolute;bottom:1.5%;left:50%;transform:translateX(-50%);pointer-events:none;z-index:4;white-space:nowrap;color:#cbb992;font:400 var(--caption-size,8px) monospace;letter-spacing:.14em;opacity:.65}
+
+/* SONAR reference: fragment-cloned inline highlight. No absolute overlays. */
+#bodyView mark.yr-hl{display:inline!important;position:static!important;transform:none!important;z-index:auto!important;box-decoration-break:clone!important;-webkit-box-decoration-break:clone!important;padding:.08em 0!important;border:0!important;outline:0!important;text-decoration:none!important;box-shadow:none!important;background-repeat:repeat!important;background-size:auto!important;background-position:initial!important}
+#bodyView mark.yr-hl.marker-active{background:linear-gradient(to top,var(--marker-color) 54%,transparent 54%)!important}
+#bodyView mark.yr-hl.marker-under{background:linear-gradient(to top,var(--marker-color) 16%,transparent 16%)!important}
+#bodyView mark.yr-hl.marker-full{background:var(--marker-color)!important}
+#bodyView mark.yr-hl.marker-outline{box-shadow:inset 0 0 0 1px var(--marker-color)!important}
+
+/* Subtle, warm fantasy-MMORPG decorative overlays */
+.canvas[data-deco="compass"] .ornament{background:radial-gradient(circle at 84% 21%,transparent 0 7%,#d7c39830 7.1% 7.25%,transparent 7.35% 10%,#d7c39826 10.1% 10.2%,transparent 10.3%),linear-gradient(45deg,transparent 49.8%,#d7c39833 50%,transparent 50.2%) 84% 21% / 16% 16% no-repeat,linear-gradient(-45deg,transparent 49.8%,#d7c39833 50%,transparent 50.2%) 84% 21% / 16% 16% no-repeat}
+.canvas[data-deco="runes"] .ornament{background:repeating-linear-gradient(90deg,#dfcfa222 0 1px,transparent 1px 30px) center 8% / 82% 1px no-repeat,repeating-linear-gradient(90deg,#dfcfa222 0 1px,transparent 1px 30px) center 92% / 82% 1px no-repeat,radial-gradient(circle at 87% 80%,transparent 0 7%,#dfcfa21c 7.1% 7.3%,transparent 7.4%)}
+.canvas[data-deco="orbit"] .ornament{background:repeating-radial-gradient(ellipse at 80% 80%,transparent 0 37px,#e2cfa618 38px 39px,transparent 40px 74px),radial-gradient(circle at 80% 80%,#e9d7ac55 0 2px,transparent 3px)}
+.canvas[data-deco="nightfall"] .ornament{background:radial-gradient(ellipse at 85% 14%,#d9bb7640,transparent 28%),radial-gradient(circle at 17% 22%,#ffe9b8 0 1px,transparent 2px),radial-gradient(circle at 73% 38%,#ffe9b8 0 1px,transparent 2px),radial-gradient(circle at 58% 70%,#ffe9b8 0 1px,transparent 2px),radial-gradient(circle at 30% 81%,#ffe9b8 0 1px,transparent 2px)}
+.canvas[data-deco="inventory"] .ornament{background:linear-gradient(#d8c69b17 1px,transparent 1px),linear-gradient(90deg,#d8c69b17 1px,transparent 1px);background-size:8% 11%;mask-image:linear-gradient(90deg,transparent 15%,black 85%)}
+.canvas[data-deco="questpath"] .ornament{background:linear-gradient(125deg,transparent 0 49.8%,#d8c69b25 49.9% 50.1%,transparent 50.2%) 88% 35% / 22% 48% no-repeat,radial-gradient(circle at 78% 20%,#e5d2a3 0 2px,transparent 3px),radial-gradient(circle at 92% 62%,#e5d2a3 0 2px,transparent 3px)}
+.canvas[data-deco="beacons"] .ornament{background:repeating-radial-gradient(circle at 82% 45%,transparent 0 25px,#e4d3aa20 26px 27px,transparent 28px 52px),linear-gradient(90deg,transparent 49.9%,#e4d3aa22 50%,transparent 50.1%) 82% 45% / 28% 35% no-repeat}
+
+/* Individually composable pair-themed decorative layers */
+.pair-deco-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0}
+.pair-deco-grid label{display:flex;align-items:flex-start;gap:7px;padding:9px 7px;background:#302b22;border:1px solid #66594366;border-radius:5px;cursor:pointer}
+.pair-deco-grid input{margin:2px 0 0;accent-color:#ddc89e}
+.pair-deco-grid b{display:block;color:#f7ecd7;font-size:11px;font-weight:500}
+.pair-deco-grid small{display:block;color:#bdb19d;font-size:9px;line-height:1.5;margin-top:3px}
+.pair-decorations{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden;--pc:#d6c29a;--ps:1}
+.pair-light:before{width:calc(9px * var(--ps));height:calc(9px * var(--ps));border:1px solid currentColor;border-radius:50%;left:8%;top:82%;box-shadow:0 0 10px currentColor}
+.pair-light:after{width:calc(9px * var(--ps));height:calc(9px * var(--ps));border:1px solid currentColor;border-radius:50%;right:8%;top:18%;box-shadow:0 0 10px currentColor}
+.pair-thread{background:linear-gradient(145deg,transparent 49.92%,currentColor 50%,transparent 50.08%) center / 90% 72% no-repeat;opacity:calc(var(--deco-opacity,.35) * .32)!important}
+.pair-petals{background:radial-gradient(ellipse at 7% 19%,currentColor 0 1px,transparent 2px),radial-gradient(ellipse at 91% 24%,currentColor 0 1px,transparent 2px),radial-gradient(ellipse at 12% 71%,currentColor 0 1px,transparent 2px),radial-gradient(ellipse at 88% 85%,currentColor 0 1px,transparent 2px)}
+.pair-petals:before{content:"◇";left:7%;top:32%;font-size:calc(17px * var(--ps));transform:rotate(19deg)}
+.pair-petals:after{content:"◇";right:8%;bottom:15%;font-size:calc(14px * var(--ps));transform:rotate(-18deg)}
+.pair-moon:before{content:"☾";right:6%;top:8%;font:300 calc(37px * var(--ps)) Georgia,serif;opacity:.75}
+.pair-moon:after{content:"✧";right:10%;top:13%;font-size:calc(12px * var(--ps))}
+.pair-quest:before{content:"◇  · · ·  ◈";right:6%;bottom:7%;font-size:calc(12px * var(--ps));letter-spacing:.5em;white-space:nowrap}
+.pair-quest:after{width:18%;height:1px;right:7%;bottom:11%;background:currentColor;opacity:.5}
+.pair-link:before,.pair-link:after{width:calc(100px * var(--ps));height:calc(100px * var(--ps));border:1px solid currentColor;border-radius:50%;bottom:6%;opacity:.4}
+.pair-link:before{left:5%}.pair-link:after{left:calc(5% + 35px * var(--ps))}
+.pair-glyph:before{content:"玲";left:6%;bottom:7%;font:normal calc(19px * var(--ps)) serif;opacity:.65}
+.pair-glyph:after{content:"瓏";left:calc(6% + 18px * var(--ps));bottom:7%;font:normal calc(19px * var(--ps)) serif;opacity:.65}
+.pair-spark{background:radial-gradient(ellipse at 6% 55%,currentColor,transparent 18%),radial-gradient(ellipse at 94% 40%,currentColor,transparent 15%);opacity:calc(var(--deco-opacity,.35) * .12)!important}
+.pair-lines:before{left:2.2%;top:2.5%;width:11%;height:11%;border-top:1px solid currentColor;border-left:1px solid currentColor;opacity:.65}
+.pair-lines:after{right:2.2%;bottom:2.5%;width:11%;height:11%;border-bottom:1px solid currentColor;border-right:1px solid currentColor;opacity:.65}
+.pair-stars{background:radial-gradient(circle at 7% 30%,currentColor 0 1px,transparent 2px),radial-gradient(circle at 12% 43%,currentColor 0 1px,transparent 2px),radial-gradient(circle at 91% 69%,currentColor 0 1px,transparent 2px),radial-gradient(circle at 86% 76%,currentColor 0 1px,transparent 2px)}
+.pair-stars:before{left:6%;top:35%;width:11%;height:1px;background:currentColor;transform:rotate(49deg);opacity:.4}
+.pair-stars:after{right:6%;bottom:27%;width:10%;height:1px;background:currentColor;transform:rotate(-38deg);opacity:.4}
+
+/* MMORPG HUD decorations — dedicated, collision-free outer-gutter slots */
+.pair-decorations{position:absolute!important;inset:0!important;z-index:4!important;pointer-events:none!important;overflow:hidden!important;--pc:#d6c29a;--ps:1}
+
+/* independent decoration zones: decorative backgrounds never intercept body */
+.pair-decorations{position:absolute!important;inset:0!important;pointer-events:none!important;z-index:1!important;overflow:hidden!important;--pc:#d6c29a;--ps:1;opacity:1!important}
+
+.hud-edit-grid{display:grid;grid-template-columns:1fr;gap:6px;margin:12px 0}.hud-edit-grid label{font-size:11px;color:#e5d7ba}.hud-edit-grid input:not([type=checkbox]){width:100%;background:#211e19;color:#fff7e9;border:1px solid #665841;padding:8px;font-size:11px}.hud-edit-grid input[type=checkbox]{accent-color:#d6c29a}
+.hud-text-layer{position:absolute;inset:0;pointer-events:none;z-index:6;--ht:#d6c29a;--hs:9px}.hud-text-slot{position:absolute;box-sizing:border-box;max-width:40%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--ht);font:400 var(--hs)/1.3 'IBM Plex Mono',monospace;letter-spacing:.07em;border:1px solid rgba(214,194,154,.28);background:rgba(18,16,13,.48);padding:3px 7px;min-width:0}.hud-text-slot:before{content:'◈';font-size:.75em;opacity:.7;margin-right:6px}.hud-text-slot[data-hud=a]{top:1.3%;left:6%}.hud-text-slot[data-hud=b]{top:1.3%;right:6%;text-align:right}.hud-text-slot[data-hud=c]{bottom:1.3%;left:6%}.hud-text-slot[data-hud=d]{bottom:1.3%;right:6%;text-align:right}
+
+/* Export-safe HUD rails: reserve a separate outer band for captions.
+   Inner corner glyphs sit inside the frame and cannot collide with HUD text. */
+.hud-text-layer{z-index:6!important}
+.hud-text-slot{top:auto;bottom:auto;max-width:35%!important;max-height:2.5%!important;
+  padding:1px 5px!important;line-height:1.1!important;overflow:hidden!important;
+  border-color:rgba(214,194,154,.28)!important;box-shadow:none!important}
+.hud-text-slot[data-hud=a]{top:.6%!important;left:6.5%!important;right:auto!important}
+.hud-text-slot[data-hud=b]{top:.6%!important;right:6.5%!important;left:auto!important}
+.hud-text-slot[data-hud=c]{bottom:.6%!important;left:6.5%!important;right:auto!important}
+.hud-text-slot[data-hud=d]{bottom:.6%!important;right:6.5%!important;left:auto!important}
+.corner-glyph{inset:5.5% 5.5%!important;z-index:4!important}
+
+/* V15 visual hierarchy: restrained, non-overlapping MMO interface */
+.hud-text-layer{position:absolute!important;inset:0!important;z-index:8!important;pointer-events:none!important;--hs:9px}
+.hud-text-slot{position:absolute!important;display:block!important;top:auto!important;bottom:auto!important;width:32%!important;max-width:32%!important;min-width:0!important;max-height:none!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:clip!important;font-size:clamp(5px, .9vw, 9px)!important;line-height:1.15!important;letter-spacing:.08em!important;opacity:.72!important}
+.hud-text-slot:before{content:'·'!important;margin-right:4px!important;opacity:.6!important}
+.hud-text-slot[data-hud=a]{top:2.35%!important;left:7.2%!important;right:auto!important;text-align:left!important}
+.hud-text-slot[data-hud=b]{top:2.35%!important;right:7.2%!important;left:auto!important;text-align:right!important}
+.hud-text-slot[data-hud=c]{bottom:2.35%!important;left:7.2%!important;right:auto!important;text-align:left!important}
+.hud-text-slot[data-hud=d]{bottom:2.35%!important;right:7.2%!important;left:auto!important;text-align:right!important}
+/* hide redundant ornamental frame; original main frame is the single frame */
+.corner-glyph{opacity:.25!important}
+/* soften competing background ornament and preserve text legibility */
+.ornament{opacity:.22!important}
+
+/* Clean MMORPG HUD, shape-free decorative layers */
+#cornerGlyphView,.corner-glyph{display:none!important}
+#pairDecorations{position:absolute!important;inset:0!important;z-index:4!important;pointer-events:none!important;overflow:hidden!important;color:var(--pc,#d6c29a)}
+/* Text rails have their own left/right lanes; central decorations occupy center only. */
+.hud-text-slot[data-hud=a]{left:7%!important;max-width:28%!important}
+.hud-text-slot[data-hud=b]{right:7%!important;max-width:28%!important}
+.hud-text-slot[data-hud=c]{left:23%!important;max-width:22%!important}
+.hud-text-slot[data-hud=d]{right:7%!important;max-width:28%!important}
+
+/* v17: independent HUD rails, away from the frame, and aligned quest metadata */
+#canvas .hud-text-layer{inset:0!important;z-index:8!important}
+#canvas .hud-text-slot{box-sizing:border-box!important;position:absolute!important;display:block!important;
+ top:auto!important;bottom:auto!important;width:35%!important;max-width:35%!important;
+ height:auto!important;max-height:none!important;padding:0!important;margin:0!important;
+ border:0!important;background:transparent!important;overflow:hidden!important;
+ font-size:clamp(7px,1.05cqw,11px)!important;line-height:1.3!important;
+ white-space:nowrap!important;text-overflow:ellipsis!important;letter-spacing:.06em!important}
+#canvas .hud-text-slot[data-hud=a]{left:8.5%!important;right:auto!important;top:1.05%!important;bottom:auto!important;text-align:left!important}
+#canvas .hud-text-slot[data-hud=b]{right:8.5%!important;left:auto!important;top:1.05%!important;bottom:auto!important;text-align:right!important}
+#canvas .hud-text-slot[data-hud=c]{left:8.5%!important;right:auto!important;bottom:1.05%!important;top:auto!important;text-align:left!important}
+#canvas .hud-text-slot[data-hud=d]{right:8.5%!important;left:auto!important;bottom:1.05%!important;top:auto!important;text-align:right!important}
+/* no middle caption may overlap the four editable HUD labels */
+/* the rank and quest-type labels share a single baseline regardless of span/div defaults */
+#frame .header .quest-label-row{display:flex!important;flex-flow:row nowrap!important;
+ align-items:center!important;justify-content:flex-start!important;gap:9px!important;
+ min-height:18px!important;margin:0 0 9px!important;padding:0!important}
+#frame .header .quest-label-row .mode-label,
+#frame .header .quest-label-row .kicker{display:block!important;position:static!important;
+ align-self:center!important;margin:0!important;padding:0!important;
+ font-family:'IBM Plex Mono',monospace!important;font-size:var(--rank-size,10px)!important;
+ font-weight:400!important;line-height:18px!important;letter-spacing:.08em!important;
+ height:18px!important;min-height:18px!important;vertical-align:middle!important;transform:none!important}
+#frame .header .quest-label-row .mode-label:not(:empty):after{content:' / '!important;opacity:.55!important}
+
+/* v18 — coordinated outer HUD grid; no collisions with inner frame */
+#canvas{container-type:inline-size}
+#canvas .hud-text-slot{font-size:clamp(6px,1.05cqw,11px)!important;line-height:1!important;
+ height:1.45%!important;display:flex!important;align-items:center!important;
+ top:auto!important;bottom:auto!important;max-height:none!important;white-space:nowrap!important;
+ letter-spacing:.08em!important;opacity:.8!important;overflow:hidden!important}
+#canvas .hud-text-slot[data-hud=a],#canvas .hud-text-slot[data-hud=b]{top:1.45%!important;bottom:auto!important}
+#canvas .hud-text-slot[data-hud=c],#canvas .hud-text-slot[data-hud=d]{top:97.05%!important;bottom:auto!important}
+#canvas .hud-text-slot[data-hud=a],#canvas .hud-text-slot[data-hud=c]{left:9%!important;right:auto!important;justify-content:flex-start!important;width:34%!important}
+#canvas .hud-text-slot[data-hud=b],#canvas .hud-text-slot[data-hud=d]{right:9%!important;left:auto!important;justify-content:flex-end!important;width:34%!important}
+#canvas .hud-text-slot:before{content:none!important}
+/* Separate optional center decorations into two rows to avoid collision */
+/* More restrained background grid even when all options are enabled */
+
+/* v19: exclusive lanes. All positions relative to canvas, outside inset frame. */
+#canvas{container-type:inline-size}
+#canvas .hud-text-slot{display:flex!important;align-items:center!important;box-sizing:border-box!important;position:absolute!important;top:auto!important;bottom:auto!important;height:2.2%!important;max-height:2.2%!important;width:31%!important;max-width:31%!important;padding:0!important;margin:0!important;border:0!important;background:none!important;line-height:1!important;font-size:clamp(6px,1.0cqw,11px)!important;letter-spacing:.09em!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;opacity:.82!important}
+#canvas .hud-text-slot[data-hud=a]{top:.85%!important;left:8.7%!important;right:auto!important;justify-content:flex-start!important}
+#canvas .hud-text-slot[data-hud=b]{top:.85%!important;right:8.7%!important;left:auto!important;justify-content:flex-end!important}
+#canvas .hud-text-slot[data-hud=c]{top:96.95%!important;left:8.7%!important;right:auto!important;justify-content:flex-start!important}
+#canvas .hud-text-slot[data-hud=d]{top:96.95%!important;right:8.7%!important;left:auto!important;justify-content:flex-end!important}
+/* Center lane is reserved exclusively for one decorative datum per edge. */
+
+/* Chat/system line text vertically centered in their boxes. */
+#frame .bodytext .chat-entry{display:flex!important;align-items:center!important;min-height:2.7em!important;padding:.4em .72em!important;line-height:1.45!important}
+#frame .bodytext .chat-entry::before{align-self:center!important;margin:0!important;line-height:1!important}
+#frame .bodytext .chat-entry .chat-name,#frame .bodytext .chat-entry .chat-message{display:block!important;align-self:center!important;line-height:1.45!important;margin:0!important;padding:0!important}
+#frame .bodytext .systemline{display:flex!important;align-items:center!important;min-height:2.65em!important;padding:.42em .65em!important;line-height:1.45!important;box-sizing:border-box!important}
+
+
+#canvas .pair-decorations{position:absolute!important;inset:0!important;z-index:5!important;
+ pointer-events:none!important;overflow:hidden!important;color:var(--pc,#d6c29a)!important}
+
+#canvas .hud-text-slot[data-hud=a]{left:9%!important;top:.65%!important;width:29%!important;max-width:29%!important}
+#canvas .hud-text-slot[data-hud=b]{right:9%!important;top:.65%!important;width:29%!important;max-width:29%!important}
+#canvas .hud-text-slot[data-hud=c]{left:9%!important;top:97.1%!important;width:29%!important;max-width:29%!important}
+#canvas .hud-text-slot[data-hud=d]{right:9%!important;top:97.1%!important;width:29%!important;max-width:29%!important}
+#canvas .hud-text-slot{font-size:clamp(6px,.85cqw,10px)!important;letter-spacing:.04em!important}
+
+
+
+
+#canvas .pair-decorations{z-index:3!important}
+#canvas .frame{z-index:4!important}
+#canvas .hud-text-layer{z-index:6!important}
+
+
+
+
+
+
+
+
+#canvas .hud-text-slot[data-hud=a],#canvas .hud-text-slot[data-hud=b]{top:1.05%!important}
+#canvas .hud-text-slot[data-hud=c],#canvas .hud-text-slot[data-hud=d]{top:97.4%!important}
+
+/* ===== HUD 장식 정리본 =====
+   예전 버전들이 같은 장식을 !important로 겹겹이 덮어쓰던 규칙(약 200줄)을 하나로 합쳤습니다.
+   · 세로 글자는 writing-mode 대신 회전(transform)으로, 눈금·바코드는 실제 요소로 만들어
+     화면과 PNG 저장 결과가 같게 나오도록 했습니다.
+   · 위치는 프레임 여백(--fi)을 기준으로 잡아서, 프레임 여백/비율을 바꿔도 같이 따라갑니다. ===== */
+#pairDecorations{--fi:4%;--pc:#d6c29a;--ps:1}
+#pairDecorations .hud-asset{position:absolute;display:block;box-sizing:border-box;color:var(--pc);pointer-events:none;
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:calc(clamp(5px,.7cqw,9px)*var(--ps));line-height:1;letter-spacing:.14em;white-space:nowrap}
+#pairDecorations .hud-asset i{display:block}
+/* 바탕: 은은한 모눈 + 바깥 점선 테두리 + 모서리 정합 표식 */
+#pairDecorations .hud-asset-grid{inset:calc(var(--fi)*.5);z-index:0;opacity:.09;
+ background-image:linear-gradient(90deg,currentColor 1px,transparent 1px),linear-gradient(currentColor 1px,transparent 1px);background-size:12.5% 12.5%;background-position:center}
+#pairDecorations .hud-asset-circuit{inset:calc(var(--fi)*.4);border:1px dashed currentColor;opacity:.26}
+#pairDecorations .hud-asset-rails{inset:0}
+#pairDecorations .hud-asset-rails .rc{position:absolute;width:9px;height:9px;border:1px solid currentColor;border-radius:50%;opacity:.7;transform:translate(-50%,-50%)}
+#pairDecorations .hud-asset-rails .rc::before,#pairDecorations .hud-asset-rails .rc::after{content:"";position:absolute;background:currentColor}
+#pairDecorations .hud-asset-rails .rc::before{left:-5px;right:-5px;top:3px;height:1px}
+#pairDecorations .hud-asset-rails .rc::after{top:-5px;bottom:-5px;left:3px;width:1px}
+#pairDecorations .hud-asset-rails .rc0{left:calc(var(--fi)*.4);top:calc(var(--fi)*.4)}
+#pairDecorations .hud-asset-rails .rc1{left:calc(100% - var(--fi)*.4);top:calc(var(--fi)*.4)}
+#pairDecorations .hud-asset-rails .rc2{left:calc(var(--fi)*.4);top:calc(100% - var(--fi)*.4)}
+#pairDecorations .hud-asset-rails .rc3{left:calc(100% - var(--fi)*.4);top:calc(100% - var(--fi)*.4)}
+/* 눈금자: 위(ticks)와 아래(scan), 5칸마다 긴 눈금 */
+#pairDecorations .hud-asset-ticks,#pairDecorations .hud-asset-scan{left:calc(var(--fi)*1.2);right:calc(var(--fi)*1.2);height:calc(var(--fi)*.3);display:flex;justify-content:space-between;opacity:.55}
+#pairDecorations .hud-asset-ticks{top:calc(var(--fi)*.64);align-items:flex-end}
+#pairDecorations .hud-asset-scan{top:calc(100% - var(--fi)*.94);align-items:flex-start}
+#pairDecorations .hud-asset-ticks i,#pairDecorations .hud-asset-scan i{width:1px;height:42%;background:currentColor}
+#pairDecorations .hud-asset-ticks i.maj,#pairDecorations .hud-asset-scan i.maj{height:100%}
+/* 위·아래 가운데 문구 (왼쪽/오른쪽 구석 문구와 같은 줄) */
+#pairDecorations .hud-asset-category{left:40%;width:20%;top:1.05%;height:2.4%;display:flex;align-items:center;justify-content:center;text-align:center;letter-spacing:.2em;opacity:.85;font-size:calc(clamp(6px,.85cqw,10px)*var(--ps))}
+#pairDecorations .hud-asset-packet,#pairDecorations .hud-asset-sync{top:97.4%;height:2.4%;display:flex;align-items:center;opacity:.7;font-size:calc(clamp(5px,.7cqw,9px)*var(--ps))}
+#pairDecorations .hud-asset-packet{right:52%;justify-content:flex-end}
+#pairDecorations .hud-asset-sync{left:52%}
+/* 왼쪽 여백: 진행 표식(tracker/quest) · 세로 시리얼 · 세로 바코드 */
+#pairDecorations .hud-asset-tracker,#pairDecorations .hud-asset-quest{left:calc(var(--fi)*.7);width:0;height:9%}
+#pairDecorations .hud-asset-tracker{top:18%;border-left:1px dashed currentColor;opacity:.55}
+#pairDecorations .hud-asset-quest{top:29%;border-left:2px solid currentColor;opacity:.8}
+#pairDecorations .hud-asset-tracker::before,#pairDecorations .hud-asset-tracker::after{content:"";position:absolute;left:-3px;width:5px;height:5px;background:currentColor}
+#pairDecorations .hud-asset-tracker::before{top:-2px}
+#pairDecorations .hud-asset-tracker::after{bottom:-2px}
+#pairDecorations .hud-asset-quest::before{content:"";position:absolute;left:-5px;top:-3px;width:6px;height:6px;border-radius:50%;background:currentColor}
+#pairDecorations .hud-asset-serial{left:calc(var(--fi)*.7);top:56%;width:34%;text-align:center;letter-spacing:.2em;opacity:.7;transform:translate(-50%,-50%) rotate(90deg)}
+#pairDecorations .hud-asset-barcode{left:calc(var(--fi)*.5);top:74%;width:calc(var(--fi)*.4);display:flex;flex-direction:column;gap:2px;opacity:.7}
+#pairDecorations .hud-asset-barcode i{width:68%;background:currentColor}
+#pairDecorations .hud-asset-barcode i.long{width:100%}
+/* 오른쪽 여백: 신호 점(status) · 수신 막대(telemetry) */
+#pairDecorations .hud-asset-status{right:calc(var(--fi)*.64);top:18%;width:5px;display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.7}
+#pairDecorations .hud-asset-status i{width:4px;height:4px;background:currentColor;opacity:.45}
+#pairDecorations .hud-asset-status i.on{opacity:1}
+#pairDecorations .hud-asset-telemetry{right:calc(var(--fi)*.5);top:32%;display:flex;flex-direction:column;align-items:flex-end;gap:4px;opacity:.6}
+#pairDecorations .hud-asset-telemetry i{height:1px;background:currentColor}
+
+/* v26 — quieter HUD ornaments, clearly separated lanes, centered dialogue */
+/* Keep the original controls, renderer and PNG-export behavior intact. */
+#canvas .pair-decorations{z-index:3!important}
+#pairDecorations .hud-asset{color:var(--pc,#d6c29a);font-weight:400!important}
+/* Soft, fine background grid: visible but never crosses the foreground panel. */
+#pairDecorations .hud-asset-grid{inset:5.4%!important;opacity:.13!important;
+ background-size:12.5% 12.5%!important;mask-image:linear-gradient(90deg,transparent,black 12%,black 88%,transparent)!important}
+#pairDecorations .hud-asset-circuit{inset:1.65%!important;opacity:.22!important;border-width:.65px!important;border-style:dashed!important}
+/* The ruler stays in the narrow band between the outer rail and the frame. */
+#pairDecorations .hud-asset-ticks,#pairDecorations .hud-asset-scan{left:5.4%!important;right:5.4%!important;height:.65%!important;opacity:.27!important}
+#pairDecorations .hud-asset-ticks{top:3.25%!important;align-items:flex-end!important}
+#pairDecorations .hud-asset-scan{top:96.15%!important;align-items:flex-start!important}
+#pairDecorations .hud-asset-ticks i,#pairDecorations .hud-asset-scan i{width:.6px!important;height:45%!important}
+#pairDecorations .hud-asset-ticks i.maj,#pairDecorations .hud-asset-scan i.maj{height:80%!important}
+/* Four corner targets are small, outside the frame, and not on the top labels. */
+#pairDecorations .hud-asset-rails .rc{width:7px!important;height:7px!important;border-width:.65px!important;opacity:.46!important}
+#pairDecorations .hud-asset-rails .rc::before{left:-4px!important;right:-4px!important;top:2.6px!important;height:.65px!important}
+#pairDecorations .hud-asset-rails .rc::after{top:-4px!important;bottom:-4px!important;left:2.6px!important;width:.65px!important}
+#pairDecorations .hud-asset-rails .rc0{left:1.65%!important;top:1.65%!important}
+#pairDecorations .hud-asset-rails .rc1{left:98.35%!important;top:1.65%!important}
+#pairDecorations .hud-asset-rails .rc2{left:1.65%!important;top:98.35%!important}
+#pairDecorations .hud-asset-rails .rc3{left:98.35%!important;top:98.35%!important}
+/* Top row: left, center and right each occupy a non-overlapping third. */
+#canvas .hud-text-slot{font-size:clamp(6px,.82cqw,10px)!important;letter-spacing:.045em!important;opacity:.76!important;height:1.65%!important;line-height:1.1!important}
+#canvas .hud-text-slot[data-hud=a]{top:1.05%!important;left:9%!important;width:26%!important;max-width:26%!important}
+#canvas .hud-text-slot[data-hud=b]{top:1.05%!important;right:9%!important;width:26%!important;max-width:26%!important}
+#canvas .hud-text-slot[data-hud=c]{top:97.25%!important;left:9%!important;width:26%!important;max-width:26%!important}
+#canvas .hud-text-slot[data-hud=d]{top:97.25%!important;right:9%!important;width:26%!important;max-width:26%!important}
+#pairDecorations .hud-asset-category{left:37%!important;width:26%!important;top:1.05%!important;height:1.65%!important;opacity:.67!important;letter-spacing:.11em!important;font-size:calc(clamp(6px,.82cqw,10px)*var(--ps))!important}
+/* Bottom row: packet and sync share center, do not reach corner labels. */
+#pairDecorations .hud-asset-packet,#pairDecorations .hud-asset-sync{top:97.25%!important;height:1.65%!important;opacity:.53!important;font-size:calc(clamp(5px,.68cqw,8px)*var(--ps))!important;letter-spacing:.06em!important}
+#pairDecorations .hud-asset-packet{left:36%!important;right:auto!important;width:13%!important;justify-content:flex-end!important;overflow:hidden!important}
+#pairDecorations .hud-asset-sync{left:51%!important;right:auto!important;width:13%!important;overflow:hidden!important}
+/* Left gutter: keep serial, tracker and barcode in distinct vertical zones. */
+#pairDecorations .hud-asset-tracker,#pairDecorations .hud-asset-quest{left:2.4%!important;opacity:.43!important;border-left-width:.65px!important}
+#pairDecorations .hud-asset-tracker{top:18%!important;height:8%!important}
+#pairDecorations .hud-asset-quest{top:29%!important;height:8%!important}
+#pairDecorations .hud-asset-tracker::before,#pairDecorations .hud-asset-tracker::after{width:3px!important;height:3px!important;left:-2px!important}
+#pairDecorations .hud-asset-quest::before{width:4px!important;height:4px!important;left:-3px!important}
+#pairDecorations .hud-asset-serial{left:2.4%!important;top:56%!important;width:27%!important;opacity:.52!important;font-size:calc(clamp(5px,.7cqw,8px)*var(--ps))!important}
+#pairDecorations .hud-asset-barcode{left:2.05%!important;top:76%!important;width:1.4%!important;gap:2px!important;opacity:.46!important}
+#pairDecorations .hud-asset-barcode i{max-height:2px!important;min-height:.5px!important}
+/* Right gutter is likewise quiet and doesn't touch the frame. */
+#pairDecorations .hud-asset-status{right:2.3%!important;top:19%!important;gap:7px!important;opacity:.46!important}
+#pairDecorations .hud-asset-status i{width:3px!important;height:3px!important}
+#pairDecorations .hud-asset-telemetry{right:2.2%!important;top:34%!important;gap:5px!important;opacity:.42!important}
+#pairDecorations .hud-asset-telemetry i{height:.65px!important}
+/* Precise vertical centering for both chat and system lines, including multiline text. */
+#frame .bodytext .chat-entry{display:flex!important;align-items:center!important;box-sizing:border-box!important;
+ min-height:3.05em!important;padding:.55em .8em!important;line-height:1.5!important;gap:.65em!important}
+#frame .bodytext .chat-entry::before{align-self:center!important;line-height:1!important;margin:0!important;flex:none!important}
+#frame .bodytext .chat-entry .chat-name,#frame .bodytext .chat-entry .chat-message{align-self:center!important;line-height:1.5!important;margin:0!important;padding:0!important}
+#frame .bodytext .systemline{display:flex!important;align-items:center!important;box-sizing:border-box!important;
+ min-height:3.05em!important;padding:.55em .8em!important;line-height:1.5!important;margin:.45em 0!important}
+
+/* v28: background image blur only, text and HUD stay sharp */
+#canvas #ambient{filter:blur(var(--bg-blur,0px))!important;transform:scale(var(--blur-overflow,1))!important;transform-origin:center!important}
+/* Fine, visible inner grid drawn independently of outer HUD decorations. */
+#canvas .frame{isolation:isolate!important}
+#canvas .frame::before{content:""!important;position:absolute!important;inset:0!important;width:auto!important;height:auto!important;pointer-events:none!important;border:0!important;z-index:0!important;opacity:var(--inner-grid-opacity,.14)!important;background-image:linear-gradient(to right,#c8b58f 1px,transparent 1px),linear-gradient(to bottom,#c8b58f 1px,transparent 1px)!important;background-size:16.6667% 16.6667%!important;background-position:0 0!important}
+#canvas .frame::after{z-index:0!important}
+#canvas .frame > *{position:relative;z-index:1}
+/* Aspect-safe rails: fixed margins are proportional to short dimension and labels remain within the canvas. */
+#canvas{--hud-rail:clamp(15px,2.7cqw,30px)}
+#canvas .hud-text-layer{overflow:hidden!important}
+#canvas .hud-text-slot{overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+#canvas .frame{inset:var(--safe-frame-inset,4%)!important}
+#canvas[data-ratio-mode="wide"] .hud-text-slot{font-size:clamp(5px,.72cqw,10px)!important;letter-spacing:.035em!important}
+#canvas[data-ratio-mode="portrait"] .hud-text-slot{font-size:clamp(5px,.85cqw,9px)!important;letter-spacing:.02em!important}
+#canvas[data-ratio-mode="portrait"] .hud-asset-category{font-size:clamp(5px,.72cqw,9px)!important}
+#canvas[data-ratio-mode="portrait"] .hud-asset-serial{font-size:clamp(5px,.6cqw,8px)!important}
+#canvas[data-ratio-mode="wide"] .frame .header{padding-top:1.1%!important;padding-bottom:.5%!important}
+#canvas[data-ratio-mode="wide"] .frame .content{padding-top:.4%!important;padding-bottom:.4%!important}
+#canvas[data-ratio-mode="portrait"] .frame .header{padding-top:2.5%!important}
+
+/* v29 — consistent low-contrast HUD ornaments; thin grid inside the frame */
+#canvas #pairDecorations{--hud-asset-opacity:.55}
+#canvas #pairDecorations .hud-asset{opacity:calc(var(--hud-asset-opacity,.55) * var(--asset-opacity,1))!important}
+#canvas #pairDecorations .hud-asset-grid{--asset-opacity:.22}
+#canvas #pairDecorations .hud-asset-circuit{--asset-opacity:.42}
+#canvas #pairDecorations .hud-asset-rails{--asset-opacity:.8}
+#canvas #pairDecorations .hud-asset-ticks,#canvas #pairDecorations .hud-asset-scan{--asset-opacity:.55}
+#canvas #pairDecorations .hud-asset-category{--asset-opacity:.95}
+#canvas #pairDecorations .hud-asset-packet,#canvas #pairDecorations .hud-asset-sync{--asset-opacity:.8}
+#canvas #pairDecorations .hud-asset-serial{--asset-opacity:.85}
+#canvas #pairDecorations .hud-asset-tracker,#canvas #pairDecorations .hud-asset-quest{--asset-opacity:.7}
+#canvas #pairDecorations .hud-asset-barcode{--asset-opacity:.85}
+#canvas #pairDecorations .hud-asset-status,#canvas #pairDecorations .hud-asset-telemetry{--asset-opacity:.7}
+#canvas .frame::before{background-image:linear-gradient(to right,rgba(200,181,143,.26) .5px,transparent .5px),linear-gradient(to bottom,rgba(200,181,143,.26) .5px,transparent .5px)!important;opacity:var(--inner-grid-opacity,.22)!important;background-size:12.5% 12.5%!important}
+#canvas #pairDecorations .hud-asset-grid{background-image:linear-gradient(90deg,rgba(200,181,143,.35) .5px,transparent .5px),linear-gradient(rgba(200,181,143,.35) .5px,transparent .5px)!important}
+#canvas #ambient{will-change:filter}
+
+/* v30: one physical grid layer, rendered identically by html2canvas */
+#canvas #frame{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;isolation:auto!important}
+#canvas #frame::before{content:none!important;display:none!important}
+#canvas #frame .export-inner-grid{position:absolute!important;inset:0!important;z-index:0!important;pointer-events:none!important;display:block!important;background-image:linear-gradient(to right,rgba(200,181,143,.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(200,181,143,.12) 1px,transparent 1px)!important;background-size:12.5% 12.5%!important;background-position:0 0!important;opacity:var(--grid-strength,.55)!important}
+#canvas #frame > :not(.export-inner-grid){position:relative;z-index:1}
+#canvas #ambient{z-index:0!important}
+#canvas #frame{z-index:4!important}
+
+/* v31: consecutive chat messages share a single compact panel. */
+#frame .bodytext .chat-entry{margin:.38em 0 .55em!important;}
+#frame .bodytext .chat-message{line-height:1.55!important;}
+#frame .bodytext .chat-entry + .chat-entry{margin-top:.22em!important;}
+
+/* v32: align speaker and marker with the FIRST line of grouped dialogue. */
+#frame .bodytext .chat-entry{align-items:flex-start!important}
+#frame .bodytext .chat-entry::before{align-self:flex-start!important;line-height:1.55!important;margin:0!important}
+#frame .bodytext .chat-entry .chat-name,
+#frame .bodytext .chat-entry .chat-message{align-self:flex-start!important;line-height:1.55!important;margin:0!important;padding:0!important}
+/* v33: grouped dialogue needs no arrow glyph; speaker starts on first line. */
+#frame .bodytext .chat-entry::before{content:none!important;display:none!important}
+#frame .bodytext .chat-entry{align-items:flex-start!important}
+
+/* Theme picker: only HUD colors, never alter layout or opacity settings. */
+.theme-picker{padding:10px 12px;margin:0 0 13px;border:1px solid #766b564d;border-radius:6px}
+.theme-swatches{display:flex;align-items:center;gap:7px;margin-top:9px;color:#c9c0ad;font-size:10px}
+.theme-swatches i{width:20px;height:14px;border:1px solid #ffffff30;border-radius:2px;background:#BFAE8A}
+.theme-swatches i:nth-child(2){background:#D8C99E}
+#canvas{--theme-line:#d6c29a}
+#frame .topline,#frame .footer{border-color:var(--theme-line,#d6c29a)!important}
+#frame .barrow{border-color:var(--theme-line,#d6c29a)!important}
+#frame .fill{background:linear-gradient(90deg,var(--theme-accent,#ab9467),var(--theme-secondary,#f1e2bd))!important}
+#frame .micro,#frame .kicker,#frame .mode-label{color:var(--theme-soft,#e0cda4)!important}
+#frame .chat-entry .chat-name{color:var(--chat-name,#dcc28f)!important}
+#frame .systemline{border-color:var(--theme-line,#d6c29a)!important;color:var(--theme-soft,#eee1be)!important}
+
+/* v36 — complete theme-colored borders and dialogue accents (PNG-safe RGBA). */
+#canvas .frame{border-color:var(--theme-frame-border,#bfae8a99)!important}
+#canvas .frame::before,#canvas .frame::after{border-color:var(--theme-accent,#bfae8a)!important}
+#frame .header{border-left-color:var(--theme-accent,#bfae8a)!important}
+#frame .topline,#frame .footer,#frame .barrow{border-color:var(--theme-divider,#bfae8a40)!important}
+#frame .bodytext .dialogue{border-left-color:var(--theme-accent,#bfae8a)!important}
+#frame .bodytext .chat-entry{border-color:var(--theme-chat-border,#bfae8a40)!important}
+#frame[data-chat="line"] .bodytext .chat-entry{border:0!important;border-left:1px solid var(--theme-accent,#bfae8a)!important}
+#frame[data-chat="minimal"] .bodytext .chat-entry{border:0!important}
+#frame .bodytext .systemline{border-color:var(--theme-chat-border,#bfae8a40)!important}
+#frame .bar{background:var(--theme-bar-track,#665f4d)!important}
+
+/* v37 — theme-consistent outer frame, pastel lettering and fine grid */
+#canvas{border-color:var(--theme-outer-border,#766b58)!important}
+#canvas .frame{border-color:var(--theme-frame-border,#bfae8a99)!important}
+#canvas .frame .title{color:var(--theme-title,#FFFAED)!important}
+#canvas .frame .bodytext{color:var(--theme-body,#f2ecdf)!important}
+#canvas .frame .bodytext strong{color:var(--theme-title,#FFFAED)!important}
+#canvas .frame .subtitle,#canvas .frame .barrow,#canvas .frame .footer,#canvas .frame .signal{color:var(--theme-muted,#d5cbb8)!important}
+#canvas .frame .micro,#canvas .frame .kicker,#canvas .frame .mode-label{color:var(--theme-soft,#e0cda4)!important}
+#canvas .frame .chat-entry .chat-message,#canvas .frame .dialogue{color:var(--theme-body,#f2ecdf)!important}
+#canvas .frame .systemline{color:var(--theme-muted,#d5cbb8)!important}
+#canvas .frame::before{background-image:linear-gradient(to right,var(--theme-grid,#c8b58f) 1px,transparent 1px),linear-gradient(to bottom,var(--theme-grid,#c8b58f) 1px,transparent 1px)!important}
+</style><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&amp;family=Gowun+Dodum&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Nanum+Gothic:wght@400;700&amp;family=Nanum+Myeongjo:wght@400;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/></head><body><main class="app"><aside class="controls"><div class="brand">BLUE PAIRY / HUD EDITOR</div><h1>INSTANCE · 게임</h1><div class="sub">서로의 빛을 기록하는 MMORPG 아카이브</div><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="group" data-section="text"><h2>01 / 기록 정보</h2><label class="field">판형</label><select id="mode"><option value="quest">QUEST LOG · 퀘스트 진행 기록 · 목표와 달성 게이지</option><option value="bond">BOND ARCHIVE · 인연 기록 · 중앙 정렬과 공명 장식</option><option value="item">ITEM LORE · 아이템 도감 · 획득 정보와 설명 카드</option><option value="system">SYSTEM MESSAGE · 시스템 알림 · 업적/해금 팝업</option></select><p class="note" id="modeHelp">퀘스트 기록: 진행 상태, 퀘스트 목표, 게이지를 중심으로 표시해요.</p><label class="field">제목</label><input id="titleInput" value="서로의 빛이 되는 방법"/><label class="field">부제</label><input id="subtitleInput" value="빛이 닿은 곳에서, 우리는 다시 만났다."/><div class="row2"><div><label class="field">등급 / 유형</label><input id="rank" value="HIDDEN QUEST"/></div><div><label class="field">진행 상태</label><input id="status" value="COMPLETED"/></div></div><div class="row2"><label class="field">하단 왼쪽 문구 · 자유 입력</label><input id="footerText" placeholder="원하는 문구를 자유롭게 입력하세요" value="석영 × 함초롱바탕"/></div><label class="field">하단 정보</label><input id="meta" value="ARCHIVE NO. 001 · 2026.10.31"/><div class="fine-controls"><h3>판형별 안내 문구</h3><p class="note">판형을 바꾸면 해당 판형에 저장된 안내 문구가 표시돼요. 각각 자유롭게 수정할 수 있어요.</p>
+<div class="row2"><div><label class="field">퀘스트 안내</label><input id="labelQuest" value="QUEST UPDATED"/></div><div><label class="field">인연 기록 안내</label><input id="labelBond" value="SOUL LINK"/></div><div><label class="field">아이템 안내</label><input id="labelItem" value="ITEM ACQUIRED"/></div><div><label class="field">시스템 안내</label><input id="labelSystem" value="SYSTEM NOTIFICATION"/></div></div>
+<label class="field">상단 아카이브 문구</label><input id="topText" value="BLUE PAIRY / LASPERA"/>
+<label class="field">상태 앞 표시</label><input id="statusSymbol" placeholder="예: ●, ◇, ✦ 또는 빈칸" value="●"/></div></div><div class="group" data-section="text"><h2>02 / 본문</h2><div class="note">빈 줄로 문단 구분 · **굵게** · *기울임* · ==형광펜== · &gt; 대사 · ! 시스템 메시지</div><label class="field">발췌 내용</label><div class="buttons mdtools"><button class="btn" data-wrap="**">굵게</button><button class="btn" data-wrap="*">기울임</button><button class="btn" data-wrap="__">밑줄</button><button class="btn" data-wrap="==">형광펜</button><button class="btn" data-prefix="&gt; ">대사</button><button class="btn" data-prefix="! ">시스템</button></div><textarea id="bodyInput">접속한 세계의 하늘에는 이름 모를 별들이 떠 있었다. 수많은 플레이어가 스쳐 가는 거리에서, 이상하게도 단 한 사람만이 선명하게 보였다.
+
+류빛가람｜오마카세든 호텔 뷔페든 가자고 조르면 다 사줄 테니까 밥알이나 한 톨도 남기지 말고 싹 긁어먹어.
+
+그 말은 어떤 퀘스트의 보상보다 오래도록 남았다.
+
+==서로의 빛이 되어 주는 것.==
+
+! [SYSTEM] 새로운 인연의 기록이 해금되었습니다.</textarea></div><div class="group" data-section="design"><h2>03 / 디자인</h2><div class="theme-picker"><label class="field" for="colorTheme">색상 프리셋</label><select id="colorTheme"><option value="yeongrong">영롱 · 샴페인 골드 / 아이보리</option><option value="salbyeol">살별 · 코랄 레드 / 라임</option><option value="unseong">운성 · 딥 블루 / 라임</option><option value="custom">직접 설정 · 사용자 색상</option></select><div class="theme-swatches" id="themeSwatches"><i></i><i></i><span id="themeDescription">기존 따뜻한 골드 HUD</span></div><p class="note">색상만 변경해요. 본문, 사진, 장식 배치, 저장 설정은 유지됩니다. 개별 색을 수정하면 '직접 설정'으로 전환돼요.</p></div><div class="row2"><div><label class="field">포인트 색상</label><input id="accent" type="color" value="#BFAE8A"/></div><div><label class="field">형광펜 색상</label><input id="highlight" type="color" value="#D8C99E"/></div></div><label class="field">글꼴</label><select id="font"><option value="system-ui, sans-serif">고딕 · 시스템 기본</option><option value="'Pretendard','Noto Sans KR',sans-serif">고딕 · Pretendard</option><option value="'Noto Sans KR',sans-serif">고딕 · Noto Sans KR</option><option value="'Nanum Gothic',sans-serif">고딕 · 나눔고딕</option><option value="'Gowun Dodum',sans-serif">고딕 · 고운돋움</option><option value="'Noto Serif KR',serif">명조 · Noto Serif KR</option><option value="'Nanum Myeongjo',serif">명조 · 나눔명조</option><option value="'Gowun Batang',serif">명조 · 고운바탕</option><option value="Georgia,serif">영문 세리프 · Georgia</option><option value="'IBM Plex Mono',monospace">게임 HUD · IBM Plex Mono</option><option value="'Space Mono',monospace">게임 HUD · Space Mono</option><option value="monospace">게임 HUD · 시스템 모노</option></select><label class="field">본문 크기 <span id="sizeValue">10px</span></label><input id="size" max="24" min="6" step="0.5" type="range" value="10"/><label class="field">줄 간격 <span id="lineValue">1.65</span></label><input id="line" max="2.5" min="1.2" step="0.05" type="range" value="1.65"/><label class="field">배경 이미지 업로드</label><input accept="image/*" id="bgUpload" type="file"/><label class="field">배경 이미지 불투명도 <span id="opacityValue">32%</span></label><input id="opacity" max="100" min="0" type="range" value="32"/><label class="field">판형 비율</label><select id="ratio"><option value="4/3">4:3 가로</option><option value="16/9">16:9 가로</option><option value="1/1">1:1 정사각형</option><option value="3/4">3:4 세로</option></select><div class="checks" style="margin-top:14px"><label><input checked="" id="showBar" type="checkbox"/> 유대 게이지</label><label><input checked="" id="showStatus" type="checkbox"/> 상태 표시</label><label><input checked="" id="showFooter" type="checkbox"/> 하단 메타</label></div><div class="fine-controls"><h3>배경 색상 · 밝기</h3><div class="row2"><div><label class="field">이미지 배경색</label><input id="bgColor" type="color" value="#1B1915"/></div><div><label class="field">프레임 내부 색상</label><input id="panelColor" type="color" value="#201E19"/></div><div><label class="field">프레임 내부 불투명도 <output id="panelAlphaOut">94</output>%</label><input id="panelAlpha" max="100" min="0" type="range" value="94"/></div><div><label class="field">가장자리 어둡기 <output id="vignetteOut">50</output>%</label><input id="vignette" max="100" min="0" type="range" value="50"/></div></div></div></div><label class="field">배경 이미지 블러 <output id="bgBlurOut">0</output>px</label><input id="bgBlur" max="24" min="0" step="1" type="range" value="0"/><div class="group" data-section="export"><h2>04 / 저장 및 내보내기</h2><div class="buttons"><button class="btn primary" id="export">PNG 이미지 저장</button><button class="btn" id="save">설정 JSON 저장</button><button class="btn" id="load">설정 불러오기</button><input accept="application/json" hidden="" id="loadFile" type="file"/></div><p class="note">PNG 저장은 온라인 html2canvas 라이브러리를 사용합니다. 최초 저장 시 인터넷 연결이 필요할 수 있습니다.</p></div><div class="group" data-section="design"><h2>세부 글자 설정</h2><div class="row2"><div><label class="field">제목 글꼴</label><select id="titleFont"><option value="inherit">본문 글꼴 따라가기</option><option value="system-ui, sans-serif">고딕 · 시스템 기본</option><option value="'Pretendard','Noto Sans KR',sans-serif">고딕 · Pretendard</option><option value="'Noto Sans KR',sans-serif">고딕 · Noto Sans KR</option><option value="'Nanum Gothic',sans-serif">고딕 · 나눔고딕</option><option value="'Gowun Dodum',sans-serif">고딕 · 고운돋움</option><option value="'Noto Serif KR',serif">명조 · Noto Serif KR</option><option value="'Nanum Myeongjo',serif">명조 · 나눔명조</option><option value="'Gowun Batang',serif">명조 · 고운바탕</option><option value="Georgia,serif">영문 세리프 · Georgia</option><option value="'IBM Plex Mono',monospace">게임 HUD · IBM Plex Mono</option><option value="'Space Mono',monospace">게임 HUD · Space Mono</option><option value="monospace">게임 HUD · 시스템 모노</option></select></div><div><label class="field">제목 크기</label><input id="titleSize" max="38" min="10" type="range" value="20"/></div><div><label class="field">본문 정렬</label><select id="bodyAlign"><option value="left">왼쪽</option><option value="center">가운데</option><option value="right">오른쪽</option><option value="justify">양쪽</option></select></div><div><label class="field">본문 세로 위치</label><select id="bodyPosition"><option selected="" value="center">가운데</option><option value="flex-start">위</option><option value="flex-end">아래</option></select></div><div><label class="field">자간</label><input id="letterSpace" max="3" min="-1" step=".2" type="range" value="0"/></div><div><label class="field">본문 여백</label><input id="innerPad" max="14" min="2" type="range" value="7"/></div><div><label class="field">대사 색</label><input id="dialogueColor" type="color" value="#F3E7CC"/><label class="field">게임 채팅 표시 방식</label><select id="chatStyle"><option value="bubble">반투명 채팅 패널</option><option value="line">얇은 채팅 로그</option><option value="minimal">이름만 강조</option></select><label class="field">채팅 이름 색상</label><input id="chatNameColor" type="color" value="#DCC28F"/><p class="note">‘류빛가람｜대사’ 또는 ‘류빛가람 | 대사’처럼 입력하면 게임 채팅으로 표시해요. 보이지 않는 공백 문자가 섞여 있어도 인식합니다.</p></div><div><label class="field">형광펜 진하기</label><input id="hlOpacity" max="100" min="5" type="range" value="40"/></div></div><label class="field">형광펜 스타일</label><select id="hlStyle"><option value="full">전체 칠</option><option value="marker">마커</option><option value="under">밑줄</option><option value="outline">테두리</option></select><label class="checks"><input checked="" id="autoFit" type="checkbox"/> 자동 글자 맞춤 (최소 7px)</label><div class="fine-controls"><h3>모든 글씨 크기</h3><p class="note">기준은 가로 900px 이미지예요. 비율을 바꾸거나 작은 화면에서도 글씨와 장식이 함께 비례해요.</p>
+<div class="row2">
+<div><label class="field">상단 아카이브 <output id="topSizeOut">9</output>px</label><input id="topSize" max="24" min="5" step=".5" type="range" value="9"/></div>
+<div><label class="field">상태 표시 <output id="statusSizeOut">9</output>px</label><input id="statusSize" max="24" min="5" step=".5" type="range" value="9"/></div>
+<div><label class="field">판형 안내 <output id="modeSizeOut">9</output>px</label><input id="modeSize" max="24" min="5" step=".5" type="range" value="9"/></div>
+<div><label class="field">등급/유형 <output id="rankSizeOut">10</output>px</label><input id="rankSize" max="24" min="5" step=".5" type="range" value="10"/></div>
+<div><label class="field">부제 <output id="subtitleSizeOut">10</output>px</label><input id="subtitleSize" max="26" min="5" step=".5" type="range" value="10"/></div>
+<div><label class="field">게이지 글씨 <output id="gaugeSizeOut">9</output>px</label><input id="gaugeSize" max="22" min="5" step=".5" type="range" value="9"/></div>
+<div><label class="field">하단 왼쪽 <output id="footerSizeOut">9</output>px</label><input id="footerSize" max="24" min="5" step=".5" type="range" value="9"/></div>
+<div><label class="field">하단 오른쪽 <output id="metaSizeOut">9</output>px</label><input id="metaSize" max="24" min="5" step=".5" type="range" value="9"/></div>
+<div><label class="field">전체 장식 비율 <output id="uiScaleOut">100</output>%</label><input id="uiScale" max="170" min="50" step="5" type="range" value="100"/></div>
+</div>
+<label class="field">형광펜 위치 <output id="markerOffsetOut">0</output>px</label><input id="markerOffset" max="6" min="-6" step="0.25" type="range" value="0"/>
+<label class="field">형광펜 높이 <output id="markerHeightOut">45</output>%</label><input id="markerHeight" max="95" min="15" step="5" type="range" value="45"/>
+</div><div class="fine-controls"><h3>PNG 형광펜 미세 보정</h3><p class="note">화면과 PNG의 마커 위치를 따로 조절합니다. 줄바꿈된 마커는 줄마다 보정됩니다.</p><div class="row2"><div><label class="field">PNG 마커 상하 <output id="exportMarkerYOut">0</output>px</label><input id="exportMarkerY" max="5" min="-5" step=".25" type="range" value="0"/></div><div><label class="field">PNG 마커 좌우 <output id="exportMarkerXOut">0</output>px</label><input id="exportMarkerX" max="5" min="-5" step=".25" type="range" value="0"/></div><div><label class="field">PNG 마커 높이 <output id="exportMarkerHOut">100</output>%</label><input id="exportMarkerH" max="160" min="40" step="5" type="range" value="100"/></div><div><label class="field">PNG 마커 양옆 여유 <output id="exportMarkerPadOut">0</output>px</label><input id="exportMarkerPad" max="5" min="-2" step=".25" type="range" value="0"/></div></div></div></div><div class="group" data-section="hud"><h2>MMORPG HUD 장식</h2><div class="fine-controls" id="pairDecorPanel"><h3>HUD 장식 · 선 / 바코드 / 데이터</h3><p class="note">상하단 HUD 문구는 같은 기준선에 정렬됩니다. 바코드·눈금·장식선·데이터 패널을 겹치지 않는 영역에 추가로 배치할 수 있어요.</p>
+<div class="pair-deco-grid">
+<label><input checked="" id="pairLight" type="checkbox"/> <span><b>미세 좌표선</b><small>배경의 아주 옅은 가이드라인</small></span></label>
+<label><input checked="" id="pairThread" type="checkbox"/> <span><b>회로 연결선</b><small>모서리를 따라 흐르는 얇은 회로선</small></span></label>
+<label><input id="pairPetals" type="checkbox"/> <span><b>점선 트래커</b><small>좌측 가장자리의 작은 점선</small></span></label>
+<label><input checked="" id="pairMoon" type="checkbox"/> <span><b>상단 데이터 눈금</b><small>프레임 상단의 미세 눈금</small></span></label>
+<label><input id="pairQuest" type="checkbox"/> <span><b>퀘스트 진행선</b><small>좌측에 배치되는 진행 표시선</small></span></label>
+<label><input id="pairLink" type="checkbox"/> <span><b>파티 동기화 바</b><small>하단의 짧은 동기화 표시</small></span></label>
+<label><input id="pairGlyph" type="checkbox"/> <span><b>상단 분류 라벨</b><small>상단 중앙의 작은 HUD 텍스트</small></span></label>
+<label><input id="pairSpark" type="checkbox"/> <span><b>상태 데이터 바</b><small>우측 세로 상태 표시</small></span></label>
+<label><input id="pairLines" type="checkbox"/> <span><b>프레임 보조선</b><small>모서리 밖의 얇은 장식선</small></span></label>
+<label><input checked="" id="pairStars" type="checkbox"/> <span><b>기록 바코드</b><small>하단 왼쪽의 스캔 바코드</small></span></label>
+</div><div class="pair-deco-grid" id="extraHudOptions">
+<label><input checked="" id="hudExtraScan" type="checkbox"/><span><b>상단 스캔 인덱스</b><small>중앙 데이터 인덱스 바</small></span></label>
+<label><input id="hudExtraSide" type="checkbox"/><span><b>측면 시리얼 코드</b><small>왼쪽 바깥쪽 세로 기록</small></span></label>
+<label><input id="hudExtraRight" type="checkbox"/><span><b>우측 텔레메트리</b><small>우측 바깥 상태 눈금</small></span></label>
+<label><input checked="" id="hudExtraBottom" type="checkbox"/><span><b>하단 데이터 패킷</b><small>하단 중앙 짧은 데이터 바</small></span></label>
+</div><div class="row2"><div><label class="field">측면 시리얼 문구</label><input id="hudSideText" placeholder="BLUE PAIRY / LASPERA" value="BLUE PAIRY / LASPERA"/></div><div><label class="field">데이터 패킷 문구</label><input id="hudPacketText" placeholder="DATA · 001 / LINKED" value="DATA / 001 · ACTIVE"/></div></div><div class="row2"><div><label class="field">장식 색상</label><input id="pairDecoColor" type="color" value="#D6C29A"/></div><div><label class="field">장식 크기 <output id="pairDecoScaleOut">100</output>%</label><input id="pairDecoScale" max="160" min="50" step="5" type="range" value="100"/></div><div><label class="field">HUD 장식 불투명도 <output id="hudAssetOpacityOut">55</output>%</label><input id="hudAssetOpacity" max="100" min="0" step="5" type="range" value="55"/></div></div><div class="buttons"><button class="btn" id="pairDecorAll" type="button">모두 선택</button><button class="btn" id="pairDecorClear" type="button">모두 해제</button></div></div><div class="fine-controls" id="hudTextPanel"><h3>HUD 문구 · 직접 편집</h3><p class="note">각 슬롯을 개별적으로 켜고 문구를 변경해요. 서로 겹치지 않도록 상단·하단의 독립된 영역에 배치됩니다.</p><div class="hud-edit-grid">
+<label><input checked="" id="hudAOn" type="checkbox"/> 좌측 상단 · 퀘스트</label><input id="hudAText" placeholder="표시할 문구" value="QUEST / 001"/>
+<label><input checked="" id="hudBOn" type="checkbox"/> 우측 상단 · 파티</label><input id="hudBText" placeholder="표시할 문구" value="PARTY · ONLINE"/>
+<label><input id="hudCOn" type="checkbox"/> 좌측 하단 · 좌표</label><input id="hudCText" placeholder="표시할 문구" value="WAYPOINT / 035"/>
+<label><input id="hudDOn" type="checkbox"/> 우측 하단 · 시스템</label><input id="hudDText" placeholder="표시할 문구" value="BOND · LINKED"/>
+</div><div class="row2"><div><label class="field">HUD 글자 크기 <output id="hudFontSizeOut">9</output>px</label><input id="hudFontSize" max="16" min="6" step=".5" type="range" value="9"/></div><div><label class="field">HUD 글자색</label><input id="hudTextColor" type="color" value="#D6C29A"/></div></div><p class="note">문구는 프리셋과 브라우저 자동 저장에도 포함됩니다.</p></div><div class="row2"><div><label class="field">프레임</label><select id="frameStyle"><option value="solid">실선</option><option value="double">이중선</option><option value="dashed">점선</option><option value="none">없음</option></select></div><div><label class="field">배경 어둡기</label><input id="shade" max="85" min="0" type="range" value="0"/></div><div><label class="field">배경 확대</label><input id="bgZoom" max="250" min="100" type="range" value="100"/></div><div><label class="field">배경 가로 위치 <output id="bgXOut">50%</output></label><input id="bgX" max="100" min="0" type="range" value="50"/></div><div><label class="field">배경 세로 위치 <output id="bgYOut">50%</output></label><input id="bgY" max="100" min="0" type="range" value="50"/></div><div><label class="field">인연 게이지</label><input id="bondValue" max="100" min="0" type="range" value="100"/></div><div><label class="field">게이지 이름</label><input id="bondLabel" value="BOND SYNC"/></div></div><label class="field">스탬프</label><input id="stampText" placeholder="BOND UNLOCKED"/><label class="field">스티커 추가 (드래그 가능)</label><div class="buttons" id="stickerTools"><button class="btn" data-sticker="✦">✦</button><button class="btn" data-sticker="◇">◇</button><button class="btn" data-sticker="♡">♡</button><button class="btn" data-sticker="✧">✧</button><button class="btn" id="stickerRemove">선택 삭제</button><button class="btn" id="stickerClear">모두 삭제</button></div><label class="field">이미지 스티커</label><input accept="image/*" id="stickerUpload" type="file"/><div class="row2"><div><label class="field">스티커 크기</label><input id="stickerSize" max="150" min="12" type="range" value="44"/></div><div><label class="field">스티커 회전</label><input id="stickerRotate" max="180" min="-180" type="range" value="0"/></div></div><div class="fine-controls"><h3>프레임 · 세부 장식</h3><div class="row2">
+<div><label class="field">프레임 두께 <output id="frameWidthOut">1</output>px</label><input id="frameWidth" max="5" min="0" step=".5" type="range" value="1"/></div>
+<div><label class="field">프레임 여백 <output id="frameInsetOut">4</output>%</label><input id="frameInset" max="10" min="1" step=".5" type="range" value="4"/></div>
+<div><label class="field">구분선 진하기 <output id="dividerOpacityOut">25</output>%</label><input id="dividerOpacity" max="100" min="0" step="5" type="range" value="25"/></div>
+<div><label class="field">장식 진하기 <output id="decoOpacityOut">35</output>%</label><input id="decoOpacity" max="100" min="0" step="5" type="range" value="35"/></div>
+<div><label class="field">채팅 패널 여백 <output id="chatPadOut">55</output>%</label><input id="chatPad" max="130" min="20" step="5" type="range" value="55"/></div>
+<div><label class="field">채팅 패널 테두리 <output id="chatBorderOut">25</output>%</label><input id="chatBorder" max="100" min="0" step="5" type="range" value="25"/></div>
+</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 이미지가 너무 크면 저장 공간을 확보하기 위해 배경 사진을 제외하고 텍스트와 설정을 저장합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE PAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><script>
+const $=id=>document.getElementById(id);
+const ids=['mode','titleInput','subtitleInput','rank','status','footerText','meta','topText','statusSymbol','labelQuest','labelBond','labelItem','labelSystem','bodyInput','accent','highlight','font','size','line','opacity','ratio','showBar','showStatus','showFooter'];
+const extras=['colorTheme','titleFont','titleSize','bodyAlign','bodyPosition','letterSpace','innerPad','dialogueColor','chatStyle','chatNameColor','hlOpacity','hlStyle','autoFit','frameStyle','shade','bgZoom','bgX','bgY','bondValue','bondLabel','stampText','stickerSize','stickerRotate','topSize','statusSize','modeSize','rankSize','subtitleSize','gaugeSize','footerSize','metaSize','uiScale','markerOffset','markerHeight','frameWidth','frameInset','dividerOpacity','decoOpacity','chatPad','chatBorder','bgColor','panelColor','panelAlpha','vignette','cornerGlyph','decorCaption','decorCaptionSize','decorLineWidth','exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad','pairLight','pairThread','pairPetals','pairMoon','pairQuest','pairLink','pairGlyph','pairSpark','pairLines','pairStars','pairDecoColor','pairDecoScale','hudAOn','hudBOn','hudCOn','hudDOn','hudAText','hudBText','hudCText','hudDText','hudFontSize','hudTextColor','hudExtraScan','hudExtraSide','hudExtraRight','hudExtraBottom','hudSideText','hudPacketText','bgBlur','hudAssetOpacity'];
+let bgData='',stickers=[],selected=-1,renderTicket=0,fitStatus='ready';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','"':'&quot;',"'":'&#39;'}[c]));
+const hexA=(hex,a)=>{let n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+(n>>8&255)+','+(n&255)+','+a+')'};
+function inline(s){
+ s=esc(s);
+ s=s.replace(/==([\s\S]+?)==/g,'<mark class="marker-active">$1</mark>');
+ s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/__(.+?)__/g,'<u>$1</u>').replace(/~~(.+?)~~/g,'<s>$1</s>').replace(/\*(.+?)\*/g,'<em>$1</em>');
+ return s;
+}
+function renderBody(s){
+ // Adjacent dialogue entries from the same speaker become one chat panel,
+ // including when separated by blank lines. Prose/system lines break a group.
+ const lines=String(s||'').replace(/\r\n?/g,'\n').split('\n');
+ const out=[];let paragraph=[],chatGroup=null,blank=false;
+ const flushParagraph=()=>{if(paragraph.length){out.push('<p>'+paragraph.join('<br>')+'</p>');paragraph=[];}};
+ const flushChat=()=>{if(chatGroup){out.push('<div class="chat-entry"><span class="chat-name">'+inline(chatGroup.name)+'</span><span class="chat-message">'+chatGroup.messages.map(inline).join('<br>')+'</span></div>');chatGroup=null;}};
+ for(const raw of lines){
+   if(!raw.trim()){
+     flushParagraph();blank=true;
+     continue;
+   }
+   const clean=raw.replace(/[\u200B-\u200D\u2060\uFEFF]/g,'');
+   const match=clean.match(/^\s*(.{1,28}?)\s*[｜|]\s*(.+)$/u);
+   if(match && match[1].trim() && match[2].trim()){
+     flushParagraph();
+     const name=match[1].trim().replace(/^[>＞]\s*/, '').trim(),message=match[2].trim().replace(/^(?:>\s*|＞\s*)/, '');
+     if(chatGroup && chatGroup.name===name){chatGroup.messages.push(message)}
+     else{flushChat();chatGroup={name,messages:[message]};}
+     blank=false;continue;
+   }
+   flushChat();
+   if(raw.startsWith('> ')){
+     flushParagraph();out.push('<p><span class="dialogue" style="display:block">'+inline(raw.slice(2))+'</span></p>');
+   }else if(raw.startsWith('! ')){
+     flushParagraph();out.push('<p><span class="systemline" style="display:block">'+inline(raw.slice(2))+'</span></p>');
+   }else{
+     paragraph.push(inline(raw));
+   }
+   blank=false;
+ }
+ flushChat();flushParagraph();
+ return out.join('');
+}
+function scheduleFit(){cancelAnimationFrame(renderTicket);renderTicket=requestAnimationFrame(()=>requestAnimationFrame(fitText))}
+function fitText(){
+ const body=$('bodyView'),area=body.parentElement,canvas=$('canvas');
+ if(!body||!area)return;
+ const scale=canvas.clientWidth/900;
+ const target=Math.max(3,(+$('size').value)*scale);
+ const minimum=Math.max(3,4*scale);
+ const measure=(px)=>{
+
+   body.style.setProperty('--body-size-final',px+'px');
+   // Use actual content scroll size and a temporarily unconstrained height.
+   const oldHeight=body.style.height;
+   body.style.height='auto';
+   const fullHeight=body.getBoundingClientRect().height;
+   const fullWidth=body.scrollWidth;
+   body.style.height=oldHeight;
+   return fullHeight<=area.clientHeight+.5 && fullWidth<=area.clientWidth+.5;
+ };
+ if(!$('autoFit').checked){measure(target);$('fitInfo').textContent='본문 '+$('size').value+'px · 자동 맞춤 꺼짐';return}
+ if(measure(target)){$('fitInfo').textContent='본문 '+$('size').value+'px · 정상';return}
+ let low=minimum,high=target;
+ if(!measure(low)){
+   $('fitInfo').textContent='최소 크기에서도 넘침 · 문단 분할 권장';
+   return;
+ }
+ for(let i=0;i<18;i++){
+   const mid=(low+high)/2;
+   if(measure(mid))low=mid;else high=mid;
+ }
+ measure(low);
+ $('fitInfo').textContent='자동 축소: '+(low/scale).toFixed(1)+'px (설정 '+$('size').value+'px)';
+}
+
+function renderHudText(){
+ const layer=$('hudTextLayer');if(!layer)return;
+ const fragment=document.createDocumentFragment();
+ for(const letter of ['A','B','C','D']){
+  if(!$('hud'+letter+'On').checked)continue;
+  const el=document.createElement('div');el.className='hud-text-slot';el.dataset.hud=letter.toLowerCase();el.textContent=$('hud'+letter+'Text').value;
+  fragment.appendChild(el);
+ }
+ layer.replaceChildren(fragment);
+ layer.style.setProperty('--ht',$('hudTextColor').value);
+ layer.style.setProperty('--hs',$('hudFontSize').value+'px');
+ $('hudFontSizeOut').textContent=$('hudFontSize').value;
+}
+function renderPairDecorations(){
+ const layer=$('pairDecorations');if(!layer)return;
+ const defs=[
+ ['pairLight','grid',''],['pairThread','circuit',''],
+ ['pairPetals','tracker',''],['pairMoon','ticks',''],
+ ['pairQuest','quest',''],['pairLink','sync','SYNC ▰▰▰▰▱'],
+ ['pairGlyph','category','BLUE PAIRY ONLINE'],['pairSpark','status',''],
+ ['pairLines','rails',''],['pairStars','barcode',''],
+ ['hudExtraScan','scan',''],['hudExtraSide','serial',$('hudSideText').value],
+ ['hudExtraRight','telemetry',''],['hudExtraBottom','packet',$('hudPacketText').value]
+ ];
+ const frag=document.createDocumentFragment();
+ for(const [id,type,value] of defs){
+  if(!$(id)?.checked)continue;
+  const el=document.createElement('div');
+  el.className='hud-asset hud-asset-'+type;
+  el.dataset.asset=type;
+  const mk=(cls,st)=>{const n=document.createElement('i');if(cls)n.className=cls;if(st)Object.assign(n.style,st);return n};
+  if(type==='ticks'||type==='scan'){for(let k=0;k<81;k++)el.appendChild(mk(k%5===0?'maj':''))}
+  else if(type==='barcode'){[2,1,3,1,1,2,4,1,2,1,3,1,2,1,1,3,2,1].forEach((h,k)=>el.appendChild(mk(k%5===0?'long':'',{height:h+'px'})))}
+  else if(type==='status'){for(let k=0;k<6;k++)el.appendChild(mk(k===0?'on':''))}
+  else if(type==='telemetry'){[10,6,8,4,9,5,7].forEach(w=>el.appendChild(mk('',{width:w+'px'})))}
+  else if(type==='rails'){for(let k=0;k<4;k++)el.appendChild(mk('rc rc'+k))}
+  else el.textContent=value;
+  frag.appendChild(el);
+ }
+ layer.replaceChildren(frag);
+ layer.style.setProperty('--pc',$('pairDecoColor').value);
+ layer.style.setProperty('--hud-asset-opacity',+$('hudAssetOpacity').value/100);
+ $('hudAssetOpacityOut').textContent=$('hudAssetOpacity').value;
+ layer.style.setProperty('--fi',(($('frameInset')&&$('frameInset').value)||4)+'%');
+ layer.style.setProperty('--ps',+$('pairDecoScale').value/100);
+ $('pairDecoScaleOut').textContent=$('pairDecoScale').value;
+}
+
+function update(){
+ // Legacy autosaves may reintroduce old pair names; migrate only those strings.
+ for(const id of ['topText','hudSideText','hudPacketText','hudAText','hudBText','hudCText','hudDText']){
+  const input=$(id);if(!input||typeof input.value!=='string')continue;
+  input.value=input.value.replace(/LUMINOUS\s*BOND/gi,'BLUE PAIRY').replace(/玲瓏|영롱/g,'LASPERA');
+  if(id==='hudSideText' && /INSTANCE\s*\/\s*LASPERA|INSTANCE\s*\/\s*玲瓏/i.test(input.value))input.value='BLUE PAIRY / LASPERA';
+  if(id==='hudSideText' && /^(?:INSTANCE\s*\/\s*)?(?:LASPERA|라스페라)(?:\s*\/\s*(?:001|INSTANCE))?$/i.test(input.value.trim()))input.value='BLUE PAIRY / LASPERA';
+ }
+ renderHudText();
+ const mode=$('mode').value,frame=$('frame'),canvas=$('canvas'),body=$('bodyView');
+ const help={quest:'퀘스트 기록 · 좌측 퀘스트 마커와 진행 게이지를 강조합니다.',bond:'인연 아카이브 · 중앙 정렬, 공명 장식, 유대 게이지를 표시합니다.',item:'아이템 도감 · 획득한 아이템의 희귀도와 설명을 카드 형태로 기록합니다.',system:'시스템 메시지 · 업적 달성이나 기록 해금 알림을 팝업처럼 표시합니다.'};
+ $('modeHelp').textContent=help[mode];
+ frame.className='frame '+mode;
+ frame.dataset.border=$('frameStyle').value;
+ frame.dataset.chat=$('chatStyle').value;
+ frame.style.setProperty('--chat-name',$('chatNameColor').value);
+ renderPairDecorations();
+ canvas.style.setProperty('--canvas-bg',$('bgColor').value);
+ frame.style.setProperty('--panel-bg',hexA($('panelColor').value,+$('panelAlpha').value/100));
+ canvas.style.setProperty('--vignette',+$('vignette').value/100);
+ canvas.style.setProperty('--orn-line',$('decorLineWidth').value+'px');
+ $('cornerGlyphView').dataset.type=$('cornerGlyph').value;
+ $('decorCaptionView').textContent=$('decorCaption').value;
+ $('decorCaptionView').style.setProperty('--caption-size',($('decorCaptionSize').value*canvas.clientWidth/900)+'px');
+ ['panelAlpha','vignette'].forEach(id=>{$(id+'Out').textContent=$(id).value});
+ $('rankView').textContent=$('rank').value;
+ $('modeLabel').textContent=({quest:$('labelQuest').value,bond:$('labelBond').value,item:$('labelItem').value,system:$('labelSystem').value})[mode]||'';
+ document.querySelector('.micro').textContent=$('topText').value;
+ $('titleView').textContent=$('titleInput').value;
+ $('subtitleView').textContent=$('subtitleInput').value;
+ $('statusView').textContent=[$('statusSymbol').value,$('status').value].filter(Boolean).join(' ');
+ $('peopleView').textContent=$('footerText').value;
+ $('metaView').textContent=$('meta').value;
+ body.innerHTML=renderBody($('bodyInput').value);
+ const themeNow=COLOR_THEMES[$('colorTheme').value] || null;
+ const themeAccent=$('accent').value;
+ canvas.style.setProperty('--theme-outer-border',hexA(themeAccent,.53));
+ canvas.style.setProperty('--theme-title',themeNow?.titleText || '#FFFAED');
+ canvas.style.setProperty('--theme-body',themeNow?.bodyText || '#f2ecdf');
+ canvas.style.setProperty('--theme-muted',themeNow?.mutedText || '#d5cbb8');
+ canvas.style.setProperty('--theme-grid',themeNow?.gridColor || '#c8b58f');
+ canvas.style.setProperty('--theme-accent',$('accent').value);
+ canvas.style.setProperty('--theme-secondary',COLOR_THEMES[$('colorTheme').value]?.secondary || $('highlight').value);
+ canvas.style.setProperty('--theme-line',hexA($('accent').value,.35));
+ canvas.style.setProperty('--theme-frame-border',hexA($('accent').value,.60));
+ canvas.style.setProperty('--theme-divider',hexA($('accent').value,+$('dividerOpacity').value/100));
+ canvas.style.setProperty('--theme-chat-border',hexA($('accent').value,+$('chatBorder').value/100));
+ canvas.style.setProperty('--theme-bar-track',hexA($('accent').value,.24));
+ canvas.style.setProperty('--theme-soft',COLOR_THEMES[$('colorTheme').value]?.hudTextColor || $('hudTextColor').value);
+ frame.style.setProperty('--accent',$('accent').value);
+ frame.style.borderColor=$('accent').value+'99';
+ frame.style.setProperty('--title-font',$('titleFont').value);
+ frame.style.setProperty('--title-size-final',(+$('titleSize').value * canvas.clientWidth/900)+'px');
+ frame.style.setProperty('--body-align',$('bodyAlign').value);
+ frame.style.setProperty('--body-position',$('bodyPosition').value);
+ frame.style.setProperty('--body-spacing',$('letterSpace').value+'px');
+ frame.style.setProperty('--body-padding',$('innerPad').value+'%');
+ frame.style.setProperty('--dialogue-color',$('dialogueColor').value);
+ const pxScale=canvas.clientWidth/900;
+ const sizes={topSize:'--top-size',statusSize:'--status-size',modeSize:'--mode-size',rankSize:'--rank-size',subtitleSize:'--subtitle-size',gaugeSize:'--gauge-size',footerSize:'--footer-size',metaSize:'--meta-size'};
+ Object.entries(sizes).forEach(([id,key])=>frame.style.setProperty(key,(+$(id).value*pxScale).toFixed(2)+'px'));
+ // Chat text sizes are relative to the body and stay linked to the auto-fit result.
+ frame.style.setProperty('--ui-scale',+$('uiScale').value/100);
+ frame.style.setProperty('--frame-width',$('frameWidth').value+'px');
+ frame.style.setProperty('--frame-inset',$('frameInset').value+'%');
+ frame.style.setProperty('--divider-alpha',+$('dividerOpacity').value/100);
+ canvas.style.setProperty('--deco-opacity',+$('decoOpacity').value/100);
+ frame.style.setProperty('--chat-pad',+$('chatPad').value/100);
+ frame.style.setProperty('--chat-border',+$('chatBorder').value/100);
+ const markerColor=hexA($('highlight').value,+$('hlOpacity').value/100);
+ frame.style.setProperty('--marker-color',markerColor);
+ frame.style.setProperty('--marker-height',$('markerHeight').value+'%');
+ frame.style.setProperty('--marker-offset',($('markerOffset').value*pxScale)+'px');
+ Object.keys({topSize:1,statusSize:1,modeSize:1,rankSize:1,subtitleSize:1,gaugeSize:1,footerSize:1,metaSize:1,uiScale:1,markerOffset:1,markerHeight:1,frameWidth:1,frameInset:1,dividerOpacity:1,decoOpacity:1,chatPad:1,chatBorder:1}).forEach(id=>{const out=$(id+'Out');if(out)out.textContent=$(id).value});
+
+ body.style.fontFamily=$('font').value;
+ body.style.setProperty('--body-line-final',$('line').value);
+ $('sizeValue').textContent=$('size').value+'px';
+ $('lineValue').textContent=$('line').value;
+ $('opacityValue').textContent=$('opacity').value+'%';
+ $('ambient').style.opacity=$('opacity').value/100;
+ canvas.style.setProperty('--bg-blur',$('bgBlur').value+'px');
+ canvas.style.setProperty('--blur-overflow',1+(+$('bgBlur').value/100));
+ $('bgBlurOut').textContent=$('bgBlur').value;
+ canvas.style.setProperty('--inner-grid-opacity',$('pairLight').checked?'.32':'0');
+ $('ambient').style.backgroundImage=bgData?'url('+JSON.stringify(bgData)+')':'none';
+ $('ambient').style.setProperty('--bg-zoom',$('bgZoom').value+'%');
+ $('ambient').style.setProperty('--bg-x',$('bgX').value+'%');
+ $('ambient').style.setProperty('--bg-y',$('bgY').value+'%');
+ $('bgXOut').textContent=$('bgX').value+'%'; $('bgYOut').textContent=$('bgY').value+'%';
+ frame.style.setProperty('--grid-strength',$('pairLight').checked?'0.55':'0');
+ canvas.style.setProperty('--shade',+$('shade').value/100);
+ const ratio=$('ratio').value;
+ canvas.style.setProperty('--ratio',ratio);
+ const pair=ratio.split('/').map(Number);
+ canvas.style.setProperty('--ratio-number',pair[0]/pair[1]);
+ canvas.style.aspectRatio=ratio;
+ canvas.dataset.ratioMode=pair[0]>pair[1]?'wide':pair[0]<pair[1]?'portrait':'square';
+ canvas.style.setProperty('--safe-frame-inset',pair[0]>pair[1]*1.6?'6% 3.8%':pair[0]<pair[1]?'3.4% 5.2%':'4%');
+ $('barrow').classList.toggle('hide',!$('showBar').checked);
+ $('statusView').classList.toggle('hide',!$('showStatus').checked);
+ $('footer').classList.toggle('hide',!$('showFooter').checked);
+ const spans=$('barrow').querySelectorAll(':scope > span');
+ spans[0].textContent=$('bondLabel').value;
+ spans[1].textContent=$('bondValue').value+'%';
+ $('barrow').querySelector('.fill').style.width=$('bondValue').value+'%';
+ $('stampView').textContent=$('stampText').value;
+ const className={full:'marker-full',marker:'marker-active',under:'marker-under',outline:'marker-outline'}[$('hlStyle').value];
+ body.querySelectorAll('mark').forEach(m=>m.className='yr-hl '+className);
+ scheduleFit();
+ scheduleMarkerDraw();
+
+}
+[...ids,...extras].forEach(id=>$(id).addEventListener('input',update));
+$('bgUpload').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{bgData=reader.result;update()};reader.readAsDataURL(f)};
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));
+ document.querySelectorAll('[data-section]').forEach(x=>x.classList.toggle('active',x.dataset.section===b.dataset.tab));
+});
+document.querySelector('[data-tab=text]').click();
+document.querySelectorAll('.mdtools button').forEach(btn=>btn.onclick=()=>{
+ const t=$('bodyInput'),a=t.selectionStart,z=t.selectionEnd,sel=t.value.slice(a,z);
+ const replacement=btn.dataset.wrap?btn.dataset.wrap+sel+btn.dataset.wrap:btn.dataset.prefix+sel.replace(/\n/g,'\n'+btn.dataset.prefix);
+ t.setRangeText(replacement,a,z,'select');t.dispatchEvent(new Event('input',{bubbles:true}));t.focus();
+});
+function drawStickers(){
+ const layer=$('stickerLayer');layer.replaceChildren();
+ stickers.forEach((st,i)=>{
+ const el=st.img?document.createElement('img'):document.createElement('div');
+ el.className='sticker'+(selected===i?' selected':'');
+ if(st.img){el.src=st.img;el.style.width=st.size+'px'}else{el.textContent=st.text;el.style.fontSize=st.size+'px';el.style.color=$('accent').value}
+ el.style.left=st.x+'%';el.style.top=st.y+'%';el.style.transform='translate(-50%,-50%) rotate('+st.rot+'deg)';
+ el.onpointerdown=ev=>{
+ ev.preventDefault();selected=i;drawStickers();
+ const target=layer.children[i];target.setPointerCapture(ev.pointerId);
+ target.onpointermove=e=>{const r=layer.getBoundingClientRect();st.x=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100));st.y=Math.max(0,Math.min(100,(e.clientY-r.top)/r.height*100));target.style.left=st.x+'%';target.style.top=st.y+'%'};
+ target.onpointerup=()=>{target.onpointermove=null};
+ };
+ layer.append(el);
+ });
+}
+document.querySelectorAll('[data-sticker]').forEach(b=>b.onclick=()=>{stickers.push({text:b.dataset.sticker,x:50,y:50,size:+$('stickerSize').value,rot:0});selected=stickers.length-1;drawStickers()});
+$('stickerUpload').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{stickers.push({img:reader.result,x:50,y:50,size:60,rot:0});selected=stickers.length-1;drawStickers()};reader.readAsDataURL(f)};
+$('stickerSize').oninput=()=>{if(stickers[selected])stickers[selected].size=+$('stickerSize').value;drawStickers()};
+$('stickerRotate').oninput=()=>{if(stickers[selected])stickers[selected].rot=+$('stickerRotate').value;drawStickers()};
+$('stickerRemove').onclick=()=>{if(selected>=0)stickers.splice(selected,1);selected=-1;drawStickers()};
+$('stickerClear').onclick=()=>{stickers=[];selected=-1;drawStickers()};
+const allIds=[...ids,...extras];
+function snapshot(){const values={};allIds.forEach(id=>values[id]=$(id).type==='checkbox'?$(id).checked:$(id).value);return {values,bgData,stickers}}
+function snapshotCompact(){const snap=snapshot();snap.bgData='';snap.stickers=snap.stickers.map(s=>s.img?{...s,img:null,text:'◇'}:s);snap.imageOmitted=true;return snap}
+const STORE_PREFIX='yr-preset-',DRAFT_KEY='yr-autodraft-v2';
+function safeStore(key,obj){
+ try{localStorage.setItem(key,JSON.stringify(obj));return 'full'}
+ catch(err){
+   try{localStorage.setItem(key,JSON.stringify(snapshotCompact()));return 'no-image'}
+   catch(err2){return 'failed'}
+ }
+}
+function status(msg){$('saveStatus').textContent=msg}
+function listPresets(){
+ const selected=$('presetSelect').value;
+ const names=[];
+ try{for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(key&&key.startsWith(STORE_PREFIX))names.push(key.slice(STORE_PREFIX.length))}}catch(e){}
+ names.sort((a,b)=>a.localeCompare(b,'ko'));
+ const sel=$('presetSelect');sel.replaceChildren();
+ const blank=document.createElement('option');blank.value='';blank.textContent=names.length?'프리셋을 선택하세요':'저장된 프리셋 없음';sel.append(blank);
+ names.forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;sel.append(o)});
+ if(names.includes(selected))sel.value=selected;
+ return names;
+}
+let draftTimer=0,restoring=false;
+function scheduleDraft(){
+ if(restoring)return;
+ clearTimeout(draftTimer);
+ draftTimer=setTimeout(()=>{
+  const result=safeStore(DRAFT_KEY,snapshot());
+  status(result==='full'?'자동 저장 완료':result==='no-image'?'자동 저장 완료 · 큰 사진 제외':'자동 저장 실패 · JSON 백업 권장');
+ },650);
+}
+
+function restore(obj){
+ const values=obj.values||obj;
+ allIds.forEach(id=>{if(values[id]===undefined)return;if($(id).type==='checkbox')$(id).checked=values[id];else $(id).value=values[id]});
+ restoring=true;
+ bgData=obj.bgData||'';stickers=obj.stickers||[];selected=-1;drawStickers();update();
+ restoring=false;paintThemeSwatches();status(obj.imageOmitted?'불러오기 완료 · 큰 사진은 저장되지 않았어요':'불러오기 완료');scheduleDraft();
+}
+function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000)}
+$('save').onclick=()=>download(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'}),'yeongrong-settings.json');
+$('load').onclick=()=>$('loadFile').click();
+$('loadFile').onchange=async e=>{try{restore(JSON.parse(await e.target.files[0].text()))}catch(err){alert('설정 파일을 읽을 수 없습니다.')}};
+$('presetSave').onclick=()=>{
+ const name=$('presetName').value.trim();
+ if(!name)return alert('프리셋 이름을 입력해 주세요.');
+ const key=STORE_PREFIX+name;
+ if(localStorage.getItem(key)&&!confirm('같은 이름이 있어요. 덮어쓸까요?'))return;
+ const result=safeStore(key,snapshot());
+ if(result==='failed')return alert('저장에 실패했어요. JSON으로 백업해 주세요.');
+ listPresets();$('presetSelect').value=name;
+ status(result==='no-image'?'프리셋 저장 · 큰 사진 제외':'프리셋 저장 완료');
+};
+$('presetOverwrite').onclick=()=>{
+ const name=$('presetSelect').value;if(!name)return alert('덮어쓸 프리셋을 선택해 주세요.');
+ if(!confirm('“'+name+'” 프리셋을 현재 내용으로 덮어쓸까요?'))return;
+ const result=safeStore(STORE_PREFIX+name,snapshot());
+ status(result==='full'?'덮어쓰기 완료':result==='no-image'?'덮어쓰기 완료 · 큰 사진 제외':'저장 실패');
+};
+$('presetLoad').onclick=()=>{
+ const name=$('presetSelect').value;if(!name)return alert('불러올 프리셋을 선택해 주세요.');
+ try{const raw=localStorage.getItem(STORE_PREFIX+name);if(!raw)throw Error('프리셋 없음');restore(JSON.parse(raw));$('presetName').value=name}
+ catch(e){alert('프리셋을 불러오지 못했어요.')}
+};
+$('presetDelete').onclick=()=>{
+ const name=$('presetSelect').value;if(!name)return alert('삭제할 프리셋을 선택해 주세요.');
+ if(!confirm('“'+name+'” 프리셋을 삭제할까요?'))return;
+ localStorage.removeItem(STORE_PREFIX+name);listPresets();status('프리셋 삭제 완료');
+};
+$('presetSelect').onchange=()=>{if($('presetSelect').value)$('presetName').value=$('presetSelect').value};
+const originalUpdate=update;
+update=function(){originalUpdate();scheduleDraft()};
+$('pairDecorAll').onclick=()=>{document.querySelectorAll('.pair-deco-grid input').forEach(x=>x.checked=true);update()};
+$('pairDecorClear').onclick=()=>{document.querySelectorAll('.pair-deco-grid input').forEach(x=>x.checked=false);update()};
+listPresets();
+try{const draft=localStorage.getItem(DRAFT_KEY);if(draft){restore(JSON.parse(draft));status('이전 작업을 자동 복원했어요')}}catch(e){status('자동 복원 불가 · 새 작업 시작')}
+for(const id of ['exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad']){
+ $(id).addEventListener('input',()=>{$(id+'Out').textContent=$(id).value;scheduleDraft()});
+}
+
+/* SONAR inline highlighting: the text and its marker share the same layout. */
+/* PNG only: derive rectangles from actual laid-out text in the cloned document.
+   This avoids html2canvas's broken multiline inline-gradient painting. */
+function drawLineHighlights(doc){
+ if(!doc)return;
+ const host=doc.getElementById('bodyView');
+ if(!host)return;
+ host.querySelectorAll('.yr-export-hl').forEach(n=>n.remove());
+ const style=doc.defaultView.getComputedStyle(host);
+ host.style.position='relative';host.style.isolation='isolate';
+ const hr=host.getBoundingClientRect();
+ const marks=[...host.querySelectorAll('mark.yr-hl')];
+ const styleName=$('hlStyle').value;
+ const opacity=+$('hlOpacity').value/100;
+ const color=hexA($('highlight').value,opacity);
+ for(const mark of marks){
+   const walker=doc.createTreeWalker(mark,NodeFilter.SHOW_TEXT), nodes=[];
+   let node;while(node=walker.nextNode())nodes.push(node);
+   const rects=[];
+   for(const n of nodes){
+     for(let i=0;i<n.textContent.length;i++){
+       const r=doc.createRange();r.setStart(n,i);r.setEnd(n,i+1);
+       for(const b of r.getClientRects())if(b.width>0&&b.height>0)rects.push(b);
+     }
+   }
+   if(!rects.length)continue;
+   rects.sort((a,b)=>a.top-b.top||a.left-b.left);
+   const lines=[];
+   for(const r of rects){
+     let line=lines.find(l=>Math.abs(l.top-r.top)<Math.max(2,r.height*.25));
+     if(!line){line={top:r.top,bottom:r.bottom,left:r.left,right:r.right};lines.push(line)}
+     else{line.left=Math.min(line.left,r.left);line.right=Math.max(line.right,r.right);line.bottom=Math.max(line.bottom,r.bottom)}
+   }
+   // Hide the inline paint in the export clone, keeping its text untouched.
+   mark.style.setProperty('background','transparent','important');
+   mark.style.setProperty('box-shadow','none','important');
+   mark.style.setProperty('position','relative','important');
+   mark.style.setProperty('z-index','2','important');
+   for(const l of lines){
+     const el=doc.createElement('span');el.className='yr-export-hl';
+     const height=l.bottom-l.top;
+     const fraction=styleName==='under'?.16:styleName==='marker'?.54:1;
+     const h=height*fraction*(+$('exportMarkerH').value/100);
+     const x=+$('exportMarkerX').value, y=+$('exportMarkerY').value, pad=+$('exportMarkerPad').value;
+     el.style.cssText='position:absolute;pointer-events:none;z-index:1;box-sizing:border-box;'+
+       'left:'+(l.left-hr.left+x-pad)+'px;top:'+(l.bottom-hr.top-h+y)+'px;'+
+       'width:'+(l.right-l.left+2*pad)+'px;height:'+h+'px;'+
+       (styleName==='outline'?'border:1px solid '+color+';':'background:'+color+';');
+     host.appendChild(el);
+   }
+ }
+}
+function scheduleMarkerDraw(){}
+
+
+async function makeExportBlurredBackground(){
+ const amount=Number($('bgBlur').value)||0;
+ if(!bgData || amount<=0)return null;
+ const img=new Image();
+ img.src=bgData;
+ await new Promise((resolve,reject)=>{if(img.complete && img.naturalWidth){resolve();return}img.onload=resolve;img.onerror=()=>reject(new Error('배경 사진을 읽을 수 없습니다.'))});
+ const limit=2200;
+ const factor=Math.min(1,limit/Math.max(img.naturalWidth,img.naturalHeight));
+ const w=Math.max(1,Math.round(img.naturalWidth*factor)),h=Math.max(1,Math.round(img.naturalHeight*factor));
+ const cvs=document.createElement('canvas');cvs.width=w;cvs.height=h;
+ const ctx=cvs.getContext('2d');
+ if(!ctx)throw new Error('블러용 캔버스를 생성할 수 없습니다.');
+ const blur=Math.max(.1,amount*w/Math.max(1,$('canvas').clientWidth));
+ ctx.filter='blur('+blur.toFixed(2)+'px)';
+ // Expand the image beneath its own edges to avoid dark transparent halos.
+ const pad=Math.ceil(blur*2.5);
+ ctx.drawImage(img,-pad,-pad,w+2*pad,h+2*pad);
+ return cvs.toDataURL('image/png');
+}
+$('export').onclick=async()=>{
+ const btn=$('export');btn.disabled=true;btn.textContent='이미지 생성 중...';
+ try{
+ if(!window.html2canvas)await new Promise((resolve,reject)=>{const t=document.createElement('script');t.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';t.onload=resolve;t.onerror=reject;document.head.append(t)});
+ const exportBlurData=await makeExportBlurredBackground();
+ const old=selected;selected=-1;drawStickers();
+ await document.fonts?.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+ const c=await html2canvas($('canvas'),{backgroundColor:'#1B1915',scale:Math.max(2,1080/$('canvas').clientWidth),useCORS:true,onclone:(doc)=>{
+   if(exportBlurData){const a=doc.getElementById('ambient');if(a){a.style.setProperty('filter','none','important');a.style.setProperty('transform','none','important');a.style.backgroundImage='url('+JSON.stringify(exportBlurData)+')';}}
+   const f=doc.getElementById('frame');if(f){f.style.setProperty('backdrop-filter','none','important');f.style.setProperty('-webkit-backdrop-filter','none','important');}
+   drawLineHighlights(doc)
+  }});
+ selected=old;drawStickers();
+ c.toBlob(b=>{
+  if(!b){alert('PNG 생성에 실패했습니다.');return}
+  const key='bluepairy-export-number';
+  let number=1;
+  try{number=Math.max(1,(parseInt(localStorage.getItem(key),10)||0)+1)}catch(e){}
+  const name='bluepairy_'+String(number).padStart(3,'0')+'.png';
+  download(b,name);
+  try{localStorage.setItem(key,String(number))}catch(e){}
+ },'image/png');
+ }catch(e){alert('PNG 저장 실패: '+e.message)}finally{btn.disabled=false;btn.textContent='PNG 이미지 저장'}
+};
+window.addEventListener('resize',()=>{scheduleFit();scheduleMarkerDraw()});
+if(document.fonts)document.fonts.ready.then(()=>{scheduleFit();scheduleMarkerDraw()});
+if(window.ResizeObserver)new ResizeObserver(()=>{update()}).observe($('canvas'));
+// Built-in color themes. Existing settings remain fully editable and saved.
+const COLOR_THEMES={
+ yeongrong:{accent:'#BFAE8A',highlight:'#D8C99E',dialogueColor:'#F3E7CC',chatNameColor:'#DCC28F',pairDecoColor:'#D6C29A',hudTextColor:'#D6C29A',titleText:'#FFFAED',bodyText:'#F2ECDF',mutedText:'#D5CBB8',gridColor:'#C8B58F',bgColor:'#1B1915',panelColor:'#201E19',secondary:'#F1E2BD',description:'기존 따뜻한 골드 HUD'},
+ salbyeol:{accent:'#FE2E4E',highlight:'#CFFF4D',dialogueColor:'#FFF0E8',chatNameColor:'#CFFF4D',pairDecoColor:'#FE2E4E',hudTextColor:'#F9B3BF',titleText:'#FFF3F1',bodyText:'#FBE6E7',mutedText:'#F4C1CA',gridColor:'#AC6570',bgColor:'#1D171B',panelColor:'#241C20',secondary:'#CFFF4D',description:'살별 · 선명한 붉은빛과 형광 라임'},
+ unseong:{accent:'#526BCE',highlight:'#CFFF4D',dialogueColor:'#E8EEFF',chatNameColor:'#CFFF4D',pairDecoColor:'#5274DD',hudTextColor:'#B4C2FF',titleText:'#F2F3FF',bodyText:'#E0E8FF',mutedText:'#B9C8F4',gridColor:'#6378B0',bgColor:'#09102A',panelColor:'#0B1742',secondary:'#CFFF4D',description:'운성 · #061A73 기반 깊은 청색과 라임'}
+};
+function paintThemeSwatches(){
+ const t=COLOR_THEMES[$('colorTheme').value];
+ $('themeSwatches').children[0].style.background=t?t.accent:$('accent').value;
+ $('themeSwatches').children[1].style.background=t?t.secondary:$('highlight').value;
+ $('themeDescription').textContent=t?t.description:'현재 사용자 지정 색상';
+}
+function applyColorTheme(){
+ const t=COLOR_THEMES[$('colorTheme').value];
+ if(t){for(const id of ['accent','highlight','dialogueColor','chatNameColor','pairDecoColor','hudTextColor','bgColor','panelColor'])$(id).value=t[id];}
+ paintThemeSwatches();update();scheduleDraft();
+}
+$('colorTheme').addEventListener('change',applyColorTheme);
+paintThemeSwatches();
+for(const id of ['accent','highlight','dialogueColor','chatNameColor','pairDecoColor','hudTextColor','bgColor','panelColor']){
+ $(id).addEventListener('input',()=>{$('colorTheme').value='custom';paintThemeSwatches();});
+}
+
+update();
+
+</script></body></html>
