@@ -636,6 +636,30 @@ body,.controls,.stage,.tabs{background:#1b1915!important}
 #canvas .frame .chat-entry .chat-message,#canvas .frame .dialogue{color:var(--theme-body,#f2ecdf)!important}
 #canvas .frame .systemline{color:var(--theme-muted,#d5cbb8)!important}
 #canvas .frame::before{background-image:linear-gradient(to right,var(--theme-grid,#c8b58f) 1px,transparent 1px),linear-gradient(to bottom,var(--theme-grid,#c8b58f) 1px,transparent 1px)!important}
+
+/* v38: aspect-aware HUD safe zones; dimensions based on shorter canvas side. */
+#canvas{--hud-font:clamp(5px, min(1cqw, 1.25cqh), 10px);--hud-edge:clamp(10px, 2.1cqh, 18px);container-type:size!important}
+#canvas .hud-text-slot{font-size:var(--hud-font)!important;height:auto!important;min-height:10px!important;line-height:1.15!important;top:auto!important;bottom:auto!important;letter-spacing:.025em!important}
+#canvas .hud-text-slot[data-hud=a],#canvas .hud-text-slot[data-hud=b]{top:clamp(3px,.65cqh,10px)!important}
+#canvas .hud-text-slot[data-hud=c],#canvas .hud-text-slot[data-hud=d]{top:auto!important;bottom:clamp(3px,.65cqh,10px)!important}
+#canvas .hud-text-slot[data-hud=a],#canvas .hud-text-slot[data-hud=c]{left:8%!important;width:28%!important;max-width:28%!important}
+#canvas .hud-text-slot[data-hud=b],#canvas .hud-text-slot[data-hud=d]{right:8%!important;width:28%!important;max-width:28%!important}
+#pairDecorations .hud-asset-category{left:37%!important;width:26%!important;top:clamp(3px,.65cqh,10px)!important;height:12px!important;font-size:var(--hud-font)!important;letter-spacing:.07em!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#pairDecorations .hud-asset-packet,#pairDecorations .hud-asset-sync{top:auto!important;bottom:clamp(3px,.65cqh,10px)!important;height:12px!important;font-size:calc(var(--hud-font) * .85)!important;line-height:1.15!important}
+#pairDecorations .hud-asset-ticks{top:calc(var(--fi) - clamp(3px,.55cqh,8px))!important;height:clamp(2px,.5cqh,6px)!important}
+#pairDecorations .hud-asset-scan{top:auto!important;bottom:calc(var(--fi) - clamp(3px,.55cqh,8px))!important;height:clamp(2px,.5cqh,6px)!important}
+#pairDecorations .hud-asset-serial{left:2.35%!important;top:52%!important;width:clamp(75px,25cqh,280px)!important;font-size:var(--hud-font)!important;letter-spacing:.08em!important;overflow:hidden!important}
+#pairDecorations .hud-asset-barcode{top:73%!important;max-height:18%!important;overflow:hidden!important}
+#pairDecorations .hud-asset-telemetry{top:35%!important;max-height:24%!important;overflow:hidden!important}
+#pairDecorations .hud-asset-status{top:18%!important;max-height:14%!important;overflow:hidden!important}
+#canvas[data-ratio-mode="wide"] .hud-text-slot{font-size:clamp(5px,.85cqh,9px)!important}
+#canvas[data-ratio-mode="wide"] #pairDecorations .hud-asset-category{font-size:clamp(5px,.85cqh,9px)!important}
+#canvas[data-ratio-mode="portrait"] .hud-text-slot{font-size:clamp(6px,.95cqw,10px)!important}
+#canvas[data-ratio-mode="portrait"] #pairDecorations .hud-asset-category{font-size:clamp(6px,.95cqw,10px)!important}
+#canvas[data-ratio-mode="portrait"] #pairDecorations .hud-asset-serial{width:clamp(85px,22cqh,240px)!important}
+/* Preserve all editable labels; do not clip to zero-height percentage rails. */
+#canvas .hud-text-layer,#canvas #pairDecorations{overflow:hidden!important}
+
 </style><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&amp;family=Gowun+Dodum&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Nanum+Gothic:wght@400;700&amp;family=Nanum+Myeongjo:wght@400;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/></head><body><main class="app"><aside class="controls"><div class="brand">BLUE PAIRY / HUD EDITOR</div><h1>INSTANCE · 게임</h1><div class="sub">서로의 빛을 기록하는 MMORPG 아카이브</div><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="group" data-section="text"><h2>01 / 기록 정보</h2><label class="field">판형</label><select id="mode"><option value="quest">QUEST LOG · 퀘스트 진행 기록 · 목표와 달성 게이지</option><option value="bond">BOND ARCHIVE · 인연 기록 · 중앙 정렬과 공명 장식</option><option value="item">ITEM LORE · 아이템 도감 · 획득 정보와 설명 카드</option><option value="system">SYSTEM MESSAGE · 시스템 알림 · 업적/해금 팝업</option></select><p class="note" id="modeHelp">퀘스트 기록: 진행 상태, 퀘스트 목표, 게이지를 중심으로 표시해요.</p><label class="field">제목</label><input id="titleInput" value="서로의 빛이 되는 방법"/><label class="field">부제</label><input id="subtitleInput" value="빛이 닿은 곳에서, 우리는 다시 만났다."/><div class="row2"><div><label class="field">등급 / 유형</label><input id="rank" value="HIDDEN QUEST"/></div><div><label class="field">진행 상태</label><input id="status" value="COMPLETED"/></div></div><div class="row2"><label class="field">하단 왼쪽 문구 · 자유 입력</label><input id="footerText" placeholder="원하는 문구를 자유롭게 입력하세요" value="석영 × 함초롱바탕"/></div><label class="field">하단 정보</label><input id="meta" value="ARCHIVE NO. 001 · 2026.10.31"/><div class="fine-controls"><h3>판형별 안내 문구</h3><p class="note">판형을 바꾸면 해당 판형에 저장된 안내 문구가 표시돼요. 각각 자유롭게 수정할 수 있어요.</p>
 <div class="row2"><div><label class="field">퀘스트 안내</label><input id="labelQuest" value="QUEST UPDATED"/></div><div><label class="field">인연 기록 안내</label><input id="labelBond" value="SOUL LINK"/></div><div><label class="field">아이템 안내</label><input id="labelItem" value="ITEM ACQUIRED"/></div><div><label class="field">시스템 안내</label><input id="labelSystem" value="SYSTEM NOTIFICATION"/></div></div>
 <label class="field">상단 아카이브 문구</label><input id="topText" value="BLUE PAIRY / LASPERA"/>
