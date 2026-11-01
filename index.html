@@ -720,7 +720,7 @@ body,.controls,.stage,.tabs{background:#1b1915!important}
 <div><label class="field">장식 진하기 <output id="decoOpacityOut">35</output>%</label><input id="decoOpacity" max="100" min="0" step="5" type="range" value="35"/></div>
 <div><label class="field">채팅 패널 여백 <output id="chatPadOut">55</output>%</label><input id="chatPad" max="130" min="20" step="5" type="range" value="55"/></div>
 <div><label class="field">채팅 패널 테두리 <output id="chatBorderOut">25</output>%</label><input id="chatBorder" max="100" min="0" step="5" type="range" value="25"/></div>
-</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 이미지가 너무 크면 저장 공간을 확보하기 위해 배경 사진을 제외하고 텍스트와 설정을 저장합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE FAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><script>
+</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>브라우저 작업 저장</h2><p class="note">자동 저장과 별도로 현재 작업을 직접 저장하고 불러올 수 있어요. 이미지 스티커와 배경 이미지도 함께 보관합니다. 브라우저 저장 공간이 허용하는 범위에서 유지돼요.</p><div class="buttons"><button class="btn primary" id="browserSave" type="button">브라우저에 직접 저장</button><button class="btn" id="browserLoad" type="button">브라우저 저장 불러오기</button></div><p class="note" id="browserSaveInfo" role="status">아직 수동 저장 여부를 확인하지 않았어요.</p></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 큰 사진과 이미지 스티커도 IndexedDB에 원본 그대로 저장하며 위치·크기·회전도 유지합니다. 저장 공간이 부족하면 이미지를 다른 기호로 바꾸지 않고 오류를 표시합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE FAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><script>
 const $=id=>document.getElementById(id);
 const ids=['mode','titleInput','subtitleInput','rank','status','footerText','meta','topText','statusSymbol','labelQuest','labelBond','labelItem','labelSystem','bodyInput','accent','highlight','font','size','line','opacity','ratio','showBar','showStatus','showFooter'];
 const extras=['colorTheme','titleFont','titleSize','bodyAlign','bodyPosition','letterSpace','innerPad','dialogueColor','chatStyle','chatNameColor','hlOpacity','hlStyle','autoFit','frameStyle','shade','bgZoom','bgX','bgY','bondValue','bondLabel','stampText','stickerSize','stickerRotate','topSize','statusSize','modeSize','rankSize','subtitleSize','gaugeSize','footerSize','metaSize','uiScale','markerOffset','markerHeight','frameWidth','frameInset','dividerOpacity','decoOpacity','chatPad','chatBorder','bgColor','panelColor','panelAlpha','vignette','cornerGlyph','decorCaption','decorCaptionSize','decorLineWidth','exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad','pairLight','pairThread','pairPetals','pairMoon','pairQuest','pairLink','pairGlyph','pairSpark','pairLines','pairStars','pairDecoColor','pairDecoScale','hudAOn','hudBOn','hudCOn','hudDOn','hudAText','hudBText','hudCText','hudDText','hudFontSize','hudTextColor','hudExtraScan','hudExtraSide','hudExtraRight','hudExtraBottom','hudSideText','hudPacketText','bgBlur','hudAssetOpacity'];
@@ -998,34 +998,66 @@ $('stickerRemove').onclick=()=>{if(selected>=0)stickers.splice(selected,1);selec
 $('stickerClear').onclick=()=>{stickers=[];selected=-1;drawStickers()};
 const allIds=[...ids,...extras];
 function snapshot(){const values={};allIds.forEach(id=>values[id]=$(id).type==='checkbox'?$(id).checked:$(id).value);return {values,bgData,stickers}}
-function snapshotCompact(){const snap=snapshot();snap.bgData='';snap.stickers=snap.stickers.map(s=>s.img?{...s,img:null,text:'◇'}:s);snap.imageOmitted=true;return snap}
+function snapshotCompact(){const snap=snapshot();snap.bgData='';snap.stickers=snap.stickers.filter(s=>!s.img);snap.imageOmitted=true;return snap}
 const STORE_PREFIX='yr-preset-',DRAFT_KEY='yr-autodraft-v2';
+// IndexedDB keeps uploaded images without converting them into placeholder symbols.
+const DB_NAME='blue-fairy-editor-v1', DB_STORE='snapshots';
+function openSnapshotDB(){return new Promise((resolve,reject)=>{if(!window.indexedDB)return reject(Error('IndexedDB unavailable'));const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(DB_STORE))r.result.createObjectStore(DB_STORE)};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function dbSnapshotPut(key,value){const db=await openSnapshotDB();try{await new Promise((resolve,reject)=>{const tx=db.transaction(DB_STORE,'readwrite');tx.objectStore(DB_STORE).put(value,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}finally{db.close()}}
+async function dbSnapshotGet(key){const db=await openSnapshotDB();try{return await new Promise((resolve,reject)=>{const tx=db.transaction(DB_STORE,'readonly');const req=tx.objectStore(DB_STORE).get(key);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}finally{db.close()}}
 function safeStore(key,obj){
  try{localStorage.setItem(key,JSON.stringify(obj));return 'full'}
  catch(err){
-   try{localStorage.setItem(key,JSON.stringify(snapshotCompact()));return 'no-image'}
-   catch(err2){return 'failed'}
+   // Never turn an uploaded image sticker into a diamond or another character.
+   // On quota failure, keep the previous saved version intact.
+   return 'failed';
  }
 }
 function status(msg){$('saveStatus').textContent=msg}
+const PRESET_INDEX='blue-fairy-preset-index-v1';
+function presetNames(){
+ const names=new Set();
+ try{(JSON.parse(localStorage.getItem(PRESET_INDEX)||'[]')||[]).forEach(n=>names.add(n));}catch(e){}
+ try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(STORE_PREFIX))names.add(k.slice(STORE_PREFIX.length));}}catch(e){}
+ return [...names].sort((a,b)=>a.localeCompare(b,'ko'));
+}
+function rememberPreset(name,remove=false){const names=new Set(presetNames());if(remove)names.delete(name);else names.add(name);localStorage.setItem(PRESET_INDEX,JSON.stringify([...names]));}
 function listPresets(){
  const selected=$('presetSelect').value;
- const names=[];
- try{for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(key&&key.startsWith(STORE_PREFIX))names.push(key.slice(STORE_PREFIX.length))}}catch(e){}
- names.sort((a,b)=>a.localeCompare(b,'ko'));
+ const names=presetNames();
  const sel=$('presetSelect');sel.replaceChildren();
  const blank=document.createElement('option');blank.value='';blank.textContent=names.length?'프리셋을 선택하세요':'저장된 프리셋 없음';sel.append(blank);
  names.forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;sel.append(o)});
  if(names.includes(selected))sel.value=selected;
  return names;
 }
+async function savePreset(name){
+ // IndexedDB can store the full original image data; never substitute a symbol.
+ await dbSnapshotPut('preset:'+name,snapshot());
+ rememberPreset(name);
+ // Remove legacy large localStorage copy only after the complete save succeeds.
+ try{localStorage.removeItem(STORE_PREFIX+name)}catch(e){}
+}
+async function loadPreset(name){
+ let snap=await dbSnapshotGet('preset:'+name);
+ if(!snap){const old=localStorage.getItem(STORE_PREFIX+name);if(old){snap=JSON.parse(old);await dbSnapshotPut('preset:'+name,snap);rememberPreset(name);try{localStorage.removeItem(STORE_PREFIX+name)}catch(e){}}}
+ if(!snap)throw Error('프리셋 없음');
+ return snap;
+}
+async function deletePreset(name){
+ const db=await openSnapshotDB();
+ try{await new Promise((resolve,reject)=>{const tx=db.transaction(DB_STORE,'readwrite');tx.objectStore(DB_STORE).delete('preset:'+name);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}finally{db.close()}
+ try{localStorage.removeItem(STORE_PREFIX+name)}catch(e){}
+ rememberPreset(name,true);
+}
 let draftTimer=0,restoring=false;
 function scheduleDraft(){
  if(restoring)return;
  clearTimeout(draftTimer);
- draftTimer=setTimeout(()=>{
-  const result=safeStore(DRAFT_KEY,snapshot());
-  status(result==='full'?'자동 저장 완료':result==='no-image'?'자동 저장 완료 · 큰 사진 제외':'자동 저장 실패 · JSON 백업 권장');
+ draftTimer=setTimeout(async()=>{
+  const snap=snapshot();
+  try{await dbSnapshotPut('auto',snap);status('자동 저장 완료 · 이미지 포함')}
+  catch(err){const result=safeStore(DRAFT_KEY,snap);status(result==='full'?'자동 저장 완료 · 이미지 포함':'자동 저장 실패 · 브라우저 저장 공간 부족 (기존 이미지 유지)')}
  },650);
 }
 
@@ -1037,34 +1069,34 @@ function restore(obj){
  restoring=false;paintThemeSwatches();status(obj.imageOmitted?'불러오기 완료 · 큰 사진은 저장되지 않았어요':'불러오기 완료');scheduleDraft();
 }
 function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000)}
+$('browserSave').onclick=async()=>{const info=$('browserSaveInfo');info.textContent='저장 중…';try{await dbSnapshotPut('manual',snapshot());info.textContent='직접 저장 완료 · 이미지 스티커 포함';status('브라우저에 직접 저장했어요')}catch(err){info.textContent='저장 실패 · 저장 공간 또는 브라우저 권한을 확인해 주세요';alert('브라우저 저장에 실패했어요. JSON 파일로 백업해 주세요.')}};
+$('browserLoad').onclick=async()=>{try{const snap=await dbSnapshotGet('manual');if(!snap)return alert('직접 저장한 작업이 없어요.');if(!confirm('직접 저장한 작업으로 현재 내용을 바꿀까요?'))return;restore(snap);$('browserSaveInfo').textContent='직접 저장한 작업을 불러왔어요 · 이미지 포함'}catch(err){alert('브라우저 저장을 불러오지 못했어요.')}};
 $('save').onclick=()=>download(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'}),'yeongrong-settings.json');
 $('load').onclick=()=>$('loadFile').click();
 $('loadFile').onchange=async e=>{try{restore(JSON.parse(await e.target.files[0].text()))}catch(err){alert('설정 파일을 읽을 수 없습니다.')}};
-$('presetSave').onclick=()=>{
+$('presetSave').onclick=async()=>{
  const name=$('presetName').value.trim();
  if(!name)return alert('프리셋 이름을 입력해 주세요.');
- const key=STORE_PREFIX+name;
- if(localStorage.getItem(key)&&!confirm('같은 이름이 있어요. 덮어쓸까요?'))return;
- const result=safeStore(key,snapshot());
- if(result==='failed')return alert('저장에 실패했어요. JSON으로 백업해 주세요.');
- listPresets();$('presetSelect').value=name;
- status(result==='no-image'?'프리셋 저장 · 큰 사진 제외':'프리셋 저장 완료');
+ if(presetNames().includes(name)&&!confirm('같은 이름이 있어요. 덮어쓸까요?'))return;
+ try{await savePreset(name);listPresets();$('presetSelect').value=name;status('프리셋 저장 완료 · 이미지 스티커와 위치 포함')}
+ catch(e){status('프리셋 저장 실패');alert('저장 공간이 부족하거나 브라우저가 저장을 차단했어요. 기존 프리셋은 유지됩니다.')}
 };
-$('presetOverwrite').onclick=()=>{
+$('presetOverwrite').onclick=async()=>{
  const name=$('presetSelect').value;if(!name)return alert('덮어쓸 프리셋을 선택해 주세요.');
  if(!confirm('“'+name+'” 프리셋을 현재 내용으로 덮어쓸까요?'))return;
- const result=safeStore(STORE_PREFIX+name,snapshot());
- status(result==='full'?'덮어쓰기 완료':result==='no-image'?'덮어쓰기 완료 · 큰 사진 제외':'저장 실패');
+ try{await savePreset(name);status('덮어쓰기 완료 · 이미지 스티커와 위치 포함')}
+ catch(e){status('덮어쓰기 실패');alert('저장 공간이 부족해요. 기존 프리셋은 유지됩니다.')}
 };
-$('presetLoad').onclick=()=>{
+$('presetLoad').onclick=async()=>{
  const name=$('presetSelect').value;if(!name)return alert('불러올 프리셋을 선택해 주세요.');
- try{const raw=localStorage.getItem(STORE_PREFIX+name);if(!raw)throw Error('프리셋 없음');restore(JSON.parse(raw));$('presetName').value=name}
- catch(e){alert('프리셋을 불러오지 못했어요.')}
+ try{restore(await loadPreset(name));$('presetName').value=name;status('프리셋 불러오기 완료 · 이미지와 위치 복원')}
+ catch(e){alert('프리셋을 불러오지 못했어요. 기존 브라우저 데이터가 삭제되었을 수 있어요.')}
 };
-$('presetDelete').onclick=()=>{
+$('presetDelete').onclick=async()=>{
  const name=$('presetSelect').value;if(!name)return alert('삭제할 프리셋을 선택해 주세요.');
  if(!confirm('“'+name+'” 프리셋을 삭제할까요?'))return;
- localStorage.removeItem(STORE_PREFIX+name);listPresets();status('프리셋 삭제 완료');
+ try{await deletePreset(name);listPresets();status('프리셋 삭제 완료')}
+ catch(e){alert('프리셋 삭제에 실패했어요.')}
 };
 $('presetSelect').onchange=()=>{if($('presetSelect').value)$('presetName').value=$('presetSelect').value};
 const originalUpdate=update;
@@ -1072,7 +1104,7 @@ update=function(){originalUpdate();scheduleDraft()};
 $('pairDecorAll').onclick=()=>{document.querySelectorAll('.pair-deco-grid input').forEach(x=>x.checked=true);update()};
 $('pairDecorClear').onclick=()=>{document.querySelectorAll('.pair-deco-grid input').forEach(x=>x.checked=false);update()};
 listPresets();
-try{const draft=localStorage.getItem(DRAFT_KEY);if(draft){restore(JSON.parse(draft));status('이전 작업을 자동 복원했어요')}}catch(e){status('자동 복원 불가 · 새 작업 시작')}
+(async()=>{try{const draft=await dbSnapshotGet('auto');if(draft){restore(draft);status('이전 작업을 자동 복원했어요 · 이미지 포함');return}}catch(e){}try{const draft=localStorage.getItem(DRAFT_KEY);if(draft){restore(JSON.parse(draft));status('이전 작업을 자동 복원했어요')}}catch(e){status('자동 복원 불가 · 새 작업 시작')}})();
 for(const id of ['exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad']){
  $(id).addEventListener('input',()=>{$(id+'Out').textContent=$(id).value;scheduleDraft()});
 }
