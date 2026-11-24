@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>BLUE FAIRY | LASPERA HUD</title><style>
-:root{font-family:Pretendard,'Apple SD Gothic Neo',system-ui,sans-serif;color:#e9f4ff;background:#080f1c}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}.controls{padding:22px;background:#101b2c;border-right:1px solid #2c455e;max-height:100vh;overflow:auto}.brand{font-size:10px;letter-spacing:3px;color:#82d9ee}.controls h1{font-size:23px;margin:8px 0 5px}.sub{color:#9cb4c8;font-size:12px;margin-bottom:20px}.group{border:1px solid #2d465e;border-radius:12px;padding:14px;margin-bottom:13px;background:#142237}.group h2{font-size:12px;letter-spacing:1px;color:#9de9f3;margin:0 0 12px}.field{display:block;font-size:11px;color:#a9bfd2;margin:10px 0 4px}.controls input:not([type=checkbox]):not([type=color]):not([type=range]),.controls select,.controls textarea{width:100%;background:#091524;color:#effaff;border:1px solid #35516a;border-radius:6px;padding:9px;outline:none}.controls textarea{min-height:230px;resize:vertical;line-height:1.6}.controls input[type=color]{width:100%;height:35px;background:transparent;border:0}.controls input[type=range]{width:100%}.checks{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:#b9d4e3}.checks label{display:flex;gap:5px;align-items:center}.buttons{display:flex;gap:8px;flex-wrap:wrap}.btn{background:#20475c;color:#e8fbff;border:1px solid #46829c;padding:10px 12px;border-radius:7px;font-size:12px}.btn.primary{background:#a3ecf2;color:#09202d;font-weight:800}.stage{padding:28px;display:flex;align-items:center;flex-direction:column;gap:15px;background:radial-gradient(circle at 60% 10%,#1b3046,#080f1c 70%);overflow:auto}.stagebar{width:min(100%,880px);display:flex;justify-content:space-between;align-items:center;gap:10px;color:#9eb8c9;font-size:11px}.stagebar strong{color:#e2f6fa}.canvas{width:min(100%,800px);aspect-ratio:4/3;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 15%,#1a5062 0%,transparent 43%),linear-gradient(145deg,#12273c,#081422 80%);border:1px solid #7bc5d180;box-shadow:0 25px 75px #0008;isolation:isolate}.canvas:before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.9%,#b1edfa08 50%,transparent 50.1%),repeating-linear-gradient(0deg,transparent 0 28px,#b1edfa08 29px);z-index:0}.ambient{position:absolute;inset:0;background-position:center;background-size:cover;opacity:.32;z-index:-1}.frame{position:absolute;inset:4%;border:1px solid #8bdce17a;display:flex;flex-direction:column;min-height:0;background:#08152566;backdrop-filter:blur(2px)}.frame:before,.frame:after{content:'';position:absolute;width:18px;height:18px;border-color:#b5f4ed;pointer-events:none}.frame:before{left:-1px;top:-1px;border-left:2px solid;border-top:2px solid}.frame:after{right:-1px;bottom:-1px;border-right:2px solid;border-bottom:2px solid}.topline{padding:13px 17px 10px;border-bottom:1px solid #87e1e348;display:flex;justify-content:space-between;gap:8px;align-items:center}.micro{font-size:9px;letter-spacing:2px;color:#8ddae6}.signal{font-size:10px;color:#b7f7d9}.header{padding:13px 7% 9px}.kicker{font-size:10px;letter-spacing:2px;color:#a3d5e7}.title{font-size:clamp(18px,3vw,32px);font-weight:750;letter-spacing:.02em;margin:5px 0}.subtitle{font-size:11px;color:#a3bdcb}.barrow{display:flex;align-items:center;gap:9px;margin:10px 0 0;font-size:9px;color:#a4cad7}.bar{height:4px;background:#2e5061;flex:1;max-width:180px}.fill{height:100%;width:100%;background:linear-gradient(90deg,#66b8e9,#c7f9d8);box-shadow:0 0 10px #7bd9e8}.content{flex:1;min-height:0;overflow:hidden;padding:8px 7% 8px;display:flex;flex-direction:column;justify-content:center}.bodytext{font-size:15px;line-height:1.85;white-space:normal;overflow-wrap:anywhere;color:#e5f0f4}.bodytext p{margin:0 0 .8em}.bodytext p:last-child{margin-bottom:0}.bodytext strong{color:#fff}.bodytext em{color:#c4e5ee}.bodytext mark{background:#9de7e54a;color:inherit;padding:0 .12em}.dialogue{border-left:2px solid var(--accent,#9ce4ec);padding:2px 0 2px 12px;margin:10px 0;color:#d4f7fb}.systemline{color:#a7f4d4;font-size:.9em;border:1px solid #a7f4d43b;background:#1c514532;padding:7px 10px;margin:8px 0}.footer{padding:10px 17px;border-top:1px solid #87e1e348;display:flex;justify-content:space-between;gap:10px;color:#8db7c5;font-size:9px;letter-spacing:1px}.hide{display:none!important}.frame.bond .kicker:before{content:'◈  ';color:#9cf6e1}.frame.item .kicker:before{content:'◇  ';color:#9cf6e1}.frame.system .kicker:before{content:'▣  ';color:#9cf6e1}.note{color:#91acbe;font-size:11px;line-height:1.6}.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:850px){.app{grid-template-columns:1fr}.controls{max-height:none;border-right:0;border-bottom:1px solid #2c455e}.stage{padding:16px 10px}.canvas{width:100%}}@media(max-width:500px){.canvas{aspect-ratio:3/4}.frame{inset:4%}.bodytext{font-size:12px}.header{padding-top:8px}.topline,.footer{padding:9px}.content{padding:6px 7%}.title{font-size:20px}}
+:root{font-family:Pretendard,'Apple SD Gothic Neo',system-ui,sans-serif;color:#e9f4ff;background:#080f1c}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}.controls{padding:22px;background:#101b2c;border-right:1px solid #2c455e;max-height:100vh;overflow:auto}.brand{font-size:10px;letter-spacing:3px;color:#82d9ee}.controls h1{font-size:23px;margin:8px 0 5px}.sub{color:#9cb4c8;font-size:12px;margin-bottom:20px}.group{border:1px solid #2d465e;border-radius:12px;padding:14px;margin-bottom:13px;background:#142237}.group h2{font-size:12px;letter-spacing:1px;color:#9de9f3;margin:0 0 12px}.field{display:block;font-size:11px;color:#a9bfd2;margin:10px 0 4px}.controls input:not([type=checkbox]):not([type=color]):not([type=range]),.controls select,.controls textarea{width:100%;background:#091524;color:#effaff;border:1px solid #35516a;border-radius:6px;padding:9px;outline:none}.controls textarea{min-height:230px;resize:vertical;line-height:1.6}.controls input[type=color]{width:100%;height:35px;background:transparent;border:0}.controls input[type=range]{width:100%}.checks{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:#b9d4e3}.checks label{display:flex;gap:5px;align-items:center}.buttons{display:flex;gap:8px;flex-wrap:wrap}.btn{background:#20475c;color:#e8fbff;border:1px solid #46829c;padding:10px 12px;border-radius:7px;font-size:12px}.btn.primary{background:#a3ecf2;color:#09202d;font-weight:800}.stage{padding:28px;display:flex;align-items:center;flex-direction:column;gap:15px;background:radial-gradient(circle at 60% 10%,#1b3046,#080f1c 70%);overflow:auto}.stagebar{width:min(100%,880px);display:flex;justify-content:space-between;align-items:center;gap:10px;color:#9eb8c9;font-size:11px}.stagebar strong{color:#e2f6fa}.canvas{width:min(100%,800px);aspect-ratio:4/3;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 15%,#1a5062 0%,transparent 43%),linear-gradient(145deg,#12273c,#081422 80%);border:1px solid #7bc5d180;box-shadow:0 25px 75px #0008;isolation:isolate}.canvas:before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.9%,#b1edfa08 50%,transparent 50.1%),repeating-linear-gradient(0deg,transparent 0 28px,#b1edfa08 29px);z-index:0}.ambient{position:absolute;inset:0;background-position:center;background-size:cover;opacity:.32;z-index:-1}.frame{position:absolute;inset:4%;border:1px solid #8bdce17a;display:flex;flex-direction:column;min-height:0;background:#08152566;backdrop-filter:blur(2px)}.frame:before,.frame:after{content:'';position:absolute;width:18px;height:18px;border-color:#b5f4ed;pointer-events:none}.frame:before{left:-1px;top:-1px;border-left:2px solid;border-top:2px solid}.frame:after{right:-1px;bottom:-1px;border-right:2px solid;border-bottom:2px solid}.topline{padding:13px 17px 10px;border-bottom:1px solid #87e1e348;display:flex;justify-content:space-between;gap:8px;align-items:center}.micro{font-size:9px;letter-spacing:2px;color:#8ddae6}.signal{font-size:10px;color:#b7f7d9}.header{padding:13px 7% 9px}.kicker{font-size:10px;letter-spacing:2px;color:#a3d5e7}.title{font-size:clamp(18px,3vw,32px);font-weight:750;letter-spacing:.02em;margin:5px 0}.subtitle{font-size:11px;color:#a3bdcb}.barrow{display:flex;align-items:center;gap:9px;margin:10px 0 0;font-size:9px;color:#a4cad7}.bar{height:4px;background:#2e5061;flex:1;max-width:180px}.fill{height:100%;width:100%;background:linear-gradient(90deg,#66b8e9,#c7f9d8);box-shadow:0 0 10px #7bd9e8}.content{flex:1;min-height:0;overflow:hidden;padding:8px 7% 8px;display:flex;flex-direction:column;justify-content:center}.bodytext{font-size:15px;line-height:1.85;white-space:normal;overflow-wrap:anywhere;color:#e5f0f4}.bodytext p{margin:0 0 .8em}.bodytext p:last-child{margin-bottom:0}.bodytext strong{color:#fff}.bodytext em{color:inherit;font-style:italic}.bodytext mark{background:#9de7e54a;color:inherit;padding:0 .12em}.dialogue{border-left:2px solid var(--accent,#9ce4ec);padding:2px 0 2px 12px;margin:10px 0;color:#d4f7fb}.systemline{color:#a7f4d4;font-size:.9em;border:1px solid #a7f4d43b;background:#1c514532;padding:7px 10px;margin:8px 0}.footer{padding:10px 17px;border-top:1px solid #87e1e348;display:flex;justify-content:space-between;gap:10px;color:#8db7c5;font-size:9px;letter-spacing:1px}.hide{display:none!important}.frame.bond .kicker:before{content:'◈  ';color:#9cf6e1}.frame.item .kicker:before{content:'◇  ';color:#9cf6e1}.frame.system .kicker:before{content:'▣  ';color:#9cf6e1}.note{color:#91acbe;font-size:11px;line-height:1.6}.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:850px){.app{grid-template-columns:1fr}.controls{max-height:none;border-right:0;border-bottom:1px solid #2c455e}.stage{padding:16px 10px}.canvas{width:100%}}@media(max-width:500px){.canvas{aspect-ratio:3/4}.frame{inset:4%}.bodytext{font-size:12px}.header{padding-top:8px}.topline,.footer{padding:9px}.content{padding:6px 7%}.title{font-size:20px}}
 
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Serif+KR&display=swap');
 .app{display:flex!important;flex-direction:column!important}
@@ -666,10 +666,61 @@ body,.controls,.stage,.tabs{background:#1b1915!important}
 #canvas #frame{position:absolute!important;inset:var(--safe-frame-inset,4%)!important;height:auto!important;max-height:none!important;min-height:0!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
 #canvas #frame .content{flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
 #canvas #frame .bodytext{max-width:100%!important;min-height:0!important}
-</style><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&amp;family=Gowun+Dodum&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Nanum+Gothic:wght@400;700&amp;family=Nanum+Myeongjo:wght@400;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/></head><body><main class="app"><aside class="controls"><div class="brand">BLUE FAIRY / HUD EDITOR</div><h1>INSTANCE · 게임</h1><div class="sub">서로의 빛을 기록하는 MMORPG 아카이브</div><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="group" data-section="text"><h2>01 / 기록 정보</h2><label class="field">판형</label><select id="mode"><option value="quest">QUEST LOG · 퀘스트 진행 기록 · 목표와 달성 게이지</option><option value="bond">BOND ARCHIVE · 인연 기록 · 중앙 정렬과 공명 장식</option><option value="item">ITEM LORE · 아이템 도감 · 획득 정보와 설명 카드</option><option value="system">SYSTEM MESSAGE · 시스템 알림 · 업적/해금 팝업</option></select><p class="note" id="modeHelp">퀘스트 기록: 진행 상태, 퀘스트 목표, 게이지를 중심으로 표시해요.</p><label class="field">제목</label><input id="titleInput" value="서로의 빛이 되는 방법"/><label class="field">부제</label><input id="subtitleInput" value="빛이 닿은 곳에서, 우리는 다시 만났다."/><div class="row2"><div><label class="field">등급 / 유형</label><input id="rank" value="HIDDEN QUEST"/></div><div><label class="field">진행 상태</label><input id="status" value="COMPLETED"/></div></div><div class="row2"><label class="field">하단 왼쪽 문구 · 자유 입력</label><input id="footerText" placeholder="원하는 문구를 자유롭게 입력하세요" value="석영 × 함초롱바탕"/></div><label class="field">하단 정보</label><input id="meta" value="ARCHIVE NO. 001 · 2026.10.31"/><div class="fine-controls"><h3>판형별 안내 문구</h3><p class="note">판형을 바꾸면 해당 판형에 저장된 안내 문구가 표시돼요. 각각 자유롭게 수정할 수 있어요.</p>
+#frame .system-message{display:block;min-width:0;width:100%;overflow-wrap:anywhere}
+#frame .bodytext .systemline{line-height:var(--body-line-final,1.65)!important}
+#frame .bodytext .chat-entry .chat-name,#frame .bodytext .chat-entry .chat-message,#frame .bodytext .chat-entry::before{line-height:var(--body-line-final,1.65)!important}
+#frame .bodytext p{margin-bottom:var(--paragraph-gap,.62em)!important}
+#frame .named-speaker{border-left-color:var(--chat-name)!important}
+#frame .scene-break{display:flex;align-items:center;justify-content:center;gap:.75em;color:var(--theme-muted);font-size:.87em;letter-spacing:.06em;margin:1em 0;text-align:center}
+.scene-break::before,.scene-break::after{content:"";flex:1;height:1px;background:var(--theme-line,currentColor);opacity:.55}
+#cardPage{flex:none;text-align:right;color:var(--theme-muted);font: .72em monospace}#cardPage:empty{display:none}
+.excerpt-tools{margin:12px 0}.excerpt-tools summary{cursor:pointer}.excerpt-tools .buttons{flex-wrap:wrap}.excerpt-tools button:disabled,#pageTools button:disabled{opacity:.45}#pageTools[hidden]{display:none}
+/* Blue Fairy editor chrome. Card colors come from the selected HUD preset. */
+body .app{
+ --ui-night:#090f19;--ui-panel:#131f30;--ui-field:#0c1624;
+ --ui-edge:#314762;--ui-text:#edf5ff;--ui-muted:#b0c3da;--ui-blue:#93c9ff;
+ background:var(--ui-night);
+}
+body,body .controls,body .controls .tabs{background:#090f19!important}
+.app .controls{color:var(--ui-text)}
+.app .stage{background:radial-gradient(ellipse at 50% 22%,#172c46,#090f19 75%)!important;border-color:var(--ui-edge)!important}
+.app .controls .group{background:var(--ui-panel)!important;border-color:var(--ui-edge)!important}
+.controls .group h2,.controls .brand,.controls output,.controls .fine-controls h3,.controls summary,.stage #fitInfo{color:var(--ui-blue)!important}
+.controls .field,.controls .sub,.controls .note,.controls .theme-swatches,.controls .checks,.controls .pair-deco-grid small,.app .stagebar,.stage > .note{color:var(--ui-muted)!important}
+.app .stagebar strong,.controls .pair-deco-grid b{color:var(--ui-text)!important}
+.app .controls input:not([type=checkbox]):not([type=color]):not([type=range]),.app .controls select,.app .controls textarea,.controls .pair-deco-grid label{
+ background:var(--ui-field)!important;border-color:var(--ui-edge)!important;color:var(--ui-text)!important
+}
+.controls .fine-controls,.controls .theme-picker{border-color:var(--ui-edge)}
+.controls input{accent-color:var(--ui-blue)}
+.controls input::placeholder,.controls textarea::placeholder{color:#8fa6bf}
+.app .controls .btn,.app .controls .tabs button,.stage #pageTools button{
+ background:#1d3048!important;border-color:#3c5777!important;color:var(--ui-text)!important
+}
+.app .controls .btn.primary,.app .controls .tabs button.active{
+ background:var(--ui-blue)!important;border-color:var(--ui-blue)!important;color:#0a1a30!important
+}
+.app .controls :focus-visible,.stage #pageTools button:focus-visible{outline:2px solid var(--ui-blue);outline-offset:2px}
+#frame #bodyView .chat-entry,#frame #bodyView .dialogue{line-height:var(--body-line-final,1.65)!important}
+@media(max-width:850px){
+ html,body{height:100%;overflow:hidden}
+ body .app{display:flex!important;flex-direction:column!important;height:100vh;height:100dvh;min-height:0!important;overflow:hidden}
+ body .app>.stage{order:0;flex:0 0 auto;padding:6px 10px!important;gap:4px;max-height:none!important}
+ body .app>.stage #canvas{width:min(100%,calc(32vh * var(--ratio-number,1.3333)))!important;width:min(100%,calc(32dvh * var(--ratio-number,1.3333)))!important;height:auto!important;max-height:none!important;aspect-ratio:var(--ratio,4 / 3)!important}
+ body .app>.controls{order:1;flex:1 1 0;min-height:0!important;max-height:none!important;width:100%;margin:0 auto!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior-y:contain;padding-bottom:max(16px,env(safe-area-inset-bottom))!important}
+}
+/* Preview toolbar stays outside the exported canvas. */
+.stage .preview-dock{width:min(100%,900px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:5px;padding:5px 0;border-top:1px solid var(--ui-edge)}
+.stage .preview-dock .tabs,.stage .preview-actions,.stage #pageTools:not([hidden]){position:static!important;display:flex;align-items:center;gap:4px;margin:0;padding:0;background:transparent!important;backdrop-filter:none}
+.stage .preview-actions{flex-wrap:wrap}
+.stage .preview-dock button{flex:none;padding:6px 10px;min-height:32px;border:1px solid var(--ui-edge)!important;border-radius:5px;background:#1d3048!important;color:var(--ui-text)!important;font-size:12px}
+.stage .preview-dock .active,.stage .preview-dock .primary{background:var(--ui-blue)!important;color:#0a1a30!important}
+.stage .preview-dock button:disabled{opacity:.4;cursor:default}
+@media(max-width:850px){.stage .preview-dock{gap:4px;padding:3px 0}.stage .preview-dock button{padding:4px 7px;font-size:11px}}
+</style><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&amp;family=Gowun+Dodum&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Nanum+Gothic:wght@400;700&amp;family=Nanum+Myeongjo:wght@400;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/></head><body><main class="app"><aside class="controls"><div class="brand">BLUE FAIRY / HUD EDITOR</div><h1>INSTANCE · 게임</h1><div class="sub">서로의 빛을 기록하는 MMORPG 아카이브</div><div class="group" data-section="text"><h2>01 / 기록 정보</h2><label class="field">판형</label><select id="mode"><option value="quest">QUEST LOG · 퀘스트 진행 기록 · 목표와 달성 게이지</option><option value="bond">BOND ARCHIVE · 인연 기록 · 중앙 정렬과 공명 장식</option><option value="item">ITEM LORE · 아이템 도감 · 획득 정보와 설명 카드</option><option value="system">SYSTEM MESSAGE · 시스템 알림 · 업적/해금 팝업</option></select><p class="note" id="modeHelp">퀘스트 기록: 진행 상태, 퀘스트 목표, 게이지를 중심으로 표시해요.</p><label class="field">제목</label><input id="titleInput" value="서로의 빛이 되는 방법"/><label class="field">부제</label><input id="subtitleInput" value="빛이 닿은 곳에서, 우리는 다시 만났다."/><div class="row2"><div><label class="field">등급 / 유형</label><input id="rank" value="HIDDEN QUEST"/></div><div><label class="field">진행 상태</label><input id="status" value="COMPLETED"/></div></div><div class="row2"><label class="field">하단 왼쪽 문구 · 자유 입력</label><input id="footerText" placeholder="원하는 문구를 자유롭게 입력하세요" value="석영 × 함초롱바탕"/></div><label class="field">하단 정보</label><input id="meta" value="ARCHIVE NO. 001 · 2026.10.31"/><div class="fine-controls"><h3>판형별 안내 문구</h3><p class="note">판형을 바꾸면 해당 판형에 저장된 안내 문구가 표시돼요. 각각 자유롭게 수정할 수 있어요.</p>
 <div class="row2"><div><label class="field">퀘스트 안내</label><input id="labelQuest" value="QUEST UPDATED"/></div><div><label class="field">인연 기록 안내</label><input id="labelBond" value="SOUL LINK"/></div><div><label class="field">아이템 안내</label><input id="labelItem" value="ITEM ACQUIRED"/></div><div><label class="field">시스템 안내</label><input id="labelSystem" value="SYSTEM NOTIFICATION"/></div></div>
 <label class="field">상단 아카이브 문구</label><input id="topText" value="BLUE FAIRY / LASPERA"/>
-<label class="field">상태 앞 표시</label><input id="statusSymbol" placeholder="예: ●, ◇, ✦ 또는 빈칸" value="●"/></div></div><div class="group" data-section="text"><h2>02 / 본문</h2><div class="note">빈 줄로 문단 구분 · **굵게** · *기울임* · ==형광펜== · &gt; 대사 · ! 시스템 메시지</div><label class="field">발췌 내용</label><div class="buttons mdtools"><button class="btn" data-wrap="**">굵게</button><button class="btn" data-wrap="*">기울임</button><button class="btn" data-wrap="__">밑줄</button><button class="btn" data-wrap="==">형광펜</button><button class="btn" data-prefix="&gt; ">대사</button><button class="btn" data-prefix="! ">시스템</button></div><textarea id="bodyInput">접속한 세계의 하늘에는 이름 모를 별들이 떠 있었다. 수많은 플레이어가 스쳐 가는 거리에서, 이상하게도 단 한 사람만이 선명하게 보였다.
+<label class="field">상태 앞 표시</label><input id="statusSymbol" placeholder="예: ●, ◇, ✦ 또는 빈칸" value="●"/></div></div><div class="group" data-section="text"><h2>02 / 본문</h2><div class="note">빈 줄로 문단 구분 · **굵게** · *기울임* · ==형광펜== · &gt; 대사 · ! 시스템 메시지</div><label class="field">발췌 내용</label><div class="buttons mdtools"><button class="btn" data-wrap="**">굵게</button><button class="btn" data-wrap="*">기울임</button><button class="btn" data-wrap="__">밑줄</button><button class="btn" data-wrap="==">형광펜</button><button class="btn" data-wrap="++">보조 형광펜</button><button class="btn" data-prefix="&gt; ">대사</button><button class="btn" data-prefix="! ">시스템</button></div><textarea id="bodyInput">접속한 세계의 하늘에는 이름 모를 별들이 떠 있었다. 수많은 플레이어가 스쳐 가는 거리에서, 이상하게도 단 한 사람만이 선명하게 보였다.
 
 류빛가람｜오마카세든 호텔 뷔페든 가자고 조르면 다 사줄 테니까 밥알이나 한 톨도 남기지 말고 싹 긁어먹어.
 
@@ -677,7 +728,10 @@ body,.controls,.stage,.tabs{background:#1b1915!important}
 
 ==서로의 빛이 되어 주는 것.==
 
-! [SYSTEM] 새로운 인연의 기록이 해금되었습니다.</textarea></div><div class="group" data-section="design"><h2>03 / 디자인</h2><div class="theme-picker"><label class="field" for="colorTheme">색상 프리셋</label><select id="colorTheme"><option value="yeongrong">영롱 · 아이보리 / 차콜</option><option value="salbyeol">살별 · 코랄 레드 / 라임</option><option value="unseong">운성 · 딥 블루 / 라임</option><option value="unreadable">열람불가 · 라벤더 그레이 / 실버</option><option value="custom">직접 설정 · 사용자 색상</option></select><div class="theme-swatches" id="themeSwatches"><i></i><i></i><span id="themeDescription">기존 따뜻한 골드 HUD</span></div><p class="note">색상만 변경해요. 본문, 사진, 장식 배치, 저장 설정은 유지됩니다. 개별 색을 수정하면 '직접 설정'으로 전환돼요.</p></div><div class="row2"><div><label class="field">포인트 색상</label><input id="accent" type="color" value="#BFAE8A"/></div><div><label class="field">형광펜 색상</label><input id="highlight" type="color" value="#D8C99E"/></div></div><label class="field">글꼴</label><select id="font"><option value="system-ui, sans-serif">고딕 · 시스템 기본</option><option value="'Pretendard','Noto Sans KR',sans-serif">고딕 · Pretendard</option><option value="'Noto Sans KR',sans-serif">고딕 · Noto Sans KR</option><option value="'Nanum Gothic',sans-serif">고딕 · 나눔고딕</option><option value="'Gowun Dodum',sans-serif">고딕 · 고운돋움</option><option value="'Noto Serif KR',serif">명조 · Noto Serif KR</option><option value="'Nanum Myeongjo',serif">명조 · 나눔명조</option><option value="'Gowun Batang',serif">명조 · 고운바탕</option><option value="Georgia,serif">영문 세리프 · Georgia</option><option value="'IBM Plex Mono',monospace">게임 HUD · IBM Plex Mono</option><option value="'Space Mono',monospace">게임 HUD · Space Mono</option><option value="monospace">게임 HUD · 시스템 모노</option></select><label class="field">본문 크기 <span id="sizeValue">10px</span></label><input id="size" max="24" min="6" step="0.5" type="range" value="10"/><label class="field">줄 간격 <span id="lineValue">1.65</span></label><input id="line" max="2.5" min="1.2" step="0.05" type="range" value="1.65"/><label class="field">배경 이미지 업로드</label><input accept="image/*" id="bgUpload" type="file"/><label class="field">배경 이미지 불투명도 <span id="opacityValue">32%</span></label><input id="opacity" max="100" min="0" type="range" value="32"/><label class="field">판형 비율</label><select id="ratio"><option value="4/3">4:3 가로</option><option value="16/9">16:9 가로</option><option value="1/1">1:1 정사각형</option><option value="3/4">3:4 세로</option></select><div class="checks" style="margin-top:14px"><label><input checked="" id="showBar" type="checkbox"/> 유대 게이지</label><label><input checked="" id="showStatus" type="checkbox"/> 상태 표시</label><label><input checked="" id="showFooter" type="checkbox"/> 하단 메타</label></div><div class="fine-controls"><h3>배경 색상 · 밝기</h3><div class="row2"><div><label class="field">이미지 배경색</label><input id="bgColor" type="color" value="#1B1915"/></div><div><label class="field">프레임 내부 색상</label><input id="panelColor" type="color" value="#201E19"/></div><div><label class="field">프레임 내부 불투명도 <output id="panelAlphaOut">94</output>%</label><input id="panelAlpha" max="100" min="0" type="range" value="94"/></div><div><label class="field">가장자리 어둡기 <output id="vignetteOut">50</output>%</label><input id="vignette" max="100" min="0" type="range" value="50"/></div></div></div></div><label class="field">배경 이미지 블러 <output id="bgBlurOut">0</output>px</label><input id="bgBlur" max="24" min="0" step="1" type="range" value="0"/><div class="group" data-section="export"><h2>04 / 저장 및 내보내기</h2><div class="buttons"><button class="btn primary" id="export">PNG 이미지 저장</button><button class="btn" id="save">설정 JSON 저장</button><button class="btn" id="load">설정 불러오기</button><input accept="application/json" hidden="" id="loadFile" type="file"/></div><p class="note">PNG 저장은 온라인 html2canvas 라이브러리를 사용합니다. 최초 저장 시 인터넷 연결이 필요할 수 있습니다.</p></div><div class="group" data-section="design"><h2>세부 글자 설정</h2><div class="row2"><div><label class="field">제목 글꼴</label><select id="titleFont"><option value="inherit">본문 글꼴 따라가기</option><option value="system-ui, sans-serif">고딕 · 시스템 기본</option><option value="'Pretendard','Noto Sans KR',sans-serif">고딕 · Pretendard</option><option value="'Noto Sans KR',sans-serif">고딕 · Noto Sans KR</option><option value="'Nanum Gothic',sans-serif">고딕 · 나눔고딕</option><option value="'Gowun Dodum',sans-serif">고딕 · 고운돋움</option><option value="'Noto Serif KR',serif">명조 · Noto Serif KR</option><option value="'Nanum Myeongjo',serif">명조 · 나눔명조</option><option value="'Gowun Batang',serif">명조 · 고운바탕</option><option value="Georgia,serif">영문 세리프 · Georgia</option><option value="'IBM Plex Mono',monospace">게임 HUD · IBM Plex Mono</option><option value="'Space Mono',monospace">게임 HUD · Space Mono</option><option value="monospace">게임 HUD · 시스템 모노</option></select></div><div><label class="field">제목 크기</label><input id="titleSize" max="38" min="10" type="range" value="20"/></div><div><label class="field">본문 정렬</label><select id="bodyAlign"><option value="left">왼쪽</option><option value="center">가운데</option><option value="right">오른쪽</option><option value="justify">양쪽</option></select></div><div><label class="field">본문 세로 위치</label><select id="bodyPosition"><option selected="" value="center">가운데</option><option value="flex-start">위</option><option value="flex-end">아래</option></select></div><div><label class="field">자간</label><input id="letterSpace" max="3" min="-1" step=".2" type="range" value="0"/></div><div><label class="field">본문 여백</label><input id="innerPad" max="14" min="2" type="range" value="7"/></div><div><label class="field">대사 색</label><input id="dialogueColor" type="color" value="#F3E7CC"/><label class="field">게임 채팅 표시 방식</label><select id="chatStyle"><option value="bubble">반투명 채팅 패널</option><option value="line">얇은 채팅 로그</option><option value="minimal">이름만 강조</option></select><label class="field">채팅 이름 색상</label><input id="chatNameColor" type="color" value="#DCC28F"/><p class="note">‘류빛가람｜대사’ 또는 ‘류빛가람 | 대사’처럼 입력하면 게임 채팅으로 표시해요. 보이지 않는 공백 문자가 섞여 있어도 인식합니다.</p></div><div><label class="field">형광펜 진하기</label><input id="hlOpacity" max="100" min="5" type="range" value="40"/></div></div><label class="field">형광펜 스타일</label><select id="hlStyle"><option value="full">전체 칠</option><option value="marker">마커</option><option value="under">밑줄</option><option value="outline">테두리</option></select><label class="checks"><input checked="" id="autoFit" type="checkbox"/> 자동 글자 맞춤 (최소 7px)</label><div class="fine-controls"><h3>모든 글씨 크기</h3><p class="note">기준은 가로 900px 이미지예요. 비율을 바꾸거나 작은 화면에서도 글씨와 장식이 함께 비례해요.</p>
+! [SYSTEM] 새로운 인연의 기록이 해금되었습니다.</textarea><div class="excerpt-tools"><div class="buttons"><button class="btn" id="clipSelect">선택 구간 발췌</button><button class="btn" id="clipClear">전체 보기</button></div><p class="note" id="clipInfo" aria-live="polite"></p><div class="buttons"><button class="btn" data-edge="0" data-step="-1">앞 문장 추가</button><button class="btn" data-edge="0" data-step="1">앞 문장 제외</button><button class="btn" data-edge="1" data-step="1">뒤 문장 추가</button><button class="btn" data-edge="1" data-step="-1">뒤 문장 제외</button></div></div><details class="excerpt-tools"><summary>장면 전환선</summary><label class="field" for="sceneText">장면 이름</label><input id="sceneText" list="sceneOptions" value="현실 · 송파 오피스텔"><datalist id="sceneOptions"><option value="현실 · 송파 오피스텔"><option value="접속 · 세레온 대성당"></datalist><button class="btn" id="insertScene">커서 위치에 삽입</button></details>
+<details class="excerpt-tools"><summary>화자별 대사 스타일 · 강조색</summary><label class="checks"><input type="checkbox" id="speakerOn"> 화자별 색 사용</label><label class="field" for="aliasesA">화자 A 이름 · 쉼표로 구분</label><div class="row2"><input id="aliasesA" value="류빛가람, 석영"><input aria-label="화자 A 색" type="color" id="speakerA" value="#EAC890"></div><label class="field" for="aliasesB">화자 B 이름 · 쉼표로 구분</label><div class="row2"><input id="aliasesB" value="류함초롱, 함초롱바탕"><input aria-label="화자 B 색" type="color" id="speakerB" value="#A5D4FA"></div><label class="field" for="secondColor">보조 형광펜 · ++강조++</label><input type="color" id="secondColor" value="#A5D4FA"></details><div class="excerpt-tools"><label class="checks"><input type="checkbox" id="autoPages"> 긴 로그 자동 페이지 분할</label><p class="note">이전 장·다음 장으로 넘겨 보세요. PNG 저장은 현재 장에 적용돼요.</p><label class="field" for="minPageFont">분할 시 최소 본문 크기 (px)</label><input id="minPageFont" type="number" min="6" max="34" value="12"></div></div><div class="group" data-section="design"><h2>03 / 디자인</h2><div class="theme-picker"><label class="field" for="colorTheme">색상 프리셋</label><select id="colorTheme"><option value="yeongrong">영롱 · 아이보리 / 차콜</option><option value="salbyeol">살별 · 코랄 레드 / 라임</option><option value="unseong">운성 · 딥 블루 / 라임</option><option value="unreadable">열람불가 · 라벤더 그레이 / 실버</option><option value="custom">직접 설정 · 사용자 색상</option></select><div class="theme-swatches" id="themeSwatches"><i></i><i></i><span id="themeDescription">기존 따뜻한 골드 HUD</span></div><p class="note">색상만 변경해요. 본문, 사진, 장식 배치, 저장 설정은 유지됩니다. 개별 색을 수정하면 '직접 설정'으로 전환돼요.</p></div><div class="row2"><div><label class="field">포인트 색상</label><input id="accent" type="color" value="#BFAE8A"/></div><div><label class="field">형광펜 색상</label><input id="highlight" type="color" value="#D8C99E"/></div></div><label class="field">글꼴</label><select id="font"><option value="system-ui, sans-serif">고딕 · 시스템 기본</option><option value="'Pretendard','Noto Sans KR',sans-serif">고딕 · Pretendard</option><option value="'Noto Sans KR',sans-serif">고딕 · Noto Sans KR</option><option value="'Nanum Gothic',sans-serif">고딕 · 나눔고딕</option><option value="'Gowun Dodum',sans-serif">고딕 · 고운돋움</option><option value="'Noto Serif KR',serif">명조 · Noto Serif KR</option><option value="'Nanum Myeongjo',serif">명조 · 나눔명조</option><option value="'Gowun Batang',serif">명조 · 고운바탕</option><option value="Georgia,serif">영문 세리프 · Georgia</option><option value="'IBM Plex Mono',monospace">게임 HUD · IBM Plex Mono</option><option value="'Space Mono',monospace">게임 HUD · Space Mono</option><option value="monospace">게임 HUD · 시스템 모노</option></select><label class="field">본문 크기 <span id="sizeValue">10px</span></label><input id="size" max="24" min="6" step="0.5" type="range" value="10"/><label class="field" for="line">전체 행간 <span id="lineValue">1.65</span></label><input id="line" max="2.5" min="1.2" step="0.05" type="range" value="1.65"/><label class="field" for="paragraphGap">문단 간격 <output id="paragraphGapOut">.62</output>em</label><input type="range" id="paragraphGap" min="0" max="2" step=".01" value=".62"/><label class="field">배경 이미지 업로드</label><input accept="image/*" id="bgUpload" type="file"/><label class="field">배경 이미지 불투명도 <span id="opacityValue">32%</span></label><input id="opacity" max="100" min="0" type="range" value="32"/><label class="field" for="ratio">판형 비율</label><select id="ratio"><optgroup label="가로"><option value="4/3">4:3</option><option value="5/4">5:4</option><option value="3/2">3:2</option><option value="16/10">16:10</option><option value="16/9">16:9</option><option value="2/1">2:1</option><option value="21/9">21:9</option></optgroup><optgroup label="정사각형"><option value="1/1">1:1</option></optgroup><optgroup label="세로"><option value="4/5">4:5</option><option value="3/4">3:4</option><option value="2/3">2:3</option><option value="10/16">10:16</option><option value="9/16">9:16</option><option value="1/2">1:2</option></optgroup><option value="custom">직접 입력</option></select>
+<div id="ratioEditor" hidden><div class="row2"><div><label for="ratioWidth" class="field">가로</label><input id="ratioWidth" type="number" inputmode="decimal" min="0" step="any" value="4"></div><div><label for="ratioHeight" class="field">세로</label><input id="ratioHeight" type="number" inputmode="decimal" min="0" step="any" value="3"></div></div>
+<button type="button" class="btn" id="ratioApply">비율 적용</button><span class="note" role="status" id="ratioFeedback"></span></div><input type="hidden" id="customRatio" value="4/3"><div class="checks" style="margin-top:14px"><label><input checked="" id="showBar" type="checkbox"/> 유대 게이지</label><label><input checked="" id="showStatus" type="checkbox"/> 상태 표시</label><label><input checked="" id="showFooter" type="checkbox"/> 하단 메타</label></div><div class="fine-controls"><h3>배경 색상 · 밝기</h3><div class="row2"><div><label class="field">이미지 배경색</label><input id="bgColor" type="color" value="#1B1915"/></div><div><label class="field">프레임 내부 색상</label><input id="panelColor" type="color" value="#201E19"/></div><div><label class="field">프레임 내부 불투명도 <output id="panelAlphaOut">94</output>%</label><input id="panelAlpha" max="100" min="0" type="range" value="94"/></div><div><label class="field">가장자리 어둡기 <output id="vignetteOut">50</output>%</label><input id="vignette" max="100" min="0" type="range" value="50"/></div></div></div></div><label class="field">배경 이미지 블러 <output id="bgBlurOut">0</output>px</label><input id="bgBlur" max="24" min="0" step="1" type="range" value="0"/><div class="group" data-section="export"><h2>04 / 저장 및 내보내기</h2><div class="buttons"><button class="btn" id="save">설정 JSON 저장</button><button class="btn" id="load">설정 불러오기</button><input accept="application/json" hidden="" id="loadFile" type="file"/></div><p class="note">PNG 저장은 온라인 html2canvas 라이브러리를 사용합니다. 최초 저장 시 인터넷 연결이 필요할 수 있습니다.</p></div><div class="group" data-section="design"><h2>세부 글자 설정</h2><div class="row2"><div><label class="field">제목 글꼴</label><select id="titleFont"><option value="inherit">본문 글꼴 따라가기</option><option value="system-ui, sans-serif">고딕 · 시스템 기본</option><option value="'Pretendard','Noto Sans KR',sans-serif">고딕 · Pretendard</option><option value="'Noto Sans KR',sans-serif">고딕 · Noto Sans KR</option><option value="'Nanum Gothic',sans-serif">고딕 · 나눔고딕</option><option value="'Gowun Dodum',sans-serif">고딕 · 고운돋움</option><option value="'Noto Serif KR',serif">명조 · Noto Serif KR</option><option value="'Nanum Myeongjo',serif">명조 · 나눔명조</option><option value="'Gowun Batang',serif">명조 · 고운바탕</option><option value="Georgia,serif">영문 세리프 · Georgia</option><option value="'IBM Plex Mono',monospace">게임 HUD · IBM Plex Mono</option><option value="'Space Mono',monospace">게임 HUD · Space Mono</option><option value="monospace">게임 HUD · 시스템 모노</option></select></div><div><label class="field">제목 크기</label><input id="titleSize" max="38" min="10" type="range" value="20"/></div><div><label class="field">본문 정렬</label><select id="bodyAlign"><option value="left">왼쪽</option><option value="center">가운데</option><option value="right">오른쪽</option><option value="justify">양쪽</option></select></div><div><label class="field">본문 세로 위치</label><select id="bodyPosition"><option selected="" value="center">가운데</option><option value="flex-start">위</option><option value="flex-end">아래</option></select></div><div><label class="field">자간</label><input id="letterSpace" max="3" min="-1" step=".2" type="range" value="0"/></div><div><label class="field">본문 여백</label><input id="innerPad" max="14" min="2" type="range" value="7"/></div><div><label class="field">대사 색</label><input id="dialogueColor" type="color" value="#F3E7CC"/><label class="field">게임 채팅 표시 방식</label><select id="chatStyle"><option value="bubble">반투명 채팅 패널</option><option value="line">얇은 채팅 로그</option><option value="minimal">이름만 강조</option></select><label class="field">채팅 이름 색상</label><input id="chatNameColor" type="color" value="#DCC28F"/><p class="note">‘류빛가람｜대사’ 또는 ‘류빛가람 | 대사’처럼 입력하면 게임 채팅으로 표시해요. 보이지 않는 공백 문자가 섞여 있어도 인식합니다.</p></div><div><label class="field">형광펜 진하기</label><input id="hlOpacity" max="100" min="5" type="range" value="40"/></div></div><label class="field">형광펜 스타일</label><select id="hlStyle"><option value="full">전체 칠</option><option value="marker">마커</option><option value="under">밑줄</option><option value="outline">테두리</option></select><label class="checks"><input checked="" id="autoFit" type="checkbox"/> 자동 글자 맞춤 (최소 7px)</label><div class="fine-controls"><h3>모든 글씨 크기</h3><p class="note">기준은 가로 900px 이미지예요. 비율을 바꾸거나 작은 화면에서도 글씨와 장식이 함께 비례해요.</p>
 <div class="row2">
 <div><label class="field">상단 아카이브 <output id="topSizeOut">9</output>px</label><input id="topSize" max="24" min="5" step=".5" type="range" value="9"/></div>
 <div><label class="field">상태 표시 <output id="statusSizeOut">9</output>px</label><input id="statusSize" max="24" min="5" step=".5" type="range" value="9"/></div>
@@ -720,16 +774,17 @@ body,.controls,.stage,.tabs{background:#1b1915!important}
 <div><label class="field">장식 진하기 <output id="decoOpacityOut">35</output>%</label><input id="decoOpacity" max="100" min="0" step="5" type="range" value="35"/></div>
 <div><label class="field">채팅 패널 여백 <output id="chatPadOut">55</output>%</label><input id="chatPad" max="130" min="20" step="5" type="range" value="55"/></div>
 <div><label class="field">채팅 패널 테두리 <output id="chatBorderOut">25</output>%</label><input id="chatBorder" max="100" min="0" step="5" type="range" value="25"/></div>
-</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>브라우저 작업 저장</h2><p class="note">자동 저장과 별도로 현재 작업을 직접 저장하고 불러올 수 있어요. 이미지 스티커와 배경 이미지도 함께 보관합니다. 브라우저 저장 공간이 허용하는 범위에서 유지돼요.</p><div class="buttons"><button class="btn primary" id="browserSave" type="button">브라우저에 직접 저장</button><button class="btn" id="browserLoad" type="button">브라우저 저장 불러오기</button></div><p class="note" id="browserSaveInfo" role="status">아직 수동 저장 여부를 확인하지 않았어요.</p></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 큰 사진과 이미지 스티커도 IndexedDB에 원본 그대로 저장하며 위치·크기·회전도 유지합니다. 저장 공간이 부족하면 이미지를 다른 기호로 바꾸지 않고 오류를 표시합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE FAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><script>
+</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>브라우저 작업 저장</h2><p class="note">자동 저장과 별도로 현재 작업을 직접 저장하고 불러올 수 있어요. 이미지 스티커와 배경 이미지도 함께 보관합니다. 브라우저 저장 공간이 허용하는 범위에서 유지돼요.</p><div class="buttons"><button class="btn primary" id="browserSave" type="button">브라우저에 직접 저장</button><button class="btn" id="browserLoad" type="button">브라우저 저장 불러오기</button></div><p class="note" id="browserSaveInfo" role="status">아직 수동 저장 여부를 확인하지 않았어요.</p></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 큰 사진과 이미지 스티커도 IndexedDB에 원본 그대로 저장하며 위치·크기·회전도 유지합니다. 저장 공간이 부족하면 이미지를 다른 기호로 바꾸지 않고 오류를 표시합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE FAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><div id="cardPage"></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="preview-dock"><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="preview-actions"><div class="buttons" id="pageTools" hidden><button class="btn" id="prevPage">이전 장</button><output id="pageNumber"></output><button class="btn" id="nextPage">다음 장</button></div><button class="btn" id="undoEdit" type="button" disabled>↶ 되돌리기</button><button class="btn primary" id="export">PNG 이미지 저장</button></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><script>
 const $=id=>document.getElementById(id);
 const ids=['mode','titleInput','subtitleInput','rank','status','footerText','meta','topText','statusSymbol','labelQuest','labelBond','labelItem','labelSystem','bodyInput','accent','highlight','font','size','line','opacity','ratio','showBar','showStatus','showFooter'];
-const extras=['colorTheme','titleFont','titleSize','bodyAlign','bodyPosition','letterSpace','innerPad','dialogueColor','chatStyle','chatNameColor','hlOpacity','hlStyle','autoFit','frameStyle','shade','bgZoom','bgX','bgY','bondValue','bondLabel','stampText','stickerSize','stickerRotate','topSize','statusSize','modeSize','rankSize','subtitleSize','gaugeSize','footerSize','metaSize','uiScale','markerOffset','markerHeight','frameWidth','frameInset','dividerOpacity','decoOpacity','chatPad','chatBorder','bgColor','panelColor','panelAlpha','vignette','cornerGlyph','decorCaption','decorCaptionSize','decorLineWidth','exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad','pairLight','pairThread','pairPetals','pairMoon','pairQuest','pairLink','pairGlyph','pairSpark','pairLines','pairStars','pairDecoColor','pairDecoScale','hudAOn','hudBOn','hudCOn','hudDOn','hudAText','hudBText','hudCText','hudDText','hudFontSize','hudTextColor','hudExtraScan','hudExtraSide','hudExtraRight','hudExtraBottom','hudSideText','hudPacketText','bgBlur','hudAssetOpacity'];
+const extras=['customRatio','speakerOn','aliasesA','aliasesB','speakerA','speakerB','secondColor','autoPages','minPageFont','paragraphGap','colorTheme','titleFont','titleSize','bodyAlign','bodyPosition','letterSpace','innerPad','dialogueColor','chatStyle','chatNameColor','hlOpacity','hlStyle','autoFit','frameStyle','shade','bgZoom','bgX','bgY','bondValue','bondLabel','stampText','stickerSize','stickerRotate','topSize','statusSize','modeSize','rankSize','subtitleSize','gaugeSize','footerSize','metaSize','uiScale','markerOffset','markerHeight','frameWidth','frameInset','dividerOpacity','decoOpacity','chatPad','chatBorder','bgColor','panelColor','panelAlpha','vignette','cornerGlyph','decorCaption','decorCaptionSize','decorLineWidth','exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad','pairLight','pairThread','pairPetals','pairMoon','pairQuest','pairLink','pairGlyph','pairSpark','pairLines','pairStars','pairDecoColor','pairDecoScale','hudAOn','hudBOn','hudCOn','hudDOn','hudAText','hudBText','hudCText','hudDText','hudFontSize','hudTextColor','hudExtraScan','hudExtraSide','hudExtraRight','hudExtraBottom','hudSideText','hudPacketText','bgBlur','hudAssetOpacity'];
 let bgData='',stickers=[],selected=-1,renderTicket=0,fitStatus='ready';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','"':'&quot;',"'":'&#39;'}[c]));
 const hexA=(hex,a)=>{let n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+(n>>8&255)+','+(n&255)+','+a+')'};
 function inline(s){
  s=esc(s);
  s=s.replace(/==([\s\S]+?)==/g,'<mark class="marker-active">$1</mark>');
+ s=s.replace(/\+\+(.+?)\+\+/g,'<mark data-secondary>$1</mark>');
  s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/__(.+?)__/g,'<u>$1</u>').replace(/~~(.+?)~~/g,'<s>$1</s>').replace(/\*(.+?)\*/g,'<em>$1</em>');
  return s;
 }
@@ -746,6 +801,12 @@ function renderBody(s){
      continue;
    }
    const clean=raw.replace(/[\u200B-\u200D\u2060\uFEFF]/g,'');
+   if(/^::\s+/.test(clean)){flushParagraph();flushChat();out.push('<div class="scene-break">'+esc(clean.replace(/^::\s+/,''))+'</div>');continue}
+   if(/^\s*!\s+/.test(clean)){
+     flushParagraph();flushChat();
+     out.push('<p><span class="systemline"><span class="system-message">'+inline(clean.replace(/^\s*!\s+/,''))+'</span></span></p>');
+     blank=false;continue;
+   }
    const match=clean.match(/^\s*(.{1,28}?)\s*[｜|]\s*(.+)$/u);
    if(match && match[1].trim() && match[2].trim()){
      flushParagraph();
@@ -757,8 +818,6 @@ function renderBody(s){
    flushChat();
    if(raw.startsWith('> ')){
      flushParagraph();out.push('<p><span class="dialogue" style="display:block">'+inline(raw.slice(2))+'</span></p>');
-   }else if(raw.startsWith('! ')){
-     flushParagraph();out.push('<p><span class="systemline" style="display:block">'+inline(raw.slice(2))+'</span></p>');
    }else{
      paragraph.push(inline(raw));
    }
@@ -767,10 +826,140 @@ function renderBody(s){
  flushChat();flushParagraph();
  return out.join('');
 }
+let excerpt=null, pageIndex=0, pages=[];
+const rawText=()=>$('bodyInput').value;
+const excerptText=()=>excerpt?rawText().slice(...excerpt):rawText();
+function setExcerpt(range){
+ excerpt=range;pageIndex=0;update();
+}
+$('clipSelect').onclick=()=>{
+ const t=$('bodyInput');
+ if(t.selectionStart===t.selectionEnd){$('clipInfo').textContent='본문에서 발췌할 글을 먼저 선택해 주세요.';return}
+ setExcerpt([t.selectionStart,t.selectionEnd]);
+};
+$('clipClear').onclick=()=>setExcerpt(null);
+$('bodyInput').addEventListener('input',()=>{excerpt=null;pageIndex=0},true);
+function sentenceStops(text){
+ const ends=[0],segmenter=typeof Intl.Segmenter==='function'?new Intl.Segmenter('ko',{granularity:'sentence'}):null;
+ let offset=0;
+ for(const line of text.match(/[^\n]*\n|[^\n]+$/g)||[]){
+   const parts=segmenter?Array.from(segmenter.segment(line),s=>s.segment):line.match(/[^.!?。！？]+[.!?。！？]*\s*|[.!?。！？]+\s*/g)||[line];
+   for(const part of parts){offset+=part.length;ends.push(offset)}
+ }
+ return ends;
+}
+for(const btn of document.querySelectorAll('[data-edge]'))btn.onclick=()=>{
+ if(!excerpt)return;
+ const stops=sentenceStops(rawText()),edge=Number(btn.dataset.edge),step=Number(btn.dataset.step);
+ const next=step>0?stops.find(n=>n>excerpt[edge]):stops.slice().reverse().find(n=>n<excerpt[edge]);
+ if(next===undefined)return;
+ const range=excerpt.slice();range[edge]=next;if(range[0]<range[1])setExcerpt(range);
+};
+$('insertScene').onclick=()=>{
+ const t=$('bodyInput'),start=t.selectionStart,label=$('sceneText').value.trim();
+ if(!label){$('sceneText').focus();return}
+ t.setRangeText((start&&t.value[start-1]!=='\n'?'\n':'')+':: '+label+'\n',start,start,'end');
+ t.dispatchEvent(new Event('input',{bubbles:true}));t.focus();
+};
+function speakerColors(){
+ const result=new Map();
+ if($('speakerOn').checked){
+   for(const key of ['A','B']){
+     for(const name of $('aliases'+key).value.split(',')){
+       if(name.trim())result.set(name.trim(),$('speaker'+key).value);
+     }
+   }
+ }
+ return result;
+}
+function renderExcerpt(){
+ const body=$('bodyView');body.innerHTML=renderBody(excerptText());
+ const colors=speakerColors();
+ for(const entry of body.querySelectorAll('.chat-entry')){
+   const color=colors.get(entry.querySelector('.chat-name').textContent);
+   if(color){entry.classList.add('named-speaker');entry.style.setProperty('--chat-name',color)}
+ }
+ const style={full:'marker-full',marker:'marker-active',under:'marker-under',outline:'marker-outline'}[$('hlStyle').value];
+ for(const mark of body.querySelectorAll('mark')){
+   mark.className='yr-hl '+style;
+   if(mark.hasAttribute('data-secondary'))mark.style.setProperty('--marker-color',hexA($('secondColor').value,+$('hlOpacity').value/100));
+ }
+ $('clipInfo').textContent=excerpt?'선택 구간 · '+excerptText().length+'자':'원문 전체';
+ for(const b of document.querySelectorAll('[data-edge],#clipClear'))b.disabled=!excerpt;
+}
+function pageFont(){return Math.max(+$('size').value,Math.min(34,Math.max(6,Number($('minPageFont').value)||12)))}
+function paginate(){
+ const body=$('bodyView'),area=body.parentElement;
+ const scale=$('canvas').clientWidth/900,font=Math.max(1.5,pageFont()*scale);
+ body.style.setProperty('--body-size-final',font+'px');
+ if(!area.clientWidth||!area.clientHeight){pages=[body.innerHTML];pageIndex=0;showPage();return}
+ const full=[...body.children];body.replaceChildren();pages=[];
+ const fits=()=>body.getBoundingClientRect().height<=area.clientHeight+.5&&body.scrollWidth<=area.clientWidth+.5;
+ const finish=()=>{if(body.childElementCount){pages.push(body.innerHTML);body.replaceChildren()}};
+ function splitBlock(block){
+   const selector='.chat-message,.system-message,.dialogue';
+   const source=block.querySelector(selector)||block,points=[];
+   const walker=document.createTreeWalker(source,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT);
+   const graphemes=typeof Intl.Segmenter==='function'?new Intl.Segmenter('ko',{granularity:'grapheme'}):null;
+   let n;
+   while(n=walker.nextNode()){
+     if(n.nodeType===3){
+       let end=0;for(const g of graphemes?graphemes.segment(n.data):n.data){end+=(g.segment??g).length;points.push([n,end])}
+     }else if(n.tagName==='BR')points.push([n.parentNode,Array.prototype.indexOf.call(n.parentNode.childNodes,n)+1]);
+   }
+   if(!points.length){body.append(block);return}
+   function piece(a,b){
+     const copy=block.cloneNode(true),target=copy.querySelector(selector)||copy,range=document.createRange();
+     // Clone from the container boundary so even a slice wholly inside a mark
+     // keeps its strong/mark ancestors and color. Trim the leading slice last.
+     range.setStart(source,0);range.setEnd(...points[b-1]);
+     target.replaceChildren(range.cloneContents());
+     if(a){
+       const [original,offset]=points[a-1],path=[];
+       for(let n=original;n!==source;n=n.parentNode)path.unshift(Array.prototype.indexOf.call(n.parentNode.childNodes,n));
+       const at=path.reduce((node,i)=>node.childNodes[i],target);
+       const head=document.createRange();head.setStart(target,0);head.setEnd(at,offset);head.deleteContents();
+     }
+     return copy;
+   }
+   let a=0;
+   while(a<points.length){
+     let lo=a+1,hi=points.length,best=a;
+     while(lo<=hi){
+       const mid=Math.floor((lo+hi)/2),trial=piece(a,mid);
+       body.append(trial);const ok=fits();trial.remove();
+       if(ok){best=mid;lo=mid+1}else hi=mid-1;
+     }
+     best=Math.max(a+1,best);body.append(piece(a,best));a=best;
+     if(a<points.length)finish();
+   }
+ }
+ for(const block of full){
+   body.append(block);if(fits())continue;
+   block.remove();finish();body.append(block);
+   if(!fits()){block.remove();splitBlock(block)}
+ }
+ finish();if(!pages.length)pages.push('');
+ pageIndex=Math.min(pageIndex,pages.length-1);showPage();
+}
+function showPage(){
+ const multi=$('autoPages').checked;
+ const count=multi?pages.length:1;
+ if(multi)$('bodyView').innerHTML=pages[pageIndex]||'';
+ const label=String(pageIndex+1).padStart(2,'0')+' / '+String(count).padStart(2,'0');
+ $('cardPage').textContent=multi?label:'';$('pageTools').hidden=!multi;
+ $('pageNumber').textContent=label;$('prevPage').disabled=pageIndex===0;$('nextPage').disabled=pageIndex>=count-1;
+ if(multi)$('fitInfo').textContent='페이지 분할 · 본문 '+pageFont()+'px';
+}
+for(const [id,step] of [['prevPage',-1],['nextPage',1]])$(id).onclick=()=>{pageIndex=Math.max(0,Math.min(pageIndex+step,pages.length-1));showPage();scheduleDraft()};
+
 function scheduleFit(){cancelAnimationFrame(renderTicket);renderTicket=requestAnimationFrame(()=>requestAnimationFrame(fitText))}
 function fitText(){
  const body=$('bodyView'),area=body.parentElement,canvas=$('canvas');
  if(!body||!area)return;
+ renderExcerpt();
+ if($('autoPages').checked){$('cardPage').textContent='00 / 00';paginate();return}
+ pages=[];pageIndex=0;showPage();
  const scale=canvas.clientWidth/900;
  const target=Math.max(3,(+$('size').value)*scale);
  const minimum=Math.max(1.5,2.5*scale);
@@ -849,6 +1038,23 @@ function renderPairDecorations(){
  $('pairDecoScaleOut').textContent=$('pairDecoScale').value;
 }
 
+function ratioParts(value){
+ const parts=String(value).split('/').map(Number);
+ return parts.length===2 && parts.every(n=>Number.isFinite(n)&&n>0)
+   && parts[0]/parts[1]>=0.25 && parts[0]/parts[1]<=4 ? parts : null;
+}
+function resetRatioInputs(){
+ const [w,h]=ratioParts($('customRatio').value)||[4,3];
+ $('customRatio').value=w+'/'+h;
+ $('ratioWidth').value=w;$('ratioHeight').value=h;
+ $('ratioFeedback').textContent='';
+}
+$('ratioApply').onclick=()=>{
+ const parts=ratioParts($('ratioWidth').value+'/'+$('ratioHeight').value);
+ if(!parts){$('ratioFeedback').textContent='양수를 입력해 주세요. 지원 범위는 1:4부터 4:1까지예요.';return}
+ $('customRatio').value=parts.join('/');update();$('ratioFeedback').textContent=parts.join(' : ')+' 적용됨';
+};
+for(const id of ['ratioWidth','ratioHeight'])$(id).onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();$('ratioApply').click()}};
 function update(){
  // Legacy autosaves may reintroduce old pair names; migrate only those strings.
  for(const id of ['topText','hudSideText','hudPacketText','hudAText','hudBText','hudCText','hudDText']){
@@ -882,7 +1088,7 @@ function update(){
  $('statusView').textContent=[$('statusSymbol').value,$('status').value].filter(Boolean).join(' ');
  $('peopleView').textContent=$('footerText').value;
  $('metaView').textContent=$('meta').value;
- body.innerHTML=renderBody($('bodyInput').value);
+ renderExcerpt();
  const themeNow=COLOR_THEMES[$('colorTheme').value] || null;
  const themeAccent=$('accent').value;
  canvas.style.setProperty('--theme-outer-border',hexA(themeAccent,.53));
@@ -926,6 +1132,8 @@ function update(){
 
  body.style.fontFamily=$('font').value;
  body.style.setProperty('--body-line-final',$('line').value);
+ body.style.setProperty('--paragraph-gap',$('paragraphGap').value+'em');
+ for(const id of ['paragraphGap'])$(id+'Out').textContent=$(id).value;
  $('sizeValue').textContent=$('size').value+'px';
  $('lineValue').textContent=$('line').value;
  $('opacityValue').textContent=$('opacity').value+'%';
@@ -942,7 +1150,9 @@ function update(){
  $('bgXOut').textContent=$('bgX').value+'%'; $('bgYOut').textContent=$('bgY').value+'%';
  frame.style.setProperty('--grid-strength',$('pairLight').checked?'0.55':'0');
  canvas.style.setProperty('--shade',+$('shade').value/100);
- const ratio=$('ratio').value;
+ const custom=$('ratio').value==='custom';
+ $('ratioEditor').hidden=!custom;
+ const ratio=custom?$('customRatio').value:$('ratio').value;
  canvas.style.setProperty('--ratio',ratio);
  const pair=ratio.split('/').map(Number);
  canvas.style.setProperty('--ratio-number',pair[0]/pair[1]);
@@ -957,8 +1167,6 @@ function update(){
  spans[1].textContent=$('bondValue').value+'%';
  $('barrow').querySelector('.fill').style.width=$('bondValue').value+'%';
  $('stampView').textContent=$('stampText').value;
- const className={full:'marker-full',marker:'marker-active',under:'marker-under',outline:'marker-outline'}[$('hlStyle').value];
- body.querySelectorAll('mark').forEach(m=>m.className='yr-hl '+className);
  scheduleFit();
  scheduleMarkerDraw();
 
@@ -970,8 +1178,21 @@ document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('[data-section]').forEach(x=>x.classList.toggle('active',x.dataset.section===b.dataset.tab));
 });
 document.querySelector('[data-tab=text]').click();
+document.querySelector('.preview-dock .tabs').addEventListener('click',()=>{if(matchMedia('(max-width:850px)').matches)document.querySelector('.controls').scrollTop=0});
 document.querySelectorAll('.mdtools button').forEach(btn=>btn.onclick=()=>{
  const t=$('bodyInput'),a=t.selectionStart,z=t.selectionEnd,sel=t.value.slice(a,z);
+ if(['==','++'].includes(btn.dataset.wrap)){
+   const delimiter=btn.dataset.wrap;
+   const atLineStart=a===0||t.value[a-1]==='\n';
+   const marked=sel.split('\n').map((line,i)=>{
+     const prefix=(i||atLineStart)?(line.match(/^\s*(?:[!]\s+|.{1,28}?[｜|]\s*|[>＞]\s+)/)||[''])[0]:'';
+     const content=line.slice(prefix.length);
+     return prefix+(content?delimiter+content+delimiter:'');
+   }).join('\n');
+   t.setRangeText(sel?marked:delimiter.repeat(2),a,z,'select');
+   if(!sel)t.setSelectionRange(a+2,a+2);
+   t.dispatchEvent(new Event('input',{bubbles:true}));t.focus();return;
+ }
  const replacement=btn.dataset.wrap?btn.dataset.wrap+sel+btn.dataset.wrap:btn.dataset.prefix+sel.replace(/\n/g,'\n'+btn.dataset.prefix);
  t.setRangeText(replacement,a,z,'select');t.dispatchEvent(new Event('input',{bubbles:true}));t.focus();
 });
@@ -986,19 +1207,19 @@ function drawStickers(){
  ev.preventDefault();selected=i;drawStickers();
  const target=layer.children[i];target.setPointerCapture(ev.pointerId);
  target.onpointermove=e=>{const r=layer.getBoundingClientRect();st.x=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100));st.y=Math.max(0,Math.min(100,(e.clientY-r.top)/r.height*100));target.style.left=st.x+'%';target.style.top=st.y+'%'};
- target.onpointerup=()=>{target.onpointermove=null};
+ target.onpointerup=target.onpointercancel=()=>{target.onpointermove=null;scheduleDraft()};
  };
  layer.append(el);
  });
 }
-document.querySelectorAll('[data-sticker]').forEach(b=>b.onclick=()=>{stickers.push({text:b.dataset.sticker,x:50,y:50,size:+$('stickerSize').value,rot:0});selected=stickers.length-1;drawStickers()});
-$('stickerUpload').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{stickers.push({img:reader.result,x:50,y:50,size:60,rot:0});selected=stickers.length-1;drawStickers()};reader.readAsDataURL(f)};
-$('stickerSize').oninput=()=>{if(stickers[selected])stickers[selected].size=+$('stickerSize').value;drawStickers()};
-$('stickerRotate').oninput=()=>{if(stickers[selected])stickers[selected].rot=+$('stickerRotate').value;drawStickers()};
-$('stickerRemove').onclick=()=>{if(selected>=0)stickers.splice(selected,1);selected=-1;drawStickers()};
-$('stickerClear').onclick=()=>{stickers=[];selected=-1;drawStickers()};
+document.querySelectorAll('[data-sticker]').forEach(b=>b.onclick=()=>{stickers.push({text:b.dataset.sticker,x:50,y:50,size:+$('stickerSize').value,rot:0});selected=stickers.length-1;drawStickers();scheduleDraft()});
+$('stickerUpload').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{stickers.push({img:reader.result,x:50,y:50,size:60,rot:0});selected=stickers.length-1;drawStickers();scheduleDraft()};reader.readAsDataURL(f)};
+$('stickerSize').oninput=()=>{if(stickers[selected])stickers[selected].size=+$('stickerSize').value;drawStickers();scheduleDraft()};
+$('stickerRotate').oninput=()=>{if(stickers[selected])stickers[selected].rot=+$('stickerRotate').value;drawStickers();scheduleDraft()};
+$('stickerRemove').onclick=()=>{if(selected>=0)stickers.splice(selected,1);selected=-1;drawStickers();scheduleDraft()};
+$('stickerClear').onclick=()=>{stickers=[];selected=-1;drawStickers();scheduleDraft()};
 const allIds=[...ids,...extras];
-function snapshot(){const values={};allIds.forEach(id=>values[id]=$(id).type==='checkbox'?$(id).checked:$(id).value);return {values,bgData,stickers}}
+function snapshot(){const values={};allIds.forEach(id=>values[id]=$(id).type==='checkbox'?$(id).checked:$(id).value);return {values,bgData,stickers,excerpt,pageIndex}}
 function snapshotCompact(){const snap=snapshot();snap.bgData='';snap.stickers=snap.stickers.filter(s=>!s.img);snap.imageOmitted=true;return snap}
 const STORE_PREFIX='yr-preset-',DRAFT_KEY='yr-autodraft-v2';
 // IndexedDB keeps uploaded images without converting them into placeholder symbols.
@@ -1052,8 +1273,55 @@ async function deletePreset(name){
  rememberPreset(name,true);
 }
 let draftTimer=0,restoring=false;
+// Keep history in this tab. Image strings are shared across snapshots.
+const editHistory=[];
+let lastEdit=null, queuedHistory=false, inputGroup=null, lastGroup=null;
+function currentEdit(){
+ const state=snapshot();
+ return {...state,stickers:state.stickers.map(item=>({...item})),excerpt:state.excerpt?.slice()||null};
+}
+function sameEdit(a,b){
+ return a.bgData===b.bgData && allIds.every(id=>a.values[id]===b.values[id])
+   && String(a.excerpt)===String(b.excerpt) && a.stickers.length===b.stickers.length
+   && a.stickers.every((item,i)=>Object.keys(item).length===Object.keys(b.stickers[i]).length
+     && Object.keys(item).every(key=>item[key]===b.stickers[i][key]));
+}
+function recordEdit(){
+ queuedHistory=false;
+ const next=currentEdit();
+ if(lastEdit&&!sameEdit(lastEdit,next)){
+   if(!inputGroup||inputGroup!==lastGroup){
+     editHistory.push(lastEdit);
+     if(editHistory.length>40)editHistory.shift();
+   }
+   lastGroup=inputGroup;
+ }
+ lastEdit=next;
+ $('undoEdit').disabled=!editHistory.length;
+}
+function queueEdit(){
+ if(!queuedHistory){queuedHistory=true;queueMicrotask(()=>{if(queuedHistory)recordEdit()})}
+}
+function closeGroup(){if(queuedHistory)recordEdit();inputGroup=null;lastGroup=null}
+document.addEventListener('input',event=>{
+ const el=event.target;
+ if(el.matches('textarea,input[type=text],input:not([type]),input[type=range],input[type=number],input[type=color]'))inputGroup=el;
+},true);
+for(const event of ['pointerdown','focusout'])document.addEventListener(event,closeGroup,true);
+document.addEventListener('change',()=>queueMicrotask(closeGroup),true);
+$('undoEdit').onclick=()=>{
+ closeGroup();
+ const previous=editHistory.pop();if(!previous)return;
+ lastEdit=previous;restore(previous);
+ status('직전 편집을 되돌렸어요');
+};
+function resetEditHistory(){
+ editHistory.length=0;queuedHistory=false;inputGroup=null;lastGroup=null;
+ lastEdit=currentEdit();$('undoEdit').disabled=true;
+}
 function scheduleDraft(){
  if(restoring)return;
+ queueEdit();
  clearTimeout(draftTimer);
  draftTimer=setTimeout(async()=>{
   const snap=snapshot();
@@ -1064,7 +1332,14 @@ function scheduleDraft(){
 
 function restore(obj){
  const values=obj.values||obj;
+ $('customRatio').value='4/3';
+ excerpt=Array.isArray(obj.excerpt)&&obj.excerpt.length===2&&obj.excerpt.every(Number.isInteger)&&obj.excerpt[0]>=0&&obj.excerpt[0]<obj.excerpt[1]&&obj.excerpt[1]<=String(values.bodyInput||'').length?obj.excerpt:null;
+ pageIndex=Number.isSafeInteger(obj.pageIndex)?Math.max(0,obj.pageIndex):0;
+ for(const id of ['speakerOn', 'aliasesA', 'aliasesB', 'speakerA', 'speakerB', 'secondColor', 'autoPages', 'minPageFont']){const el=$(id);if(values[id]===undefined){if(el.type==='checkbox')el.checked=el.defaultChecked;else el.value=el.defaultValue}}
+
+ for(const id of ['paragraphGap'])if(values[id]===undefined)$(id).value=$(id).defaultValue;
  allIds.forEach(id=>{if(values[id]===undefined)return;if($(id).type==='checkbox')$(id).checked=values[id];else $(id).value=values[id]});
+ resetRatioInputs();
  restoring=true;
  bgData=obj.bgData||'';stickers=obj.stickers||[];selected=-1;drawStickers();update();
  restoring=false;paintThemeSwatches();status(obj.imageOmitted?'불러오기 완료 · 큰 사진은 저장되지 않았어요':'불러오기 완료');scheduleDraft();
@@ -1105,7 +1380,7 @@ update=function(){originalUpdate();scheduleDraft()};
 $('pairDecorAll').onclick=()=>{document.querySelectorAll('.pair-deco-grid input').forEach(x=>x.checked=true);update()};
 $('pairDecorClear').onclick=()=>{document.querySelectorAll('.pair-deco-grid input').forEach(x=>x.checked=false);update()};
 listPresets();
-(async()=>{try{const draft=await dbSnapshotGet('auto');if(draft){restore(draft);status('이전 작업을 자동 복원했어요 · 이미지 포함');return}}catch(e){}try{const draft=localStorage.getItem(DRAFT_KEY);if(draft){restore(JSON.parse(draft));status('이전 작업을 자동 복원했어요')}}catch(e){status('자동 복원 불가 · 새 작업 시작')}})();
+(async()=>{try{const draft=await dbSnapshotGet('auto');if(draft){restore(draft);resetEditHistory();status('이전 작업을 자동 복원했어요 · 이미지 포함');return}}catch(e){}try{const draft=localStorage.getItem(DRAFT_KEY);if(draft){restore(JSON.parse(draft));resetEditHistory();status('이전 작업을 자동 복원했어요')}}catch(e){status('자동 복원 불가 · 새 작업 시작')}})();
 for(const id of ['exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad']){
  $(id).addEventListener('input',()=>{$(id+'Out').textContent=$(id).value;scheduleDraft()});
 }
@@ -1124,8 +1399,8 @@ function drawLineHighlights(doc){
  const marks=[...host.querySelectorAll('mark.yr-hl')];
  const styleName=$('hlStyle').value;
  const opacity=+$('hlOpacity').value/100;
- const color=hexA($('highlight').value,opacity);
  for(const mark of marks){
+   const color=hexA($(mark.hasAttribute('data-secondary')?'secondColor':'highlight').value,opacity);
    const walker=doc.createTreeWalker(mark,NodeFilter.SHOW_TEXT), nodes=[];
    let node;while(node=walker.nextNode())nodes.push(node);
    const rects=[];
