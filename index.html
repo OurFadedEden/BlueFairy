@@ -1579,4 +1579,85 @@ for(const id of ['accent','highlight','dialogueColor','chatNameColor','pairDecoC
 
 update();
 
+</script>
+<script>
+(() => {
+  const back = document.getElementById('undoEdit');
+  if (!back || document.getElementById('redoEdit')) return;
+
+  const forward = document.createElement('button');
+  forward.id = 'redoEdit';
+  forward.type = 'button';
+  forward.className = back.className;
+  forward.textContent = '앞으로 →';
+  forward.title = '취소한 편집 다시 적용';
+  back.textContent = '← 뒤로';
+  back.title = '직전 편집 취소';
+  back.after(forward);
+
+  const future = [];
+
+  function syncButtons() {
+    back.disabled = editHistory.length === 0;
+    forward.disabled = future.length === 0;
+  }
+
+  // 실제 편집 내용이 달라졌을 때만 앞으로 기록을 비운다.
+  const originalRecord = recordEdit;
+  recordEdit = function () {
+    const before = lastEdit;
+    originalRecord();
+    if (future.length && before && !sameEdit(before, lastEdit)) {
+      future.length = 0;
+    }
+    syncButtons();
+  };
+
+  const originalReset = resetEditHistory;
+  resetEditHistory = function () {
+    future.length = 0;
+    originalReset();
+    syncButtons();
+  };
+
+  function move(from, to, message) {
+    closeGroup();
+    if (!from.length) return;
+
+    to.push(currentEdit());
+    if (to.length > 40) to.shift();
+
+    const target = from.pop();
+    lastEdit = target;
+    restore(target);
+    syncButtons();
+    status(message);
+  }
+
+  back.onclick = () =>
+    move(editHistory, future, '직전 편집을 취소했어요.');
+
+  forward.onclick = () =>
+    move(future, editHistory, '취소한 편집을 다시 적용했어요.');
+
+  syncButtons();
+
+  const upload = document.getElementById('bgUpload');
+  let remove = upload.nextElementSibling;
+  if (!remove?.matches('button') || remove.textContent.trim() !== '배경 제거') {
+    remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'btn';
+    remove.textContent = '배경 제거';
+    upload.after(remove);
+  }
+
+  remove.onclick = () => {
+    if (!bgData) return;
+    closeGroup();
+    bgData = '';
+    upload.value = '';
+    update();
+  };
+})();
 </script></body></html>
