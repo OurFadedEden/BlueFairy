@@ -706,7 +706,7 @@ body,body .controls,body .controls .tabs{background:#090f19!important}
  html,body{height:100%;overflow:hidden}
  body .app{display:flex!important;flex-direction:column!important;height:100vh;height:100dvh;min-height:0!important;overflow:hidden}
  body .app>.stage{order:0;flex:0 0 auto;padding:6px 10px!important;gap:4px;max-height:none!important}
- body .app>.stage #canvas{width:min(100%,calc(32vh * var(--ratio-number,1.3333)))!important;width:min(100%,calc(32dvh * var(--ratio-number,1.3333)))!important;height:auto!important;max-height:none!important;aspect-ratio:var(--ratio,4 / 3)!important}
+ body .app>.stage #canvas{width:min(100%,calc(41vh * var(--ratio-number,1.3333)))!important;width:min(100%,calc(41dvh * var(--ratio-number,1.3333)))!important;height:auto!important;max-height:none!important;aspect-ratio:var(--ratio,4 / 3)!important}
  body .app>.controls{order:1;flex:1 1 0;min-height:0!important;max-height:none!important;width:100%;margin:0 auto!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior-y:contain;padding-bottom:max(16px,env(safe-area-inset-bottom))!important}
 }
 /* Preview toolbar stays outside the exported canvas. */
@@ -717,6 +717,23 @@ body,body .controls,body .controls .tabs{background:#090f19!important}
 .stage .preview-dock .active,.stage .preview-dock .primary{background:var(--ui-blue)!important;color:#0a1a30!important}
 .stage .preview-dock button:disabled{opacity:.4;cursor:default}
 @media(max-width:850px){.stage .preview-dock{gap:4px;padding:3px 0}.stage .preview-dock button{padding:4px 7px;font-size:11px}}
+#canvas[data-ratio-mode] #hudTextLayer .hud-text-slot,#canvas[data-ratio-mode] #pairDecorations :is(.hud-asset-category,.hud-asset-packet,.hud-asset-sync){
+ font-size:var(--rail-font)!important;height:var(--rail-height)!important;min-height:0!important;line-height:1!important;overflow:hidden!important
+}
+#canvas[data-ratio-mode] #pairDecorations .hud-asset-serial{font-size:var(--rail-font)!important}
+#canvas #hudTextLayer :is([data-hud=a],[data-hud=b]),#canvas #pairDecorations .hud-asset-category{top:.75%!important;bottom:auto!important}
+#canvas #hudTextLayer :is([data-hud=c],[data-hud=d]),#canvas #pairDecorations :is(.hud-asset-packet,.hud-asset-sync){top:auto!important;bottom:.75%!important}
+#canvas #frame .header .quest-label-row{min-height:0!important;height:auto!important;margin:0 0 .6cqw!important;gap:1cqw!important}
+#canvas #frame .header .quest-label-row :is(.mode-label,.kicker){min-height:0!important;height:auto!important;line-height:1.15!important}
+#exportScale,#closePng,#pngAgain{color:#e5f2ff;background:#1d3048;border:1px solid #456482;border-radius:5px;padding:5px 8px;font:inherit}
+#exportScale{width:auto;font-size:12px}
+#pngPreview{width:min(94vw,760px);box-sizing:border-box;padding:12px;color:#edf5ff;background:#101b2a;border:1px solid #426282;border-radius:10px}
+#pngPreview::backdrop{background:#050a12cc}
+#pngResult{display:block;max-width:100%;max-height:68vh;max-height:68dvh;object-fit:contain;margin:10px auto;background:#090f19}
+.png-head,.png-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}
+#pngAgain{text-decoration:none;white-space:nowrap}
+@media(max-height:500px) and (max-width:850px){body .app>.stage #canvas{width:min(100%,calc(30dvh * var(--ratio-number,1.3333)))!important}}
+#canvas #hudTextLayer{inset:0!important;transform:none!important;padding:0!important}#hudTextLayer>svg{display:block;width:100%;height:100%;pointer-events:none}
 </style><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&amp;family=Gowun+Dodum&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Nanum+Gothic:wght@400;700&amp;family=Nanum+Myeongjo:wght@400;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/></head><body><main class="app"><aside class="controls"><div class="brand">BLUE FAIRY / HUD EDITOR</div><h1>INSTANCE · 게임</h1><div class="sub">서로의 빛을 기록하는 MMORPG 아카이브</div><div class="group" data-section="text"><h2>01 / 기록 정보</h2><label class="field">판형</label><select id="mode"><option value="quest">QUEST LOG · 퀘스트 진행 기록 · 목표와 달성 게이지</option><option value="bond">BOND ARCHIVE · 인연 기록 · 중앙 정렬과 공명 장식</option><option value="item">ITEM LORE · 아이템 도감 · 획득 정보와 설명 카드</option><option value="system">SYSTEM MESSAGE · 시스템 알림 · 업적/해금 팝업</option></select><p class="note" id="modeHelp">퀘스트 기록: 진행 상태, 퀘스트 목표, 게이지를 중심으로 표시해요.</p><label class="field">제목</label><input id="titleInput" value="서로의 빛이 되는 방법"/><label class="field">부제</label><input id="subtitleInput" value="빛이 닿은 곳에서, 우리는 다시 만났다."/><div class="row2"><div><label class="field">등급 / 유형</label><input id="rank" value="HIDDEN QUEST"/></div><div><label class="field">진행 상태</label><input id="status" value="COMPLETED"/></div></div><div class="row2"><label class="field">하단 왼쪽 문구 · 자유 입력</label><input id="footerText" placeholder="원하는 문구를 자유롭게 입력하세요" value="석영 × 함초롱바탕"/></div><label class="field">하단 정보</label><input id="meta" value="ARCHIVE NO. 001 · 2026.10.31"/><div class="fine-controls"><h3>판형별 안내 문구</h3><p class="note">판형을 바꾸면 해당 판형에 저장된 안내 문구가 표시돼요. 각각 자유롭게 수정할 수 있어요.</p>
 <div class="row2"><div><label class="field">퀘스트 안내</label><input id="labelQuest" value="QUEST UPDATED"/></div><div><label class="field">인연 기록 안내</label><input id="labelBond" value="SOUL LINK"/></div><div><label class="field">아이템 안내</label><input id="labelItem" value="ITEM ACQUIRED"/></div><div><label class="field">시스템 안내</label><input id="labelSystem" value="SYSTEM NOTIFICATION"/></div></div>
 <label class="field">상단 아카이브 문구</label><input id="topText" value="BLUE FAIRY / LASPERA"/>
@@ -774,10 +791,10 @@ body,body .controls,body .controls .tabs{background:#090f19!important}
 <div><label class="field">장식 진하기 <output id="decoOpacityOut">35</output>%</label><input id="decoOpacity" max="100" min="0" step="5" type="range" value="35"/></div>
 <div><label class="field">채팅 패널 여백 <output id="chatPadOut">55</output>%</label><input id="chatPad" max="130" min="20" step="5" type="range" value="55"/></div>
 <div><label class="field">채팅 패널 테두리 <output id="chatBorderOut">25</output>%</label><input id="chatBorder" max="100" min="0" step="5" type="range" value="25"/></div>
-</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>브라우저 작업 저장</h2><p class="note">자동 저장과 별도로 현재 작업을 직접 저장하고 불러올 수 있어요. 이미지 스티커와 배경 이미지도 함께 보관합니다. 브라우저 저장 공간이 허용하는 범위에서 유지돼요.</p><div class="buttons"><button class="btn primary" id="browserSave" type="button">브라우저에 직접 저장</button><button class="btn" id="browserLoad" type="button">브라우저 저장 불러오기</button></div><p class="note" id="browserSaveInfo" role="status">아직 수동 저장 여부를 확인하지 않았어요.</p></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 큰 사진과 이미지 스티커도 IndexedDB에 원본 그대로 저장하며 위치·크기·회전도 유지합니다. 저장 공간이 부족하면 이미지를 다른 기호로 바꾸지 않고 오류를 표시합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE FAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><div id="cardPage"></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="preview-dock"><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="preview-actions"><div class="buttons" id="pageTools" hidden><button class="btn" id="prevPage">이전 장</button><output id="pageNumber"></output><button class="btn" id="nextPage">다음 장</button></div><button class="btn" id="undoEdit" type="button" disabled>↶ 되돌리기</button><button class="btn primary" id="export">PNG 이미지 저장</button></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><script>
+</div></div><div class="fine-controls"><h3>추가 꾸밈 요소</h3><div class="row2" style="display:none"><div><label class="field">상단 모서리 표식</label><select id="cornerGlyph"><option selected="" value="none">없음</option><option value="diamonds">◇ 다이아몬드</option><option value="stars">✧ 작은 빛</option><option value="cross">+ 좌표 십자</option></select></div><div><label class="field">아래쪽 보조 문구</label><input id="decorCaption" placeholder="예: LIGHT LINK · ONLINE"/></div><div><label class="field">보조 문구 크기</label><input id="decorCaptionSize" max="20" min="5" type="range" value="8"/></div><div><label class="field">장식 선 굵기</label><input id="decorLineWidth" max="3" min="0.5" step="0.5" type="range" value="1"/></div></div></div></div><div class="group" data-section="export"><h2>브라우저 작업 저장</h2><p class="note">자동 저장과 별도로 현재 작업을 직접 저장하고 불러올 수 있어요. 이미지 스티커와 배경 이미지도 함께 보관합니다. 브라우저 저장 공간이 허용하는 범위에서 유지돼요.</p><div class="buttons"><button class="btn primary" id="browserSave" type="button">브라우저에 직접 저장</button><button class="btn" id="browserLoad" type="button">브라우저 저장 불러오기</button></div><p class="note" id="browserSaveInfo" role="status">아직 수동 저장 여부를 확인하지 않았어요.</p></div><div class="group" data-section="export"><h2>프리셋</h2><label class="field">프리셋 이름</label><input id="presetName" placeholder="예: GAME 인연"/><div class="row2" style="margin-top:10px"><div><label class="field">저장된 프리셋 선택</label><select id="presetSelect"><option value="">저장된 프리셋 없음</option></select></div><div><label class="field">저장 상태</label><div class="note" id="saveStatus" role="status">브라우저 자동 저장 준비</div></div></div><div class="buttons" style="margin-top:12px"><button class="btn primary" id="presetSave">새 프리셋 저장</button><button class="btn" id="presetOverwrite">선택 프리셋 덮어쓰기</button><button class="btn" id="presetLoad">선택 불러오기</button><button class="btn" id="presetDelete">선택 삭제</button></div><p class="note">입력 내용은 브라우저에 자동 저장됩니다. 큰 사진과 이미지 스티커도 IndexedDB에 원본 그대로 저장하며 위치·크기·회전도 유지합니다. 저장 공간이 부족하면 이미지를 다른 기호로 바꾸지 않고 오류를 표시합니다. 브라우저 데이터를 삭제하면 프리셋도 사라질 수 있으니 JSON 백업을 권장해요.</p></div></aside><section class="stage"><div class="stagebar"><strong>LIVE PREVIEW / GAME ARCHIVE</strong><span>ARCHIVE VIEW · REAL TIME</span></div><div class="canvas" id="canvas"><div class="ambient" id="ambient"></div><div class="shade"></div><div class="vignette"></div><article class="frame quest" id="frame"><div class="export-inner-grid" aria-hidden="true"></div><div class="topline"><span class="micro">BLUE FAIRY / LASPERA</span><span class="signal" id="statusView">● COMPLETED</span></div><header class="header"><div class="quest-label-row"><span class="mode-label" id="modeLabel"></span><div class="kicker" id="rankView">HIDDEN QUEST</div></div><div class="title" id="titleView"></div><div class="subtitle" id="subtitleView"></div><div class="barrow" id="barrow"><span>BOND SYNC</span><div class="bar"><div class="fill"></div></div><span>100%</span></div></header><div class="content"><div class="bodytext" id="bodyView"></div></div><div id="cardPage"></div><footer class="footer" id="footer"><span id="peopleView"></span><span id="metaView"></span></footer></article><div class="ornament"></div><div aria-hidden="true" class="pair-decorations" id="pairDecorations"></div><div id="stickerLayer"></div><div id="stampView"></div><div class="corner-glyph" id="cornerGlyphView"></div><div class="decor-caption" id="decorCaptionView"></div><div aria-hidden="true" class="hud-text-layer" id="hudTextLayer"></div></div><div class="preview-dock"><nav class="tabs"><button class="active" data-tab="text" type="button">문구</button><button class="" data-tab="design" type="button">디자인</button><button class="" data-tab="hud" type="button">게임 UI</button><button class="" data-tab="export" type="button">저장</button></nav><div class="preview-actions"><div class="buttons" id="pageTools" hidden><button class="btn" id="prevPage">이전 장</button><output id="pageNumber"></output><button class="btn" id="nextPage">다음 장</button></div><button class="btn" id="undoEdit" type="button" disabled>↶ 되돌리기</button><select id="exportScale" aria-label="PNG 저장 배율" title="PNG 저장 배율 · 긴 변 기준"><option value="1">1×</option><option value="2">2×</option><option value="3">3×</option></select><button class="btn primary" id="export">PNG 이미지 저장</button></div></div><div class="note">실시간 미리보기 · 글자가 넘치면 자동으로 줄어듭니다. <strong id="fitInfo" style="color:#a6ebf2">본문 10px</strong></div></section></main><dialog id="pngPreview" aria-labelledby="pngPreviewTitle"><div class="png-head"><strong id="pngPreviewTitle">저장 이미지 미리보기</strong><button type="button" id="closePng">닫기</button></div><img id="pngResult" alt="방금 생성한 발췌 카드 PNG"><div class="png-foot"><output id="pngDetails"></output><a id="pngAgain">PNG 다시 저장</a></div></dialog><script>
 const $=id=>document.getElementById(id);
 const ids=['mode','titleInput','subtitleInput','rank','status','footerText','meta','topText','statusSymbol','labelQuest','labelBond','labelItem','labelSystem','bodyInput','accent','highlight','font','size','line','opacity','ratio','showBar','showStatus','showFooter'];
-const extras=['customRatio','speakerOn','aliasesA','aliasesB','speakerA','speakerB','secondColor','autoPages','minPageFont','paragraphGap','colorTheme','titleFont','titleSize','bodyAlign','bodyPosition','letterSpace','innerPad','dialogueColor','chatStyle','chatNameColor','hlOpacity','hlStyle','autoFit','frameStyle','shade','bgZoom','bgX','bgY','bondValue','bondLabel','stampText','stickerSize','stickerRotate','topSize','statusSize','modeSize','rankSize','subtitleSize','gaugeSize','footerSize','metaSize','uiScale','markerOffset','markerHeight','frameWidth','frameInset','dividerOpacity','decoOpacity','chatPad','chatBorder','bgColor','panelColor','panelAlpha','vignette','cornerGlyph','decorCaption','decorCaptionSize','decorLineWidth','exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad','pairLight','pairThread','pairPetals','pairMoon','pairQuest','pairLink','pairGlyph','pairSpark','pairLines','pairStars','pairDecoColor','pairDecoScale','hudAOn','hudBOn','hudCOn','hudDOn','hudAText','hudBText','hudCText','hudDText','hudFontSize','hudTextColor','hudExtraScan','hudExtraSide','hudExtraRight','hudExtraBottom','hudSideText','hudPacketText','bgBlur','hudAssetOpacity'];
+const extras=['exportScale','customRatio','speakerOn','aliasesA','aliasesB','speakerA','speakerB','secondColor','autoPages','minPageFont','paragraphGap','colorTheme','titleFont','titleSize','bodyAlign','bodyPosition','letterSpace','innerPad','dialogueColor','chatStyle','chatNameColor','hlOpacity','hlStyle','autoFit','frameStyle','shade','bgZoom','bgX','bgY','bondValue','bondLabel','stampText','stickerSize','stickerRotate','topSize','statusSize','modeSize','rankSize','subtitleSize','gaugeSize','footerSize','metaSize','uiScale','markerOffset','markerHeight','frameWidth','frameInset','dividerOpacity','decoOpacity','chatPad','chatBorder','bgColor','panelColor','panelAlpha','vignette','cornerGlyph','decorCaption','decorCaptionSize','decorLineWidth','exportMarkerY','exportMarkerX','exportMarkerH','exportMarkerPad','pairLight','pairThread','pairPetals','pairMoon','pairQuest','pairLink','pairGlyph','pairSpark','pairLines','pairStars','pairDecoColor','pairDecoScale','hudAOn','hudBOn','hudCOn','hudDOn','hudAText','hudBText','hudCText','hudDText','hudFontSize','hudTextColor','hudExtraScan','hudExtraSide','hudExtraRight','hudExtraBottom','hudSideText','hudPacketText','bgBlur','hudAssetOpacity'];
 let bgData='',stickers=[],selected=-1,renderTicket=0,fitStatus='ready';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','"':'&quot;',"'":'&#39;'}[c]));
 const hexA=(hex,a)=>{let n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+(n>>8&255)+','+(n&255)+','+a+')'};
@@ -990,17 +1007,42 @@ function fitText(){
  $('fitInfo').textContent='자동 축소: '+(low/scale).toFixed(1)+'px (설정 '+$('size').value+'px)';
 }
 
-function renderHudText(){
- const layer=$('hudTextLayer');if(!layer)return;
- const fragment=document.createDocumentFragment();
- for(const letter of ['A','B','C','D']){
-  if(!$('hud'+letter+'On').checked)continue;
-  const el=document.createElement('div');el.className='hud-text-slot';el.dataset.hud=letter.toLowerCase();el.textContent=$('hud'+letter+'Text').value;
-  fragment.appendChild(el);
+function renderHudText(ratio){
+ const layer=$('hudTextLayer'),ns='http://www.w3.org/2000/svg';
+ const width=900*Math.max(1,ratio),height=900*Math.max(1,1/ratio);
+ const svg=document.createElementNS(ns,'svg');
+ svg.setAttribute('viewBox','0 0 '+width+' '+height);
+ svg.setAttribute('width',String(width));svg.setAttribute('height',String(height));
+ svg.setAttribute('font-family','monospace');
+ const size=Number($('hudFontSize').value)*1.65;
+ const color=$('hudTextColor').value,decor=$('pairDecoColor').value;
+ const opacity=Number($('hudAssetOpacity').value)/100;
+ const pen=renderHudText.pen||(renderHudText.pen=document.createElement('canvas').getContext('2d'));
+ function label(enabled,value,x,y,maxWidth,anchor,fill,alpha,vertical=false){
+   const text=value.trim();if(!enabled||!text||alpha<=0)return;
+   pen.font=size+'px monospace';
+   const measured=pen.measureText(text).width;
+   const font=Math.min(size,size*maxWidth/Math.max(1,measured));
+   const el=document.createElementNS(ns,'text');
+   el.textContent=text;
+   for(const [key,val] of Object.entries({
+     transform:'translate('+x+' '+y+')'+(vertical?' rotate(90)':''),
+     y:font*.34,'font-size':font,'text-anchor':anchor,fill,opacity:alpha,
+     stroke:$('bgColor').value,'stroke-width':font*.18,'stroke-linejoin':'round','paint-order':'stroke fill'
+   }))el.setAttribute(key,String(val));
+   svg.append(el);
  }
- layer.replaceChildren(fragment);
- layer.style.setProperty('--ht',$('hudTextColor').value);
- layer.style.setProperty('--hs',$('hudFontSize').value+'px');
+ const top=height*.021,bottom=height-top;
+ for(const [letter,x,y,anchor] of [['A',.08,top,'start'],['B',.92,top,'end'],['C',.08,bottom,'start'],['D',.92,bottom,'end']]){
+   label($('hud'+letter+'On').checked,$('hud'+letter+'Text').value,width*x,y,width*.265,anchor,color,1);
+ }
+ label($('pairGlyph').checked,'BLUE FAIRY ONLINE',width*.5,top,width*.285,'middle',decor,opacity);
+ const packet=$('hudExtraBottom').checked&&$('hudPacketText').value.trim();
+ const sync=$('pairLink').checked;
+ label(packet,$('hudPacketText').value,width*(sync?.35:.5),bottom,width*(sync?.16:.29),sync?'start':'middle',decor,opacity);
+ label(sync,'SYNC ▰▰▰▰▱',width*(packet?.64:.5),bottom,width*(packet?.115:.29),packet?'end':'middle',decor,opacity);
+ label($('hudExtraSide').checked,$('hudSideText').value,width*.022,height*.53,height*.32,'middle',decor,opacity,true);
+ layer.replaceChildren(svg);
  $('hudFontSizeOut').textContent=$('hudFontSize').value;
 }
 function renderPairDecorations(){
@@ -1016,7 +1058,7 @@ function renderPairDecorations(){
  ];
  const frag=document.createDocumentFragment();
  for(const [id,type,value] of defs){
-  if(!$(id)?.checked)continue;
+  if(!$(id)?.checked||['category','packet','sync','serial'].includes(type))continue;
   const el=document.createElement('div');
   el.className='hud-asset hud-asset-'+type;
   el.dataset.asset=type;
@@ -1063,7 +1105,7 @@ function update(){
   if(id==='hudSideText' && /INSTANCE\s*\/\s*LASPERA|INSTANCE\s*\/\s*玲瓏/i.test(input.value))input.value='BLUE FAIRY / LASPERA';
   if(id==='hudSideText' && /^(?:INSTANCE\s*\/\s*)?(?:LASPERA|라스페라)(?:\s*\/\s*(?:001|INSTANCE))?$/i.test(input.value.trim()))input.value='BLUE FAIRY / LASPERA';
  }
- renderHudText();
+
  const mode=$('mode').value,frame=$('frame'),canvas=$('canvas'),body=$('bodyView');
  const help={quest:'퀘스트 기록 · 좌측 퀘스트 마커와 진행 게이지를 강조합니다.',bond:'인연 아카이브 · 중앙 정렬, 공명 장식, 유대 게이지를 표시합니다.',item:'아이템 도감 · 획득한 아이템의 희귀도와 설명을 카드 형태로 기록합니다.',system:'시스템 메시지 · 업적 달성이나 기록 해금 알림을 팝업처럼 표시합니다.'};
  $('modeHelp').textContent=help[mode];
@@ -1157,6 +1199,7 @@ function update(){
  const pair=ratio.split('/').map(Number);
  canvas.style.setProperty('--ratio-number',pair[0]/pair[1]);
  canvas.style.aspectRatio=ratio;
+ renderHudText(pair[0]/pair[1]);
  canvas.dataset.ratioMode=pair[0]>pair[1]?'wide':pair[0]<pair[1]?'portrait':'square';
  canvas.style.setProperty('--safe-frame-inset',pair[0]>pair[1]*1.6?'6% 3.8%':pair[0]<pair[1]?'3.4% 5.2%':'4%');
  $('barrow').classList.toggle('hide',!$('showBar').checked);
@@ -1332,6 +1375,7 @@ function scheduleDraft(){
 
 function restore(obj){
  const values=obj.values||obj;
+ $('exportScale').value='1';
  $('customRatio').value='4/3';
  excerpt=Array.isArray(obj.excerpt)&&obj.excerpt.length===2&&obj.excerpt.every(Number.isInteger)&&obj.excerpt[0]>=0&&obj.excerpt[0]<obj.excerpt[1]&&obj.excerpt[1]<=String(values.bodyInput||'').length?obj.excerpt:null;
  pageIndex=Number.isSafeInteger(obj.pageIndex)?Math.max(0,obj.pageIndex):0;
@@ -1459,28 +1503,51 @@ async function makeExportBlurredBackground(){
  ctx.drawImage(img,-pad,-pad,w+2*pad,h+2*pad);
  return cvs.toDataURL('image/png');
 }
+let previewUrl='';
+$('closePng').onclick=()=>$('pngPreview').close();
+$('pngPreview').onclose=()=>{
+ $('pngResult').removeAttribute('src');$('pngAgain').removeAttribute('href');
+ if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl='';
+};
+function outputGeometry(card,multiplier){
+ const bounds=card.getBoundingClientRect();
+ const scale=1080*multiplier/Math.max(bounds.width,bounds.height);
+ return {scale,width:Math.max(1,Math.round(bounds.width*scale)),height:Math.max(1,Math.round(bounds.height*scale))};
+}
 $('export').onclick=async()=>{
  const btn=$('export');btn.disabled=true;btn.textContent='이미지 생성 중...';
  try{
  if(!window.html2canvas)await new Promise((resolve,reject)=>{const t=document.createElement('script');t.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';t.onload=resolve;t.onerror=reject;document.head.append(t)});
  const exportBlurData=await makeExportBlurredBackground();
- const old=selected;selected=-1;drawStickers();
+
  await document.fonts?.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
- const c=await html2canvas($('canvas'),{backgroundColor:'#1B1915',scale:Math.max(2,1080/$('canvas').clientWidth),useCORS:true,onclone:(doc)=>{
+ const multiplier=Number($('exportScale').value)||1;
+ const geometry=outputGeometry($('canvas'),multiplier),target=document.createElement('canvas');
+ target.width=geometry.width;target.height=geometry.height;
+ const railSvg=$('hudTextLayer').firstElementChild.cloneNode(true);
+ railSvg.setAttribute('width',geometry.width);railSvg.setAttribute('height',geometry.height);
+ const railImage=new Image();
+ railImage.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(railSvg));
+ await railImage.decode();
+ const c=await html2canvas($('canvas'),{backgroundColor:'#1B1915',canvas:target,scale:geometry.scale,useCORS:true,onclone:(doc)=>{
    if(exportBlurData){const a=doc.getElementById('ambient');if(a){a.style.setProperty('filter','none','important');a.style.setProperty('transform','none','important');a.style.backgroundImage='url('+JSON.stringify(exportBlurData)+')';}}
    const f=doc.getElementById('frame');if(f){f.style.setProperty('backdrop-filter','none','important');f.style.setProperty('-webkit-backdrop-filter','none','important');}
+   doc.querySelectorAll('#stickerLayer .selected').forEach(el=>el.classList.remove('selected'));
+   doc.getElementById('hudTextLayer').style.display='none';
    drawLineHighlights(doc)
   }});
- selected=old;drawStickers();
- c.toBlob(b=>{
-  if(!b){alert('PNG 생성에 실패했습니다.');return}
+ const ctx=c.getContext('2d');ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(railImage,0,0,c.width,c.height);ctx.restore();
+ const b=await new Promise((resolve,reject)=>c.toBlob(blob=>blob?resolve(blob):reject(Error('PNG 변환 실패')),'image/png'));
   const key='bluefairy-export-number';
   let number=1;
   try{number=Math.max(1,(parseInt(localStorage.getItem(key),10)||0)+1)}catch(e){}
   const name='bluefairy_'+String(number).padStart(3,'0')+'.png';
-  download(b,name);
+  previewUrl=URL.createObjectURL(b);
+  $('pngResult').src=previewUrl;
+  $('pngAgain').href=previewUrl;$('pngAgain').download=name;
+  $('pngDetails').textContent=multiplier+'× · '+c.width+' × '+c.height+' px';
+  $('pngPreview').showModal();$('pngAgain').click();
   try{localStorage.setItem(key,String(number))}catch(e){}
- },'image/png');
  }catch(e){alert('PNG 저장 실패: '+e.message)}finally{btn.disabled=false;btn.textContent='PNG 이미지 저장'}
 };
 window.addEventListener('resize',()=>{scheduleFit();scheduleMarkerDraw()});
